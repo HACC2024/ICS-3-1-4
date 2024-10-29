@@ -23,3 +23,7 @@ body {
   --dark-green: #293132;
   --hind: 'Hind', sans-serif;
 }
+
+.custom-navbar {
+  background-color: var(--blue);
+}

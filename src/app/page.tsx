@@ -1,4 +1,6 @@
+import './globals.css';
 import { Col, Container, Image, Row } from 'react-bootstrap';
+// import NavBar from '@/components/Navbar';
 
 /** The Home page. */
 const Home = () => (
