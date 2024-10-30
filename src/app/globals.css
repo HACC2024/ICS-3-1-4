@@ -27,3 +27,20 @@ body {
 .custom-navbar {
   background-color: var(--blue);
 }
+
+
+#search {
+  font-family: var(--hind);
+}
+
+#searchIcon {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+
+.filter-button {
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: 100%;
+}

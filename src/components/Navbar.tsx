@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
       <Container>
       <Navbar.Brand href="/">
       <Image
-        src="/2019-04-09-225150.352840Hawaii-State-Seal.png"
+        src="/Seal_of_the_State_of_Hawaii.png"
         alt="Hawaii State Seal"
         width={50}
         height={50}
