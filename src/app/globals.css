@@ -28,6 +28,16 @@ body {
   background-color: var(--blue);
 }
 
+.custom-navbar .nav-link,
+.custom-navbar .nav-dropdown-item {
+  color: seashell !important;
+  font-size: 20px;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-dropdown-item:hover {
+  color: var(--teal) !important;
+}
 
 #search {
   font-family: var(--hind);
@@ -43,4 +53,18 @@ body {
   border-radius: 50px;
   padding: 10px 20px;
   width: 100%;
+}
+
+footer {
+  background-color: var(--blue);
+  height: 100px;
+}
+
+footer a {
+  color: seashell;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--teal);
 }
