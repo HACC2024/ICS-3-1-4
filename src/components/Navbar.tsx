@@ -21,8 +21,8 @@ const NavBar: React.FC = () => {
       <Image
         src="/Seal_of_the_State_of_Hawaii.png"
         alt="Hawaii State Seal"
-        width={50}
-        height={50}
+        width={100}
+        height={100}
         className="d-inline-block align-top"
       />
       </Navbar.Brand>
