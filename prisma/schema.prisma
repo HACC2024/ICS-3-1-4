@@ -39,3 +39,9 @@ model Stuff {
   condition Condition
   owner     String
 }
+
+model Dataset {
+  id        Int    @id @default(autoincrement())
+  name      String
+  viewCount Int
+}
