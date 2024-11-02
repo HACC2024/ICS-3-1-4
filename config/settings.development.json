@@ -9,5 +9,13 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ], 
+
+  "defaultDataMetadata": [
+   { "name": "Community Health Dashboard", "url": "https://www.hawaiihealthmatters.org/index.php?module=indicators&controller=index", "viewCount": 120, "topic": "Health" },
+   { "name": "Bus Routes for the City and County of Honolulu", "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::bus-routes/explore", "viewCount": 130, "topic": "Transportation" },
+   { "name": "DBEDT Section 1: Population Data in Hawaii", "url": "https://dbedt.hawaii.gov/economic/databook/2023-individual/_01/", "viewCount": 140, "topic": "Demographics" },
+   { "name": "2023 ACS Demographics and Housing Estimates", "url": "https://data.census.gov/table?g=040XX00US15&y=2023&d=ACS+1-Year+Estimates+Data+Profiles", "viewCount": 150, "topic": "Demographics" },
+   { "name": "Existing Bike Facilities for the City and County of Honolulu", "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::existing-bike-facilities/explore", "viewCount": 60, "topic":"Transportation" }
   ]
 }
