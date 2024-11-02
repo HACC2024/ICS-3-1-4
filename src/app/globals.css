@@ -28,7 +28,6 @@ body {
   background-color: var(--blue);
 }
 
-=======
 .custom-navbar .nav-link,
 .custom-navbar .nav-dropdown-item {
   color: seashell !important;
@@ -85,7 +84,8 @@ body {
 .carousel-control-prev-icon:hover,
 .carousel-control-next-icon:hover {
   background-color: var(--teal);
-=======
+}
+
 footer {
   background-color: var(--blue);
   height: 100px;
