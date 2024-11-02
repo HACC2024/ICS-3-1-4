@@ -16,9 +16,9 @@ body {
 }
 
 :root {
-  --teal: #50D8D7;
-  --blue: #547AA5;
-  --dark-gray: #4F5165;
+  --teal: #50d8d7;
+  --blue: #547aa5;
+  --dark-gray: #4f5165;
   --charcoal: #474044;
   --dark-green: #293132;
   --hind: 'Hind', sans-serif;
@@ -28,6 +28,7 @@ body {
   background-color: var(--blue);
 }
 
+=======
 .custom-navbar .nav-link,
 .custom-navbar .nav-dropdown-item {
   color: seashell !important;
@@ -55,6 +56,36 @@ body {
   width: 100%;
 }
 
+/* Center arrows vertically and move them to the side */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* Adjust width to control how far the arrows are positioned from the carousel */
+}
+
+.carousel-control-prev {
+  left: -2rem; /* Move the left arrow further to the left */
+}
+
+.carousel-control-next {
+  right: -2rem; /* Move the right arrow further to the right */
+}
+
+/* Center the arrow icons vertically */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--dark-green);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  top: 50%; /* Vertically center the icons */
+}
+
+/* Optional hover effect for better visibility */
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: var(--teal);
+=======
 footer {
   background-color: var(--blue);
   height: 100px;
