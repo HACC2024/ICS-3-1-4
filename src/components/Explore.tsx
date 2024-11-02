@@ -17,6 +17,11 @@ const Explore = () => {
     <Container className="mt-5">
       <Row>
         <Col md={8} className="mx-auto">
+          <h1 className="text-center mb-5">Aloha Archives</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={8} className="mx-auto">
           <InputGroup id="search" className="mb-3">
             <Form.Control type="text" placeholder="Search..." />
             <InputGroup.Text>

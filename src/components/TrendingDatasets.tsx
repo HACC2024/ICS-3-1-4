@@ -14,7 +14,7 @@ const TrendingDatasets: React.FC = () => {
   }
 
   return (
-    <div className="trending-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className="trending-section" style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>Trending Datasets</h3>
       <Carousel controls indicators={false} interval={5000} pause="hover">
         {groupedData.map((group, groupIndex) => (
