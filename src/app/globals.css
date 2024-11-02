@@ -28,6 +28,18 @@ body {
   background-color: var(--blue);
 }
 
+=======
+.custom-navbar .nav-link,
+.custom-navbar .nav-dropdown-item {
+  color: seashell !important;
+  font-size: 20px;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-dropdown-item:hover {
+  color: var(--teal) !important;
+}
+
 #search {
   font-family: var(--hind);
 }
@@ -73,4 +85,17 @@ body {
 .carousel-control-prev-icon:hover,
 .carousel-control-next-icon:hover {
   background-color: var(--teal);
+=======
+footer {
+  background-color: var(--blue);
+  height: 100px;
+}
+
+footer a {
+  color: seashell;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--teal);
 }
