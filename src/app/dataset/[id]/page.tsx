@@ -32,6 +32,11 @@ export default async function DatasetPage({ params }: { params: { id: string | s
         Views:
         {dataset.viewCount}
       </p>
+      <h4>
+        <a href={dataset.url} target="_blank" rel="noopener noreferrer">
+          words
+        </a>
+      </h4>
     </main>
   );
 }
