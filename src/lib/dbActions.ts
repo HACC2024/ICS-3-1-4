@@ -4,6 +4,7 @@ import { Stuff, Condition } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
+import { IPersonaQuizResponse } from './validationSchemas';
 
 /**
  * Adds a new stuff to the database.
@@ -49,6 +50,29 @@ export async function editStuff(stuff: Stuff) {
   // After updating, redirect to the list page
   redirect('/list');
 }
+
+/**
+ * Adds a new persona quiz response to the database.
+ * @param response, an object with the following properties: email, goal, usage, comfortLevel, dataType, interaction, assignedPersona.
+ */
+export const addPersonaQuizResponse = async (responseData: IPersonaQuizResponse) => {
+  try {
+    await prisma.personaQuizResponse.create({
+      data: {
+        email: responseData.email,
+        goal: responseData.goal,
+        usage: responseData.usage,
+        comfortLevel: responseData.comfortLevel,
+        dataType: responseData.dataType,
+        interaction: responseData.interaction,
+        assignedPersona: responseData.assignedPersona,
+      },
+    });
+  } catch (error) {
+    console.error('Error saving persona quiz response:', error);
+    throw new Error('Failed to save response');
+  }
+};
 
 /**
  * Deletes an existing stuff from the database.

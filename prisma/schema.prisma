@@ -39,3 +39,15 @@ model Stuff {
   condition Condition
   owner     String
 }
+
+model PersonaQuizResponse {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique // Assuming each user takes 
+  goal           String
+  usage          String
+  comfortLevel   String
+  dataType       String
+  interaction    String
+  assignedPersona String
+}
+
