@@ -45,6 +45,20 @@ async function main() {
       },
     });
   });
+
+  config.defaultDataMetadata.forEach(async (data, index) => {
+    console.log(`  Adding dataset metadata: ${data.name} (${data.name})`);
+    await prisma.dataset.upsert({
+      where: { id: index },
+      update: {},
+      create: {
+        name: data.name,
+        url: data.url,
+        viewCount: data.viewCount,
+        topic: data.topic,
+      },
+    });
+  });
 }
 main()
   .then(() => prisma.$disconnect())
