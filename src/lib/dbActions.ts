@@ -51,6 +51,37 @@ export async function editStuff(stuff: Stuff) {
 }
 
 /**
+ * Adds a new persona quiz response to the database.
+ * @param response, an object with the following properties: email, goal, usage, comfortLevel, dataType, interaction, assignedPersona.
+ */
+export const addPersonaQuizResponse = async (response: {
+  goal: string;
+  usage: string;
+  comfortLevel: string;
+  dataType: string;
+  interaction: string;
+  email: string;
+  assignedPersona: string;
+}) => {
+  try {
+    await prisma.personaQuiz.create({
+      data: {
+        goal: response.goal,
+        usage: response.usage,
+        comfortLevel: response.comfortLevel,
+        dataType: response.dataType,
+        interaction: response.interaction,
+        email: response.email,
+        assignedPersona: response.assignedPersona,
+      },
+    });
+  } catch (error) {
+    console.error('Error saving persona quiz response:', error);
+    throw new Error('Failed to save response');
+  }
+};
+
+/**
  * Deletes an existing stuff from the database.
  * @param id, the id of the stuff to delete.
  */

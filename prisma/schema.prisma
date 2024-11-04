@@ -40,6 +40,27 @@ model Stuff {
   owner     String
 }
 
+
+model PersonaQuiz {
+
+  id              Int      @id @default(autoincrement())
+
+  goal            String
+
+  usage           String
+
+  comfortLevel    String
+
+  dataType        String
+
+  interaction     String
+
+  email           String
+
+  assignedPersona String
+
+}
+
 model Dataset {
   id        Int       @id @default(autoincrement())
   name      String
@@ -47,3 +68,4 @@ model Dataset {
   viewCount Int       @default(0)
   topic     String
 }
+
