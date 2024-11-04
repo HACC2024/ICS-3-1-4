@@ -28,23 +28,49 @@ const PersonaForm = () => {
     dataType: string;
     interaction: string;
   }) => {
-    // Simple logic to determine persona based on responses
-    let assignedPersona = '';
-    if (data.goal === 'To educate others') {
-      assignedPersona = 'Educator';
-    } else if (data.goal === 'To gather information for research') {
-      assignedPersona = 'Researcher/Analyst';
-    } else if (data.goal === 'To support community initiatives') {
-      assignedPersona = 'Community Member';
-    }
-    // Set the assigned persona in state
-    setPersona(assignedPersona);
+    // Temporary count object to track each persona's tally
+    const tempCounts = {
+      educator: 0,
+      researcher: 0,
+      communityMember: 0,
+      publicInformer: 0,
+      businessDecisionMaker: 0,
+    };
+
+    // Update counts based on selected options
+    if (data.goal === 'To educate others') tempCounts.educator += 1;
+    if (data.goal === 'To gather information for research') tempCounts.researcher += 1;
+    if (data.goal === 'To support community initiatives') tempCounts.communityMember += 1;
+    if (data.goal === 'To inform the public') tempCounts.publicInformer += 1;
+    if (data.goal === 'To support strategic decisions') tempCounts.businessDecisionMaker += 1;
+
+    if (data.usage === 'To create lesson plans') tempCounts.educator += 1;
+    if (data.usage === 'To create reports') tempCounts.publicInformer += 1;
+    if (data.usage === 'To support policy decisions') tempCounts.businessDecisionMaker += 1;
+    if (data.usage === 'For community projects') tempCounts.communityMember += 1;
+    if (data.usage === 'For school projects and study') tempCounts.researcher += 1;
+
+    if (data.dataType === 'Population or demographics') tempCounts.publicInformer += 1;
+    if (data.dataType === 'Economic or financial') tempCounts.businessDecisionMaker += 1;
+    if (data.dataType === 'Eductional or academic') tempCounts.educator += 1;
+    if (data.dataType === 'Environmental data') tempCounts.communityMember += 1;
+    if (data.dataType === 'Health or Social services') tempCounts.researcher += 1;
+
+    if (data.interaction === 'Detailed datasets') tempCounts.researcher += 1;
+    if (data.interaction === 'Data visualizations') tempCounts.publicInformer += 1;
+    if (data.interaction === 'Interactive dashboards') tempCounts.communityMember += 1;
+    if (data.interaction === 'Reports with key insights') tempCounts.businessDecisionMaker += 1;
+    if (data.interaction === 'Raw data with filtering') tempCounts.educator += 1;
+
+    const topPersona = Object.entries(tempCounts).reduce((prev, current) => (current[1] > prev[1] ? current : prev))[0];
+
+    setPersona(topPersona);
 
     try {
-      const response = { ...data, email: 'user@example.com', assignedPersona }; // Add missing properties
-      await addPersonaQuizResponse(response); // Save the response to the database
-      swal('Success!', `You are a ${assignedPersona}!`, 'success');
-      reset(); // Reset form after successful submission
+      const response = { ...data, email: 'user@example.com', assignedPersona: topPersona };
+      await addPersonaQuizResponse(response); // Save response to database
+      swal('Success!', `You are a ${topPersona}!`, 'success');
+      reset(); // Reset form
     } catch (error) {
       console.error(error);
       swal('Error!', 'Failed to save response. Please try again.', 'error');
@@ -69,6 +95,7 @@ const PersonaForm = () => {
                     <option value="To educate others">To educate others with reliable data</option>
                     <option value="To gather information for research">To gather information for research</option>
                     <option value="To inform the public">To inform the public or create content</option>
+                    <option value="To support strategic decisions">To support strategic decisions in a business or organization</option>
                     <option value="To support community initiatives">To support community initiatives</option>
                   </Form.Select>
                   <div className="invalid-feedback">{errors.goal?.message}</div>
@@ -86,10 +113,11 @@ const PersonaForm = () => {
                     className={`form-control ${errors.usage ? 'is-invalid' : ''}`}
                   >
                     <option value="">Select an option</option>
-                    <option value="For research or analysis">For research or analysis</option>
-                    <option value="To create lesson plans">To create lesson plans</option>
-                    <option value="To support policy decisions">To support policy decisions</option>
-                    <option value="For community projects">For community projects</option>
+                    <option value="For school projects and study">For a school project or personal study.</option>
+                    <option value="To create reports">To create reports, articles, or media content.</option>
+                    <option value="To create lesson plans">For creating lesson plans or curriculum materials</option>
+                    <option value="To support policy decisions">To support policy decisions or government projects</option>
+                    <option value="For community projects">To improve local community programs or initiatives.</option>
                   </Form.Select>
                   <div className="invalid-feedback">{errors.usage?.message}</div>
                 </Form.Group>
@@ -108,7 +136,9 @@ const PersonaForm = () => {
                     <option value="">Select an option</option>
                     <option value="Very comfortable">Very comfortable – I work with data regularly</option>
                     <option value="Somewhat comfortable">Somewhat comfortable – I have basic data skills</option>
-                    <option value="Prefer pre-analyzed information">I prefer pre-analyzed information</option>
+                    <option value="Prefer pre-analyzed information">I’m mostly interested in accessing pre-analyzed information.</option>
+                    <option value="Willing to learn">I’d like to learn but am still new to it.</option>
+                    <option value="Rely on others to analyze">I rely on others to analyze the data for me.</option>
                   </Form.Select>
                   <div className="invalid-feedback">{errors.comfortLevel?.message}</div>
                 </Form.Group>
@@ -125,9 +155,11 @@ const PersonaForm = () => {
                     className={`form-control ${errors.dataType ? 'is-invalid' : ''}`}
                   >
                     <option value="">Select an option</option>
-                    <option value="Population or demographics">Population or demographics</option>
-                    <option value="Economic or financial">Economic or financial data</option>
-                    <option value="Environmental data">Environmental data</option>
+                    <option value="Population or demographics">Population, demographics, or community data</option>
+                    <option value="Economic or financial">Economic, business, or financial data.</option>
+                    <option value="Eductional or academic">Educational or academic performance data.</option>
+                    <option value="Environmental data">Environmental or sustainability data.</option>
+                    <option value="Health or Social services">Health or social services data.</option>
                   </Form.Select>
                   <div className="invalid-feedback">{errors.dataType?.message}</div>
                 </Form.Group>
@@ -144,9 +176,11 @@ const PersonaForm = () => {
                     className={`form-control ${errors.interaction ? 'is-invalid' : ''}`}
                   >
                     <option value="">Select an option</option>
-                    <option value="Detailed datasets">Detailed datasets for download and analysis</option>
-                    <option value="Data visualizations">Data visualizations and summaries</option>
-                    <option value="Interactive dashboards">Interactive dashboards for exploration</option>
+                    <option value="Detailed datasets">Through detailed datasets I can download and analyze.</option>
+                    <option value="Data visualizations">Through data visualizations and summaries.</option>
+                    <option value="Interactive dashboards">Through interactive dashboards for easy exploration.</option>
+                    <option value="Reports with key insights">Through reports with key insights and recommendations.</option>
+                    <option value="Raw data with filtering">Through raw data with filtering options.</option>
                   </Form.Select>
                   <div className="invalid-feedback">{errors.interaction?.message}</div>
                 </Form.Group>

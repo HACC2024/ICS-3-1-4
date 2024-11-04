@@ -4,7 +4,6 @@ import { Stuff, Condition } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
-import { IPersonaQuizResponse } from './validationSchemas';
 
 /**
  * Adds a new stuff to the database.
@@ -55,17 +54,25 @@ export async function editStuff(stuff: Stuff) {
  * Adds a new persona quiz response to the database.
  * @param response, an object with the following properties: email, goal, usage, comfortLevel, dataType, interaction, assignedPersona.
  */
-export const addPersonaQuizResponse = async (responseData: IPersonaQuizResponse) => {
+export const addPersonaQuizResponse = async (response: {
+  goal: string;
+  usage: string;
+  comfortLevel: string;
+  dataType: string;
+  interaction: string;
+  email: string;
+  assignedPersona: string;
+}) => {
   try {
-    await prisma.personaQuizResponse.create({
+    await prisma.personaQuiz.create({
       data: {
-        email: responseData.email,
-        goal: responseData.goal,
-        usage: responseData.usage,
-        comfortLevel: responseData.comfortLevel,
-        dataType: responseData.dataType,
-        interaction: responseData.interaction,
-        assignedPersona: responseData.assignedPersona,
+        goal: response.goal,
+        usage: response.usage,
+        comfortLevel: response.comfortLevel,
+        dataType: response.dataType,
+        interaction: response.interaction,
+        email: response.email,
+        assignedPersona: response.assignedPersona,
       },
     });
   } catch (error) {
