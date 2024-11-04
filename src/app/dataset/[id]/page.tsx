@@ -25,8 +25,9 @@ export default async function DatasetPage({ params }: { params: { id: string | s
     <main style={{ padding: '2rem', textAlign: 'center' }}>
       <h2>{dataset.name}</h2>
       <p>
-        This is a placeholder page displaying details for Dataset ID:
-        {id}
+        Topic:
+        {' '}
+        {dataset.topic}
       </p>
       <p>
         Views:
@@ -34,7 +35,7 @@ export default async function DatasetPage({ params }: { params: { id: string | s
       </p>
       <h4>
         <a href={dataset.url} target="_blank" rel="noopener noreferrer">
-          words
+          Link to Dataset
         </a>
       </h4>
     </main>
