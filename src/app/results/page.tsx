@@ -111,14 +111,16 @@ const ResultsPage = () => {
                 onClick={() => console.log('Card clicked!')} // Replace with your desired action
               >
                 <Card>
-                  <Container className="d-flex justify-content-center mt-3">
-                    <Card.Img
-                      variant="top"
-                      src="/Seal_of_the_State_of_Hawaii.png"
-                      alt="Dataset Image"
-                      style={{ maxWidth: '100px', height: 'auto' }}
-                    />
-                  </Container>
+                  <Card.Header>
+                    <Container className="d-flex justify-content-center">
+                      <Card.Img
+                        variant="top"
+                        src="/Seal_of_the_State_of_Hawaii.png"
+                        alt="Dataset Image"
+                        style={{ maxWidth: '100px', height: 'auto' }}
+                      />
+                    </Container>
+                  </Card.Header>
                   <Card.Body>
                     <Card.Title>Dataset Title</Card.Title>
                     <Card.Text>Dataset Description</Card.Text>
