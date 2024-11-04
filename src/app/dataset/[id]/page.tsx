@@ -31,6 +31,7 @@ export default async function DatasetPage({ params }: { params: { id: string | s
       </p>
       <p>
         Views:
+        {' '}
         {dataset.viewCount}
       </p>
       <h4>
