@@ -51,10 +51,10 @@ const NavBar: React.FC = () => {
       Upload
     </Nav.Link>
     <Nav.Link id="manage-users-nav" href="/manage-users" key="manage-users" active={pathName === '/manage-users'}>
-      Delete Database
+      Delete Dataset
     </Nav.Link>
     <Nav.Link id="settings-nav" href="/settings" key="settings" active={pathName === '/settings'}>
-      Edit Database
+      Edit Dataset
     </Nav.Link>
   </>
 ) : (
