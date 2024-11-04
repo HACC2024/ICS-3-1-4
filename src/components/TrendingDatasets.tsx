@@ -42,7 +42,7 @@ const TrendingDatasets: React.FC = () => {
           // eslint-disable-next-line react/no-array-index-key
           <Carousel.Item key={`group-${groupIndex}`}>
             <Container style={{ minHeight: '250px' }}>
-              <Row className="justify-content-center">
+              <Row className="justify-content-center text-center">
                 {group.map((item) => (
                   <Col key={item.id} md={group.length === 2 ? 6 : 4}>
                     <Link href={`/dataset/${item.id}`} passHref>
