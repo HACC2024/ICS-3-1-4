@@ -60,7 +60,7 @@ body {
 }
 
 .btn.filter-button:hover {
-  background-color: var(--blue);
+  background-color: var(--teal);
   color: white;
 }
 
@@ -71,11 +71,11 @@ body {
 }
 
 .carousel-control-prev {
-  left: -2rem; /* Move the left arrow further to the left */
+  left: -5rem !important; /* Move the left arrow further to the left */
 }
 
 .carousel-control-next {
-  right: -2rem; /* Move the right arrow further to the right */
+  right: -5rem !important; /* Move the right arrow further to the right */
 }
 
 /* Center the arrow icons vertically */

@@ -55,7 +55,7 @@ const TrendingDatasets: React.FC = () => {
                         border: 'none',
                         background: 'none',
                         width: '18rem',
-                        marginLeft: '2rem',
+                        marginLeft: '',
                         marginBottom: '2rem',
                       }}
                       onClick={() => (window.location.href = `/dataset/${item.id}`)}
