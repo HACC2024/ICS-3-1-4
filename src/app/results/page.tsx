@@ -140,7 +140,7 @@ const ResultsPage = () => {
                       marginLeft: '2rem',
                       marginBottom: '2rem',
                     }}
-                    onClick={() => window.location.href = item.url}
+                    onClick={() => window.location.href = `/dataset/${item.id}`}
                   >
                     <Card>
                       <Card.Header>
