@@ -1,14 +1,21 @@
 'use client';
 
-import { Container, Row, Col, ToggleButton } from 'react-bootstrap';
-import React, { useState } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import React from 'react';
+import { useRouter } from 'next/navigation'; // For routing
 import SearchBar from './SearchBar';
 
 const Explore = () => {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const router = useRouter();
 
-  const handleFilterChange = (value: string) => {
-    setSelectedFilters((prev) => (prev.includes(value) ? prev.filter((filter) => filter !== value) : [...prev, value]));
+  // Function to handle button click and route to Results page with topic filter
+  const handleTopicFilterClick = (topic: string) => {
+    // Create a new URLSearchParams object and set the topic query parameter
+    const urlParams = new URLSearchParams();
+    urlParams.set('topic', topic); // Add the topic filter
+
+    // Use Next.js's router to push the new URL with the query parameters
+    router.push(`/results?${urlParams.toString()}`);
   };
 
   return (
@@ -25,21 +32,27 @@ const Explore = () => {
       </Row>
       <Row>
         <Col md={8} className="mx-auto d-flex justify-content-center">
-          {['Filter 1', 'Filter 2', 'Filter 3', 'Filter 4', 'Filter 5'].map((filter, index) => (
-            <ToggleButton
-              key={filter}
-              type="checkbox"
-              variant={selectedFilters.includes(filter) ? 'primary' : 'outline-secondary'}
-              className={`filter-button ${selectedFilters.includes(filter) ? 'active' : ''}`}
-              checked={selectedFilters.includes(filter)}
-              onChange={() => handleFilterChange(filter)}
-              id={`filter-${index}`}
-              value={filter}
-              style={{ margin: '0 5px' }}
-            >
-              {filter}
-            </ToggleButton>
-          ))}
+          <Button
+            type="button"
+            onClick={() => handleTopicFilterClick('Health')} // Route to ResultsPage with Health filter
+            className="filter-button mx-2"
+          >
+            Health
+          </Button>
+          <Button
+            type="button"
+            onClick={() => handleTopicFilterClick('Transportation')} // Route to ResultsPage with Health filter
+            className="filter-button mx-2"
+          >
+            Transportation
+          </Button>
+          <Button
+            type="button"
+            onClick={() => handleTopicFilterClick('Demographics')} // Route to ResultsPage with Health filter
+            className="filter-button mx-2"
+          >
+            Demographics
+          </Button>
         </Col>
       </Row>
     </Container>

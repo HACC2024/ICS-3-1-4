@@ -50,10 +50,18 @@ body {
   border: none;
 }
 
-.filter-button {
+.btn.filter-button {
   border-radius: 50px;
   padding: 10px 20px;
   width: 100%;
+  background-color: transparent;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.btn.filter-button:hover {
+  background-color: var(--blue);
+  color: white;
 }
 
 /* Center arrows vertically and move them to the side */
@@ -109,4 +117,10 @@ footer a:hover {
 
 #hind {
   font-family: var(--hind);
+}
+
+#resultsFilterButton.active {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: white;
 }

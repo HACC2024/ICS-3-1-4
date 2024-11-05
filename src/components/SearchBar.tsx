@@ -7,10 +7,16 @@ import { Search } from 'react-bootstrap-icons';
 const SearchBar = () => {
   const [query, setQuery] = React.useState('');
 
+  // Read the topic filter from the URL if it exists
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentTopic = urlParams.get('topic') || ''; // Get current topic from URL
+
   const handleSearch = () => {
-    if (query) {
-      window.location.href = `/results?search=${encodeURIComponent(query)}`; // Navigate with search query
-    }
+    // Construct the new URL with both search and topic params
+    const newUrl = `/results?search=${encodeURIComponent(query)}${currentTopic ? `&topic=${encodeURIComponent(currentTopic)}` : ''}`;
+
+    // Navigate to the new URL
+    window.location.href = newUrl;
   };
 
   const handleKeyPress = (event: { key: string }) => {
