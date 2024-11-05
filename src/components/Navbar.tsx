@@ -34,11 +34,11 @@ const NavBar: React.FC = () => {
                   // <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
                   //   Add Stuff
                   // </Nav.Link>,
-                  // <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
-                  //   List Stuff
-                  // </Nav.Link>,
-                  <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
+                  <Nav.Link id="persona-stuff-nav" href="/persona" key="persona" active={pathName === '/persona'}>
                   Take a Persona Quiz!
+                  </Nav.Link>,
+                  <Nav.Link id="list-datasets-nav" href="/list" key="list" active={pathName === '/list'}>
+                    List Datasets
                   </Nav.Link>,
                 ]
               : ''}
@@ -49,9 +49,6 @@ const NavBar: React.FC = () => {
   </Nav.Link> */}
     <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
       Upload
-    </Nav.Link>
-    <Nav.Link id="manage-users-nav" href="/manage-users" key="manage-users" active={pathName === '/manage-users'}>
-      Delete Dataset
     </Nav.Link>
     <Nav.Link id="settings-nav" href="/settings" key="settings" active={pathName === '/settings'}>
       Edit Dataset

@@ -12,29 +12,61 @@
   ], 
 
   "defaultDataMetadata": [
-   { "name": "Community Health Dashboard", 
-     "url": "https://www.hawaiihealthmatters.org/index.php?module=indicators&controller=index", 
-     "viewCount": 120, 
-     "topic": "Health" },
-
-   { "name": "Bus Routes for the City and County of Honolulu", 
-     "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::bus-routes/explore", 
-     "viewCount": 130, 
-     "topic": "Transportation" },
-
-   { "name": "DBEDT Section 1: Population Data in Hawaii", 
-     "url": "https://dbedt.hawaii.gov/economic/databook/2023-individual/_01/", 
-     "viewCount": 140, 
-     "topic": "Demographics" },
-
-   { "name": "2023 ACS Demographics and Housing Estimates", 
-     "url": "https://data.census.gov/table?g=040XX00US15&y=2023&d=ACS+1-Year+Estimates+Data+Profiles", 
-     "viewCount": 150, 
-     "topic": "Demographics" },
-     
-   { "name": "Existing Bike Facilities for the City and County of Honolulu", 
-     "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::existing-bike-facilities/explore", 
-     "viewCount": 60, 
-     "topic":"Transportation" }
+   {
+     "name": "Community Health Dashboard",
+     "url": "https://www.hawaiihealthmatters.org/index.php?module=indicators&controller=index",
+     "viewCount": 120,
+     "topic": "Health",
+     "description": "Dashboard providing health indicators for Hawaii communities.",
+     "org": "Hawaii Health Matters",
+     "orgIcon": "/org_icons/hawaii_health_matters.png"
+   },
+   {
+     "name": "Bus Routes for the City and County of Honolulu",
+     "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::bus-routes/explore",
+     "viewCount": 130,
+     "topic": "Transportation",
+     "description": "Detailed information about bus routes in Honolulu.",
+     "org": "City and County of Honolulu",
+     "orgIcon": "/org_icons/cch_seal.png"
+   },
+   {
+     "name": "DBEDT Section 1: Population Data in Hawaii",
+     "url": "https://dbedt.hawaii.gov/economic/databook/2023-individual/_01/",
+     "viewCount": 140,
+     "topic": "Demographics",
+     "description": "Population statistics and trends from DBEDT.",
+     "org": "State of Hawaii",
+     "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png"
+   },
+   {
+     "name": "2023 ACS Demographics and Housing Estimates",
+     "url": "https://data.census.gov/table?g=040XX00US15&y=2023&d=ACS+1-Year+Estimates+Data+Profiles",
+     "viewCount": 150,
+     "topic": "Demographics",
+     "description": "Annual population and housing estimates from the ACS.",
+     "org": "Census Bureau",
+     "orgIcon": "/org_icons/us_census_bureau.png"
+   },
+   {
+     "name": "Existing Bike Facilities for the City and County of Honolulu",
+     "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::existing-bike-facilities/explore",
+     "viewCount": 60,
+     "topic": "Transportation",
+     "description": "Locations of bike facilities in Honolulu.",
+     "org": "City and County of Honolulu",
+     "orgIcon": "/org_icons/cch_seal.png"
+   },
+   {
+     "name": "2022 ACS Hawaii - Age and Population Estimates",
+     "url": "",
+     "viewCount": 500,
+     "topic": "Demographics",
+     "description": "Age and population estimates for Hawaii in 2022.",
+     "org": "Census Bureau",
+     "orgIcon": "/org_icons/us_census_bureau.png",
+     "jsonPath": "/mock-data/dataset-6.json"
+   }
   ]
+
 }

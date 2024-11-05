@@ -46,20 +46,26 @@ async function main() {
     });
   });
 
-  config.defaultDataMetadata.forEach(async (data, index) => {
-    console.log(`  Adding dataset metadata: ${data.name} (${data.name})`);
-    await prisma.dataset.upsert({
-      where: { id: index },
+  const promises = config.defaultDataMetadata.map(async (data) => {
+    console.log(`  Adding dataset metadata: ${data.name}`);
+    return prisma.dataset.upsert({
+      where: { name: data.name },
       update: {},
       create: {
         name: data.name,
         url: data.url,
         viewCount: data.viewCount,
         topic: data.topic,
+        jsonPath: data.jsonPath,
+        description: data.description,
+        org: data.org,
+        orgIcon: data.orgIcon,
       },
     });
   });
+  await Promise.all(promises);
 }
+
 main()
   .then(() => prisma.$disconnect())
   .catch(async (e) => {
