@@ -69,9 +69,7 @@ body {
 .carousel-control-next {
   width: min-content !important; /* Adjust width to control how far the arrows are positioned from the carousel */
   height: min-content;
-  position: absolute;
   top: 50% !important;
-  transform: translateY(-50%) !important;
 }
 
 .carousel-control-prev {
