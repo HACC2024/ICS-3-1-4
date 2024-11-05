@@ -46,10 +46,10 @@ async function main() {
     });
   });
 
-  config.defaultDataMetadata.forEach(async (data, index) => {
-    console.log(`  Adding dataset metadata: ${data.name} (${data.name})`);
-    await prisma.dataset.upsert({
-      where: { id: index },
+  const promises = config.defaultDataMetadata.map(async (data) => {
+    console.log(`  Adding dataset metadata: ${data.name}`);
+    return prisma.dataset.upsert({
+      where: { name: data.name },
       update: {},
       create: {
         name: data.name,
@@ -63,7 +63,9 @@ async function main() {
       },
     });
   });
+  await Promise.all(promises);
 }
+
 main()
   .then(() => prisma.$disconnect())
   .catch(async (e) => {

@@ -53,7 +53,7 @@ model PersonaQuiz {
 
 model Dataset {
   id          Int    @id @default(autoincrement())
-  name        String
+  name        String @unique
   url         String
   viewCount   Int    @default(0)
   topic       String
