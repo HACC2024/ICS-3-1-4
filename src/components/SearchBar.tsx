@@ -8,9 +8,7 @@ const SearchBar = () => {
   const [query, setQuery] = React.useState('');
 
   const handleSearch = () => {
-    if (query) {
-      window.location.href = `/results?search=${encodeURIComponent(query)}`; // Navigate with search query
-    }
+    window.location.href = `/results?search=${encodeURIComponent(query)}`; // Navigate with search query
   };
 
   const handleKeyPress = (event: { key: string }) => {
