@@ -67,15 +67,19 @@ body {
 /* Center arrows vertically and move them to the side */
 .carousel-control-prev,
 .carousel-control-next {
-  width: 5%; /* Adjust width to control how far the arrows are positioned from the carousel */
+  width: min-content !important; /* Adjust width to control how far the arrows are positioned from the carousel */
+  height: min-content;
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 
 .carousel-control-prev {
-  left: -5rem !important; /* Move the left arrow further to the left */
+  left: -2rem !important; /* Move the left arrow further to the left */
 }
 
 .carousel-control-next {
-  right: -5rem !important; /* Move the right arrow further to the right */
+  right: -2rem !important; /* Move the right arrow further to the right */
 }
 
 /* Center the arrow icons vertically */
@@ -85,8 +89,6 @@ body {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  transform: translateY(-50%);
-  top: 50%; /* Vertically center the icons */
 }
 
 /* Optional hover effect for better visibility */
