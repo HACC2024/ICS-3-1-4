@@ -13,5 +13,7 @@ export const GET = async () => {
   } catch (error) {
     console.error('Error fetching datasets:', error);
     return NextResponse.json({ error: 'Unable to fetch datasets' }, { status: 500 });
+  } finally {
+    await prisma.$disconnect();
   }
 };

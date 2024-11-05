@@ -1,7 +1,7 @@
 'use client';
 
 import SearchBar from '@/components/SearchBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const ResultsPage = () => {
@@ -20,6 +20,35 @@ const ResultsPage = () => {
   const toggleMenu3 = () => {
     setIsOpen3(!isOpen3);
   };
+
+  const [, setSearchQuery] = useState('');
+  const [filteredResults, setFilteredResults] = useState<any[]>([]);
+  const [, setDatasets] = useState<{ name: string; topic: string; id: number; url: string; viewCount: number; }[]>([]);
+
+  const filterResults = (query: string, datasets: any[]) => {
+    const lowercasedQuery = query.toLowerCase();
+    const results = datasets.filter(item => item.name.toLowerCase().includes(lowercasedQuery)
+      || item.topic.toLowerCase().includes(lowercasedQuery));
+    setFilteredResults(results);
+  };
+
+  useEffect(() => {
+    const fetchDatasets = async () => {
+      const query = new URLSearchParams(window.location.search).get('search') || '';
+      setSearchQuery(query);
+
+      try {
+        const response = await fetch('/api/datasets');
+        const data = await response.json();
+        setDatasets(data);
+        filterResults(query, data);
+      } catch (error) {
+        console.error('Failed to fetch datasets:', error);
+      }
+    };
+
+    fetchDatasets();
+  }, []);
 
   return (
     <main>
@@ -98,35 +127,42 @@ const ResultsPage = () => {
               </h1>
             </Row>
             <Row>
-              <button
-                type="button"
-                style={{
-                  padding: 0,
-                  border: 'none',
-                  background: 'none',
-                  width: '18rem',
-                  marginLeft: '2rem',
-                  marginBottom: '2rem',
-                }}
-                onClick={() => console.log('Card clicked!')} // Replace with your desired action
-              >
-                <Card>
-                  <Card.Header>
-                    <Container className="d-flex justify-content-center">
-                      <Card.Img
-                        variant="top"
-                        src="/Seal_of_the_State_of_Hawaii.png"
-                        alt="Dataset Image"
-                        style={{ maxWidth: '100px', height: 'auto' }}
-                      />
-                    </Container>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title>Dataset Title</Card.Title>
-                    <Card.Text>Dataset Description</Card.Text>
-                  </Card.Body>
-                </Card>
-              </button>
+              {filteredResults.length > 0 ? (
+                filteredResults.map((item) => (
+                  <button
+                    type="button"
+                    key={item.id}
+                    style={{
+                      padding: 0,
+                      border: 'none',
+                      background: 'none',
+                      width: '18rem',
+                      marginLeft: '2rem',
+                      marginBottom: '2rem',
+                    }}
+                    onClick={() => window.location.href = item.url}
+                  >
+                    <Card>
+                      <Card.Header>
+                        <Container className="d-flex justify-content-center">
+                          <Card.Img
+                            variant="top"
+                            src="/Seal_of_the_State_of_Hawaii.png"
+                            alt="Dataset Image"
+                            style={{ maxWidth: '100px', height: 'auto' }}
+                          />
+                        </Container>
+                      </Card.Header>
+                      <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        <Card.Text>{item.topic}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </button>
+                ))
+              ) : (
+                <p>No results found.</p>
+              )}
             </Row>
           </Col>
         </Row>
