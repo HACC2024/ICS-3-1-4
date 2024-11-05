@@ -194,16 +194,19 @@ const ResultsPage = () => {
                         <Container className="d-flex justify-content-center">
                           <Card.Img
                             variant="top"
-                            src="/Seal_of_the_State_of_Hawaii.png"
-                            alt="Dataset Image"
+                            src={item.orgIcon}
+                            alt={`${item.org} logo`}
                             style={{ maxWidth: '100px', height: 'auto' }}
                           />
                         </Container>
+                        <Card.Title className="pt-3">{item.name}</Card.Title>
                       </Card.Header>
                       <Card.Body>
-                        <Card.Title>{item.name}</Card.Title>
-                        <Card.Text>{item.topic}</Card.Text>
+                        <Card.Text>{item.description}</Card.Text>
                       </Card.Body>
+                      <Card.Footer>
+                        <Card.Text>{item.topic}</Card.Text>
+                      </Card.Footer>
                     </Card>
                   </button>
                 ))
