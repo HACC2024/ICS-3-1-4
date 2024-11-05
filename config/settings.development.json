@@ -16,6 +16,7 @@
    { "name": "Bus Routes for the City and County of Honolulu", "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::bus-routes/explore", "viewCount": 130, "topic": "Transportation" },
    { "name": "DBEDT Section 1: Population Data in Hawaii", "url": "https://dbedt.hawaii.gov/economic/databook/2023-individual/_01/", "viewCount": 140, "topic": "Demographics" },
    { "name": "2023 ACS Demographics and Housing Estimates", "url": "https://data.census.gov/table?g=040XX00US15&y=2023&d=ACS+1-Year+Estimates+Data+Profiles", "viewCount": 150, "topic": "Demographics" },
-   { "name": "Existing Bike Facilities for the City and County of Honolulu", "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::existing-bike-facilities/explore", "viewCount": 60, "topic":"Transportation" }
+   { "name": "Existing Bike Facilities for the City and County of Honolulu", "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::existing-bike-facilities/explore", "viewCount": 60, "topic":"Transportation" },
+   { "name": "2022 ACS Hawaii - Age and Population Estimates", "url": "", "viewCount": 500, "topic": "Demographics", "jsonString": "/mock-data/dataset-6.json" }
   ]
 }
