@@ -2,14 +2,16 @@
 
 import React from 'react';
 import { Carousel, Card, Row, Col, Container } from 'react-bootstrap';
-import Link from 'next/link';
 
 interface Dataset {
+  description: string;
+  org: any;
   id: string;
   name: string;
   url: string;
   viewCount: number;
   topic: string;
+  orgIcon: string; // Added orgIcon property
 }
 
 const TrendingDatasets: React.FC = () => {
@@ -45,15 +47,45 @@ const TrendingDatasets: React.FC = () => {
               <Row className="justify-content-center text-center">
                 {group.map((item) => (
                   <Col key={item.id} md={group.length === 2 ? 6 : 4}>
-                    <Link href={`/dataset/${item.id}`} passHref>
-                      <Card style={{ width: '18rem', margin: '0 auto', cursor: 'pointer' }}>
+                    <button
+                      type="button"
+                      key={item.id}
+                      style={{
+                        padding: 0,
+                        border: 'none',
+                        background: 'none',
+                        width: '18rem',
+                        marginLeft: '',
+                        marginBottom: '2rem',
+                      }}
+                      onClick={() => (window.location.href = `/dataset/${item.id}`)}
+                    >
+                      <Card>
+                        <Card.Header>
+                          <Container className="d-flex justify-content-center">
+                            <Card.Img
+                              variant="top"
+                              src={item.orgIcon}
+                              alt={`${item.org} logo`}
+                              style={{ maxWidth: '100px', height: 'auto' }}
+                            />
+                          </Container>
+                          <Card.Title className="pt-3">{item.name}</Card.Title>
+                        </Card.Header>
                         <Card.Body>
-                          <Card.Title>{item.name.length > 20 ? `${item.name.substring(0, 20)}...` : item.name}</Card.Title>
-                          <Card.Text>{`Topic: ${item.topic}`}</Card.Text>
-                          <Card.Text>{`Views: ${item.viewCount}`}</Card.Text>
+                          <Card.Text>{item.description}</Card.Text>
                         </Card.Body>
+                        <Card.Footer>
+                          <Card.Text>
+                            {item.topic}
+                            <br />
+                            {item.viewCount}
+                            {' '}
+                            views
+                          </Card.Text>
+                        </Card.Footer>
                       </Card>
-                    </Link>
+                    </button>
                   </Col>
                 ))}
               </Row>
