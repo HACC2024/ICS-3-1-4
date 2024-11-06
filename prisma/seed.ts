@@ -35,7 +35,7 @@ async function main() {
     }
     console.log(`  Adding stuff: ${data.name} (${data.owner})`);
     await prisma.stuff.upsert({
-      where: { id: index },
+      where: { id: index + 1 },
       update: {},
       create: {
         name: data.name,
