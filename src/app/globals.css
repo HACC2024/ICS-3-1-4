@@ -40,10 +40,6 @@ body {
   color: var(--teal) !important;
 }
 
-#search {
-  font-family: var(--hind);
-}
-
 #searchIcon {
   background-color: transparent;
   color: black;
@@ -150,12 +146,13 @@ footer a:hover {
   text-align: center;
 }
 
-a {
+.dataset-table-container a {
   color: var(--blue) !important;
   font-weight: bold;
   text-decoration: none !important;
 }
 
-a:hover {
+.dataset-table-container a:hover {
   color: var(--teal) !important;
 }
+

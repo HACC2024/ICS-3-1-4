@@ -5,10 +5,11 @@ import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 
 const SearchBar = () => {
-  const [query, setQuery] = React.useState('');
-
-  // Read the topic filter from the URL if it exists
+  // Read the search query from the URL when the component is first rendered
   const urlParams = new URLSearchParams(window.location.search);
+  const initialQuery = urlParams.get('search') || ''; // Default to empty string if no search query in URL
+
+  const [query, setQuery] = React.useState(initialQuery);
   const currentTopic = urlParams.get('topic') || ''; // Get current topic from URL
 
   const handleSearch = () => {
@@ -19,7 +20,7 @@ const SearchBar = () => {
     window.location.href = newUrl;
   };
 
-  const handleKeyPress = (event: { key: string }) => {
+  const handleEnterPress = (event: { key: string }) => {
     if (event.key === 'Enter') {
       handleSearch(); // Trigger search on Enter key press
     }
@@ -27,13 +28,13 @@ const SearchBar = () => {
 
   return (
     <Container>
-      <InputGroup id="search" className="mb-3">
+      <InputGroup className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyPress}
+          onKeyDown={handleEnterPress}
+          placeholder="Search..."
         />
         <InputGroup.Text>
           <Button id="searchIcon" onClick={handleSearch}>
