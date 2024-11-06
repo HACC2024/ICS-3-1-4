@@ -128,3 +128,35 @@ footer a:hover {
 .no-underline {
   text-decoration: none;
 }
+
+/* For Data Set Page */
+
+.dataset-table-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.org-icon {
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table {
+  width: 100%;
+}
+
+.histogram-container {
+  text-align: center;
+}
+
+a {
+  color: var(--blue) !important;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: var(--teal) !important;
+}

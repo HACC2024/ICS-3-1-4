@@ -1,44 +1,33 @@
+// This file should remain a server component (do not add 'use client')
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
+import DatasetPageWrapper from '@/components/DatasetPageWrapper';
 
 export default async function DatasetPage({ params }: { params: { id: string | string[] } }) {
   const idString = Array.isArray(params?.id) ? params.id[0] : params.id;
   const id = Number(idString.replace(/[^\d]/g, ''));
-  console.log('Parsed Numeric ID:', id); // Debugging: Log the parsed ID
+
+  console.log(`Parsed ID: ${id}`); // Log the ID being queried
 
   if (Number.isNaN(id)) {
-    console.log('ID is NaN, returning 404'); // Additional Debugging
+    console.log('ID is NaN, returning 404');
     return notFound();
   }
 
-  const dataset = await prisma.dataset.findUnique({
-    where: { id },
-  });
+  try {
+    // Fetch dataset details on the server
+    const dataset = await prisma.dataset.findUnique({ where: { id } });
+    if (!dataset) {
+      console.log('Dataset not found, returning 404');
+      return notFound();
+    }
 
-  console.log('Queried Dataset:', dataset); // Log dataset result to verify if it’s found
+    console.log('Fetched Dataset:', dataset); // Log the fetched dataset, including jsonPath if available
 
-  if (!dataset) {
+    // Pass dataset to the client component
+    return <DatasetPageWrapper dataset={dataset} />;
+  } catch (error) {
+    console.error('Error fetching dataset:', error);
     return notFound();
   }
-
-  return (
-    <main style={{ padding: '2rem', textAlign: 'center' }}>
-      <h2>{dataset.name}</h2>
-      <p>
-        Topic:
-        {' '}
-        {dataset.topic}
-      </p>
-      <p>
-        Views:
-        {' '}
-        {dataset.viewCount}
-      </p>
-      <h4>
-        <a href={dataset.url} target="_blank" rel="noopener noreferrer">
-          Link to Dataset
-        </a>
-      </h4>
-    </main>
-  );
 }
