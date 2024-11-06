@@ -89,13 +89,13 @@ const ResultsPage = () => {
                 </button>
                 {isOpen1 && (
                   <ul className="list-group mt-2">
-                    <button type="button" className={`list-group-item ${selectedTopic === 'Health' ? 'active' : ''}`} onClick={() => handleTopicFilter('Health')}>
+                    <button type="button" id="resultsFilterButton" className={`list-group-item ${selectedTopic === 'Health' ? 'active' : ''}`} onClick={() => handleTopicFilter('Health')}>
                       Health
                     </button>
-                    <button type="button" className={`list-group-item ${selectedTopic === 'Transportation' ? 'active' : ''}`} onClick={() => handleTopicFilter('Transportation')}>
+                    <button type="button" id="resultsFilterButton" className={`list-group-item ${selectedTopic === 'Transportation' ? 'active' : ''}`} onClick={() => handleTopicFilter('Transportation')}>
                       Transportation
                     </button>
-                    <button type="button" className={`list-group-item ${selectedTopic === 'Demographics' ? 'active' : ''}`} onClick={() => handleTopicFilter('Demographics')}>
+                    <button type="button" id="resultsFilterButton" className={`list-group-item ${selectedTopic === 'Demographics' ? 'active' : ''}`} onClick={() => handleTopicFilter('Demographics')}>
                       Demographics
                     </button>
                   </ul>
