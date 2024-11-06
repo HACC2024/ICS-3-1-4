@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { BoxArrowRight, Lock, PersonCircle, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -57,6 +57,16 @@ const NavBar: React.FC = () => {
 ) : (
   ''
 )}
+          </Nav>
+          {/* Right-aligned links */}
+          <Nav className="ms-auto">
+            {currentUser && (
+              <Nav.Link id="profile-nav" href="/profile" active={pathName === '/profile'} className="d-flex align-items-center">
+                My Profile
+                {' '}
+                <PersonCircle size={20} className="ms-2" />
+              </Nav.Link>
+            )}
           </Nav>
           <Nav>
             {session ? (
