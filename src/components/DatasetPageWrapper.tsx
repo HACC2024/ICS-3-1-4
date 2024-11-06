@@ -55,7 +55,7 @@ export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps)
   return (
     <main className="container dataset-table-container">
       <h2 className="text-center">{dataset.name}</h2>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center mb-3">
         <Image src={dataset.orgIcon} alt={`${dataset.org} logo`} className="org-icon" width={150} height={150} />
       </div>
       <table className="table table-bordered table-striped">
