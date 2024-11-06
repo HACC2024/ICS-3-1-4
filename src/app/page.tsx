@@ -1,10 +1,10 @@
-import Explore from '@/components/Explore';
-import TrendingDatasets from '@/components/TrendingDatasets';
+import dynamic from 'next/dynamic';
 import './globals.css';
 import { Container } from 'react-bootstrap';
-// import NavBar from '@/components/Navbar';
 
-/** The Home page. */
+const Explore = dynamic(() => import('@/components/Explore'), { ssr: false });
+const TrendingDatasets = dynamic(() => import('@/components/TrendingDatasets'), { ssr: false });
+
 const Home = () => (
   <main>
     <Container id="landing-page" fluid className="py-3">
