@@ -1,6 +1,8 @@
+import { Container } from 'react-bootstrap';
+
 export default function AboutUs() {
   return (
-    <div>
+    <Container className="p-3">
       <h1>About Us</h1>
       <p>
         We are a team of students in the Computer Science department at the University of Hawaii.
@@ -10,6 +12,6 @@ export default function AboutUs() {
         head banging one the table) did we finally arrive at (the much catchier) Aloha Archives,
         thanks to a moment of inspiration by Shaelyn. We have carried the name with us ever since.
       </p>
-    </div>
+    </Container>
   );
 }
