@@ -159,3 +159,7 @@ a {
 a:hover {
   color: var(--teal) !important;
 }
+
+.text-white {
+  color: white !important;
+}
