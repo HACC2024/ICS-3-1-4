@@ -24,6 +24,7 @@ const TrendingDatasets: React.FC = () => {
           cache: 'no-store',
         });
         const data = await response.json();
+        console.log('Fetched datasets:', data);
         setDatasets(data);
       } catch (error) {
         console.error('Error fetching datasets:', error);
