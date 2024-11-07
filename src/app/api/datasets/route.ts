@@ -5,11 +5,11 @@ import { prisma } from '@/lib/prisma'; // adjust the path if necessary
 export const GET = async () => {
   try {
     const datasets = await prisma.dataset.findMany({
-      orderBy: {
-        viewCount: 'desc',
-      },
+      orderBy: { viewCount: 'desc' },
     });
-    return NextResponse.json(datasets);
+    const response = NextResponse.json(datasets);
+    response.headers.set('Cache-Control', 'no-store'); // Ensure no caching
+    return response;
   } catch (error) {
     console.error('Error fetching datasets:', error);
     return NextResponse.json({ error: 'Unable to fetch datasets' }, { status: 500 });
