@@ -1,14 +1,7 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN" },
-    { "email": "john@foo.com", "password": "changeme" }
-  ],
-
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"]},
+    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"]}
   ],
 
   "defaultDataMetadata": [

@@ -28,16 +28,15 @@ const NavBar: React.FC = () => {
       </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto justify-content-start">
-          {/* {currentUser && role !== 'ADMIN' && (
-              <Nav.Link id="data-list" href="/list/data-list" key="list/data-list" active={pathName === '/list/data-list'}>
-                Data List
-              </Nav.Link>
-          )} */}
+          <Nav className="me-auto justify-content-start p-3">
+
             {currentUser
               ? [
                   <Nav.Link id="persona-stuff-nav" href="/persona" key="persona" active={pathName === '/persona'}>
-                  Take a Persona Quiz!
+                  Persona Quiz
+                  </Nav.Link>,
+                  <Nav.Link id="list-datasets" href="/list" key="list" active={pathName === '/list'}>
+                  Favorite Datasets
                   </Nav.Link>,
                 ]
               : ''}
@@ -46,8 +45,8 @@ const NavBar: React.FC = () => {
   {/* <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
                 Admin
   </Nav.Link> */}
-    <Nav.Link id="list-datasets-nav" href="/list/manage-data" key="list/manage-data" active={pathName === 'list/manage-data'}>
-      Manage Data
+    <Nav.Link id="list-datasets-nav" href="/manage-data" key="/manage-data" active={pathName === '/manage-data'}>
+      Manage Datasets
     </Nav.Link>
   </>
 ) : (

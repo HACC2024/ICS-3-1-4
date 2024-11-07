@@ -35,7 +35,7 @@ export default function ManageDataPage() {
 
   return (
     <main>
-      <Container id="list" fluid className="py-3">
+      <Container id="dataset manager" fluid className="py-3">
         <Row className="mb-3">
           <Col>
             <FileUpload onUploadSuccess={fetchDatasets} />
@@ -59,7 +59,11 @@ export default function ManageDataPage() {
                 {datasets.map((item) => (
                   <tr key={item.id}>
                     <td>{item.name}</td>
-                    <td>{item.url}</td>
+                    <td>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        Link
+                      </a>
+                    </td>
                     <td>{item.topic}</td>
                     <td>{item.description}</td>
                     <td>{item.org}</td>
