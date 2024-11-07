@@ -37,9 +37,6 @@ const NavBar: React.FC = () => {
                   <Nav.Link id="persona-stuff-nav" href="/persona" key="persona" active={pathName === '/persona'}>
                   Take a Persona Quiz!
                   </Nav.Link>,
-                  <Nav.Link id="list-datasets-nav" href="/list" key="list" active={pathName === '/list'}>
-                    List Datasets
-                  </Nav.Link>,
                 ]
               : ''}
             {currentUser && role === 'ADMIN' ? (
@@ -47,11 +44,8 @@ const NavBar: React.FC = () => {
   {/* <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
                 Admin
   </Nav.Link> */}
-    <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
-      Upload
-    </Nav.Link>
-    <Nav.Link id="settings-nav" href="/settings" key="settings" active={pathName === '/settings'}>
-      Edit Dataset
+    <Nav.Link id="list-datasets-nav" href="/list" key="list" active={pathName === '/list'}>
+      Manage Data
     </Nav.Link>
   </>
 ) : (
