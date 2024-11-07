@@ -15,7 +15,7 @@ const SignOut = () => (
         </Button>
       </Col>
       <Col>
-        <Button variant="secondary" href="/">
+        <Button variant="secondary" href="/" style={{ color: 'white !important' }}>
           Cancel
         </Button>
       </Col>
