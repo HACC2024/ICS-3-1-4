@@ -4,6 +4,7 @@ import StuffItemAdmin from '@/components/StuffItemAdmin';
 import { prisma } from '@/lib/prisma';
 import { adminProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
+import UploadDatasetForm from '@/components/UploadDatasetForm';
 
 const AdminPage = async () => {
   const session = await getServerSession(authOptions);
@@ -18,6 +19,7 @@ const AdminPage = async () => {
   return (
     <main>
       <Container id="list" fluid className="py-3">
+        {/* Section for listing Stuff items */}
         <Row>
           <Col>
             <h1>List Stuff Admin</h1>
@@ -39,6 +41,8 @@ const AdminPage = async () => {
             </Table>
           </Col>
         </Row>
+
+        {/* Section for listing Users */}
         <Row>
           <Col>
             <h1>List Users Admin</h1>
@@ -58,6 +62,14 @@ const AdminPage = async () => {
                 ))}
               </tbody>
             </Table>
+          </Col>
+        </Row>
+
+        {/* Section for uploading dataset */}
+        <Row className="mt-5">
+          <Col>
+            <h1>Upload Dataset</h1>
+            <UploadDatasetForm />
           </Col>
         </Row>
       </Container>

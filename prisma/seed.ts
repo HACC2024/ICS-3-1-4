@@ -64,10 +64,10 @@ async function main() {
         url: data.url,
         viewCount: data.viewCount,
         topic: data.topic,
-        jsonPath: data.jsonPath,
         description: data.description,
         org: data.org,
         orgIcon: data.orgIcon,
+        csvData: data.csvData,
       },
     });
   });
