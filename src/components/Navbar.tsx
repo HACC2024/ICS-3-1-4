@@ -80,11 +80,11 @@ const NavBar: React.FC = () => {
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" href="/auth/signin">
                   <PersonFill />
-                  Sign in
+                  Sign In
                 </NavDropdown.Item>
                 <NavDropdown.Item id="login-dropdown-sign-up" href="/auth/signup">
                   <PersonPlusFill />
-                  Sign up
+                  Sign Up
                 </NavDropdown.Item>
               </NavDropdown>
             )}
