@@ -35,7 +35,7 @@ const ListPage = async () => {
                   <th>URL</th>
                   <th>Topic</th>
                   <th>Description</th>
-                  <th>Orginization</th>
+                  <th>Organization</th>
                   <th>Icon</th>
                 </tr>
               </thead>
