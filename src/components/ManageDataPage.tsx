@@ -12,7 +12,6 @@ interface Dataset {
   description: string;
   org: string;
   orgIcon: string;
-  fileName: string
 }
 
 export default function ManageDataPage() {
@@ -52,7 +51,6 @@ export default function ManageDataPage() {
                   <th>Description</th>
                   <th>Organization</th>
                   <th>Icon</th>
-                  <th>File Name</th>
                 </tr>
               </thead>
               <tbody>
@@ -66,7 +64,6 @@ export default function ManageDataPage() {
                     <td>
                       <Image src={item.orgIcon} alt={`${item.org} logo`} width={50} height={50} />
                     </td>
-                    <td>{item.fileName}</td>
                   </tr>
                 ))}
               </tbody>

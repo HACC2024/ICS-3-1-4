@@ -65,4 +65,5 @@ model Dataset {
   org         String
   orgIcon     String
   csvData     Json?
+  fileName    String  @default("")
 }
