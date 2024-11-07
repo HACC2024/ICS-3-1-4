@@ -20,8 +20,11 @@ const TrendingDatasets: React.FC = () => {
   React.useEffect(() => {
     const fetchDatasets = async () => {
       try {
-        const response = await fetch('/api/datasets');
+        const response = await fetch(`/api/datasets?timestamp=${Date.now()}`, {
+          cache: 'no-store',
+        });
         const data = await response.json();
+        console.log('Fetched datasets:', data);
         setDatasets(data);
       } catch (error) {
         console.error('Error fetching datasets:', error);

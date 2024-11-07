@@ -61,8 +61,8 @@ model Dataset {
   url         String
   viewCount   Int    @default(0)
   topic       String
-  jsonPath    String @default("")
   description String
   org         String
   orgIcon     String
+  csvData     Json?
 }
