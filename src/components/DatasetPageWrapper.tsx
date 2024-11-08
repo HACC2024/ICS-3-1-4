@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -29,51 +31,56 @@ export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps)
   const [chartData, setChartData] = useState<number[]>([]);
   const [scatterData, setScatterData] = useState<Array<[number, number]>>([]);
 
-  const variables = dataset.csvData.length > 0 ? Object.keys(dataset.csvData[0]) : [];
+  const variables = Array.isArray(dataset.csvData) && dataset.csvData.length > 0
+    ? Object.keys(dataset.csvData[0])
+    : [];
 
   // Update data based on chart type and selected variables
   useEffect(() => {
     if (chartType === 'histogram') {
       const variableData = dataset.csvData
-        .map((item) => parseInt(item[selectedVariable] as string, 10))
+        .map((item) => parseInt((item[selectedVariable] ?? '') as string, 10))
         .filter((value) => !Number.isNaN(value));
       setChartData(variableData);
     } else if (chartType === 'scatterplot') {
       const scatterPoints: [number, number][] = dataset.csvData
-        .map<[number, number]>((item) => [parseFloat(item[xVariable] as string), parseFloat(item[yVariable] as string)]);
-
+        .map<[number, number]>((item) => [
+        parseFloat((item[xVariable] ?? '') as string),
+        parseFloat((item[yVariable] ?? '') as string),
+      ])
+        .filter(([x, y]) => !Number.isNaN(x) && !Number.isNaN(y));
       setScatterData(scatterPoints);
     }
   }, [dataset.csvData, chartType, selectedVariable, xVariable, yVariable]);
 
   return (
     <main className="container dataset-table-container">
-      <h2 className="text-center">{dataset.name}</h2>
+      <h2 className="text-center">{dataset.name || 'Untitled Dataset'}</h2>
       <div className="d-flex justify-content-center mb-3">
-        <Image src={dataset.orgIcon} alt={`${dataset.org} logo`} className="org-icon" width={150} height={150} />
+        <Image src={dataset.orgIcon || '/placeholder.png'} alt={`${dataset.org || 'Organization'} logo`} className="org-icon" width={150} height={150} />
       </div>
       <table className="table table-bordered table-striped">
         <tbody>
           <tr>
             <th scope="row">Organization</th>
-            <td>{dataset.org}</td>
+            <td>{dataset.org || 'Unknown Organization'}</td>
           </tr>
           <tr>
             <th scope="row">Topic</th>
-            <td>{dataset.topic}</td>
+            <td>{dataset.topic || 'Unknown Topic'}</td>
           </tr>
           <tr>
             <th scope="row">Description</th>
-            <td>{dataset.description}</td>
+            <td>{dataset.description || 'No description available.'}</td>
           </tr>
           <tr>
             <th scope="row">Views</th>
-            <td>{dataset.viewCount}</td>
+            <td>{dataset.viewCount || 0}</td>
           </tr>
           <tr>
             <th scope="row">Link</th>
             <td>
-              <a href={dataset.url} target="_blank" rel="noopener noreferrer">
+              <a href={dataset.url || '#'} target="_blank" rel="noopener noreferrer">
                 View External Dataset
               </a>
             </td>
@@ -86,7 +93,7 @@ export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps)
         <label htmlFor="histogram-radio">
           <input
             type="radio"
-            id="histogram-radio" // Unique ID for histogram radio button
+            id="histogram-radio"
             value="histogram"
             checked={chartType === 'histogram'}
             onChange={() => setChartType('histogram')}
@@ -96,7 +103,7 @@ export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps)
         <label htmlFor="scatterplot-radio">
           <input
             type="radio"
-            id="scatterplot-radio" // Unique ID for scatterplot radio button
+            id="scatterplot-radio"
             value="scatterplot"
             checked={chartType === 'scatterplot'}
             onChange={() => setChartType('scatterplot')}

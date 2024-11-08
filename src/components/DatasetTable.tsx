@@ -1,20 +1,25 @@
+// src/components/DatasetTable.tsx (Server Component)
+
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import DatasetRow from './DatasetRow';
 
-interface DatasetTableProps {
-  datasets: {
-    id: string;
-    name: string;
-    url: string;
-    topic: string;
-    description: string;
-    org: string;
-  }[];
-  onDelete: (id: string) => void;
+interface Dataset {
+  id: string;
+  name: string;
+  url: string;
+  topic: string;
+  description: string;
+  org: string;
 }
 
-const DatasetTable: React.FC<DatasetTableProps> = ({ datasets, onDelete }) => (
+interface DatasetTableProps {
+  userId: string;
+  datasets: Dataset[];
+  isFavoritesContext: boolean;
+}
+
+const DatasetTable: React.FC<DatasetTableProps> = ({ userId, datasets = [], isFavoritesContext }) => (
   <Table striped bordered hover>
     <thead>
       <tr>
@@ -28,7 +33,7 @@ const DatasetTable: React.FC<DatasetTableProps> = ({ datasets, onDelete }) => (
     </thead>
     <tbody>
       {datasets.map((dataset) => (
-        <DatasetRow key={dataset.id} dataset={dataset} onDelete={onDelete} />
+        <DatasetRow isFavoritesContext={isFavoritesContext} key={dataset.id} userId={userId} dataset={dataset} />
       ))}
     </tbody>
   </Table>
