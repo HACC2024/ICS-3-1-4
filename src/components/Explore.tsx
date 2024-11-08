@@ -22,8 +22,8 @@ const Explore = () => {
           <Image
             src="/Logo.png"
             alt="Aloha Archives Logo"
-            width={400}
-            height={400}
+            width={500}
+            height={450}
             layout="fixed" // or "intrinsic" or "responsive"
           />
         </Col>

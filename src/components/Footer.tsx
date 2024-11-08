@@ -1,9 +1,8 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import Link from 'next/link';
 
-/** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
-  <footer className="mt-auto py-3">
+  <footer className="mt-auto py-3 text-white">
     <Container>
       <Row>
         <Col lg={6} md={12} className="text-center p-3">

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 html,
 body {
@@ -8,7 +10,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--hind);
-  background-image: url('/Logo.jpg');
+  background-image: url('/Background.jpg'); /* Replace with the correct file name */
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -22,6 +24,10 @@ body {
 }
 
 :root {
+  --red: #d32f2f; /* Bright red */
+  --black: #212121; /* Deep black */
+  --white: #ffffff; /* Pure white for contrast */
+  --hind: 'Hind', sans-serif;
   --teal: #50d8d7;
   --blue: #547aa5;
   --dark-gray: #4f5165;
@@ -31,18 +37,20 @@ body {
 }
 
 .custom-navbar {
-  background-color: var(--blue);
+  font-family: 'Crimson Text', serif;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .custom-navbar .nav-link,
 .custom-navbar .nav-dropdown-item {
-  color: seashell !important;
+  color: var(--white) !important;
   font-size: 20px;
 }
 
 .custom-navbar .nav-link:hover,
 .custom-navbar .nav-dropdown-item:hover {
-  color: var(--teal) !important;
+  color: var(--red) !important;
 }
 
 #searchIcon {
@@ -97,19 +105,24 @@ body {
 }
 
 footer {
-  background-color: var(--blue);
+  font-family: 'Playfair Display', serif;
+  background-color: var(--black);
+  color: var(--white);
   height: 100px;
 }
 
 footer a {
-  color: seashell;
+  color: var(--white);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: var(--teal);
+  color: var(--red);
 }
-
+.custom-navbar,
+footer {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Adds depth to text */
+}
 #filterMenu {
   background-color: var(--blue);
   color: white;
@@ -163,4 +176,9 @@ footer a:hover {
 
 .text-white {
   color: white !important;
+}
+/* globals.css */
+.text-contrast {
+  color: grey; /* Or any contrasting color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Optional: adds subtle shadow for better readability */
 }
