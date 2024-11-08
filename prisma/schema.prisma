@@ -13,8 +13,8 @@ datasource db {
   // for local development
   // url      = env("DATABASE_URL")
   // // for Vercel
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+   url       = env("POSTGRES_PRISMA_URL")
+   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 enum Role {
@@ -61,8 +61,9 @@ model Dataset {
   url         String
   viewCount   Int    @default(0)
   topic       String
-  jsonPath    String @default("")
   description String
   org         String
   orgIcon     String
+  csvData     Json?
+  fileName    String  @default("")
 }

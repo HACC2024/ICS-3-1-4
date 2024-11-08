@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma'; // adjust the path if necessary
 
+export const dynamic = 'force-dynamic'; // Ensures dynamic rendering for each request
+
 /* eslint-disable import/prefer-default-export */
 export const GET = async () => {
   try {
