@@ -1,8 +1,8 @@
-import TermsOfUseText from '@/components/TermsOfUseText';
+import TermsOfUseText from '@/components/text/TermsOfUseText';
 import { Container } from 'react-bootstrap';
 
 const TermsOfUse = () => (
-  <Container>
+  <Container className="p-5">
     <TermsOfUseText />
   </Container>
 );

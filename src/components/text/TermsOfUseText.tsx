@@ -4,7 +4,7 @@ import React from 'react';
 function TermsOfUse() {
   return (
     <div>
-      <h1 style={{ paddingTop: '10px' }}>Terms of Use Policy for Aloha Archives</h1>
+      <h1>Terms of Use Policy for Aloha Archives</h1>
 
       {/* Definitions Section */}
       <section>
