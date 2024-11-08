@@ -1,3 +1,5 @@
+// src/app/api/user/[id]/favorites/[datasetId]/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
@@ -7,6 +9,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { userId: s
   const datasetId = parseInt(params.datasetId, 10);
 
   if (Number.isNaN(userId) || Number.isNaN(datasetId)) {
+    console.error(`Invalid IDs provided: userId=${userId}, datasetId=${datasetId}`);
     return NextResponse.json({ error: 'User ID and Dataset ID must be valid integers' }, { status: 400 });
   }
 
@@ -19,9 +22,9 @@ export async function DELETE(req: NextRequest, { params }: { params: { userId: s
         },
       },
     });
-    return NextResponse.json({ message: 'Removed from favorites successfully' }, { status: 200 });
+    return NextResponse.json({ message: 'Dataset removed from favorites successfully' }, { status: 200 });
   } catch (error) {
     console.error('Error removing dataset from favorites:', error);
-    return NextResponse.json({ error: 'Error removing dataset from favorites' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to remove dataset from favorites' }, { status: 500 });
   }
 }

@@ -1,20 +1,32 @@
+'use client';
+
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import DatasetRow from './DatasetRow';
 
-interface DatasetTableProps {
-  datasets: {
-    id: string;
-    name: string;
-    url: string;
-    topic: string;
-    description: string;
-    org: string;
-  }[];
-  onDelete: (id: string) => void;
+interface Dataset {
+  id: string;
+  name: string;
+  url: string;
+  topic: string;
+  description: string;
+  org: string;
 }
 
-const DatasetTable: React.FC<DatasetTableProps> = ({ datasets, onDelete }) => (
+interface DatasetTableProps {
+  userId: string;
+  datasets: Dataset[];
+  isFavoritesContext: boolean;
+  // eslint-disable-next-line react/require-default-props
+  onDatasetDeleted?: (datasetId: string) => void; // Add this line
+}
+
+const DatasetTable: React.FC<DatasetTableProps> = ({
+  userId,
+  datasets = [],
+  isFavoritesContext,
+  onDatasetDeleted = () => {},
+}) => (
   <Table striped bordered hover>
     <thead>
       <tr>
@@ -28,7 +40,13 @@ const DatasetTable: React.FC<DatasetTableProps> = ({ datasets, onDelete }) => (
     </thead>
     <tbody>
       {datasets.map((dataset) => (
-        <DatasetRow key={dataset.id} dataset={dataset} onDelete={onDelete} />
+        <DatasetRow
+          key={dataset.id}
+          userId={userId}
+          dataset={dataset}
+          isFavoritesContext={isFavoritesContext}
+          onDatasetDeleted={onDatasetDeleted} // Pass the onDatasetDeleted function
+        />
       ))}
     </tbody>
   </Table>

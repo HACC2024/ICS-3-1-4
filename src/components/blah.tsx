@@ -17,7 +17,7 @@ interface Dataset {
 export default function ManageDataPage() {
   const [datasets, setDatasets] = useState<Dataset[]>([]);
 
-  // Fetch datasets from the server
+  // Fetch datasets from the API route
   const fetchDatasets = async () => {
     try {
       const response = await fetch('/api/datasets');

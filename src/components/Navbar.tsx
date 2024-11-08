@@ -36,7 +36,7 @@ const NavBar: React.FC = () => {
                   <Nav.Link id="persona-stuff-nav" href="/persona" key="persona" active={pathName === '/persona'}>
                   Persona Quiz
                   </Nav.Link>,
-                  <Nav.Link id="list-datasets" href="/list" key="list" active={pathName === '/list'}>
+                  <Nav.Link id="favorites" href="/favorites" key="favorites" active={pathName === '/favorites'}>
                   Favorite Datasets
                   </Nav.Link>,
                 ]
@@ -46,7 +46,7 @@ const NavBar: React.FC = () => {
                 {/* <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
                 Admin
   </Nav.Link> */}
-    <Nav.Link id="list-datasets-nav" href="/manage-data" key="/manage-data" active={pathName === '/manage-data'}>
+    <Nav.Link id="manage-datasets-nav" href="/manage-datasets" key="/manage-datasets" active={pathName === '/manage-datasets'}>
       Manage Datasets
     </Nav.Link>
               </>

@@ -1,69 +1,42 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import { FaTrash } from 'react-icons/fa';
+// src/components/DatasetRow.tsx
 
-interface DatasetRowProps {
-  dataset: {
-    id: string;
-    name: string;
-    url: string;
-    topic: string;
-    description: string;
-    org: string;
-  };
-  onDelete: (id: string) => void;
+import React from 'react';
+import DeleteButton from '@/components/DeleteButton';
+
+interface Dataset {
+  id: string;
+  name: string;
+  url: string;
+  topic: string;
+  description: string;
+  org: string;
 }
 
-const DatasetRow: React.FC<DatasetRowProps> = ({ dataset, onDelete }) => {
-  const [showModal, setShowModal] = useState(false);
+interface DatasetRowProps {
+  userId: string;
+  dataset: Dataset;
+  isFavoritesContext: boolean;
+  onDatasetDeleted: (datasetId: string) => void;
+}
 
-  const handleDelete = () => {
-    onDelete(dataset.id);
-    setShowModal(false);
-  };
-
-  return (
-    <>
-      <tr>
-        <td>{dataset.name}</td>
-        <td>
-          <a href={dataset.url} target="_blank" rel="noopener noreferrer">
-            Link
-          </a>
-        </td>
-        <td>{dataset.topic}</td>
-        <td>{dataset.description}</td>
-        <td>{dataset.org}</td>
-        <td>
-          <Button variant="danger" onClick={() => setShowModal(true)}>
-            <FaTrash />
-          </Button>
-        </td>
-      </tr>
-
-      {/* Modal for confirming delete action */}
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Confirm Delete</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to delete the dataset
-          {' '}
-          <strong>{dataset.name}</strong>
-          {' '}
-          from your favorites?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-};
+const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesContext, onDatasetDeleted }) => (
+  <tr>
+    <td>{dataset.name}</td>
+    <td>
+      <a href={dataset.url} target="_blank" rel="noopener noreferrer">Link</a>
+    </td>
+    <td>{dataset.topic}</td>
+    <td>{dataset.description}</td>
+    <td>{dataset.org}</td>
+    <td>
+      <DeleteButton
+        userId={userId}
+        isFavoritesContext={isFavoritesContext}
+        datasetId={dataset.id}
+        onDeleteSuccess={() => onDatasetDeleted(dataset.id)}
+      />
+    </td>
+  </tr>
+);
 
 export default DatasetRow;

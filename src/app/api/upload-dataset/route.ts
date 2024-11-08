@@ -12,15 +12,16 @@ export async function POST(req: NextRequest) {
   const topic = formData.get('topic') as string;
   const description = formData.get('description') as string;
   const organization = formData.get('organization') as string;
+  const userId = formData.get('userId') as string;
 
-  if (!file || !name || !url || !topic || !description || !organization) {
+  if (!file || !name || !url || !topic || !description || !organization || !userId) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
   }
 
   const fileName = file.name;
 
   try {
-    await uploadDataset({ file, name, url, fileName, topic, description, organization });
+    await uploadDataset({ file, name, url, fileName, topic, description, organization, userId });
     return NextResponse.json({ message: 'Dataset uploaded successfully' });
   } catch (error) {
     console.error('Error uploading dataset:', error);

@@ -1,9 +1,11 @@
+// src/app/api/user/[id]/favorites/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 // eslint-disable-next-line import/prefer-default-export
-export async function GET(req: NextRequest, { params }: { params: { userId: string } }) {
-  const userId = parseInt(params.userId, 10);
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+  const userId = parseInt(params.id, 10);
 
   if (Number.isNaN(userId)) {
     return NextResponse.json({ error: 'User ID must be a valid integer' }, { status: 400 });

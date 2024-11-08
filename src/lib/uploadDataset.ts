@@ -12,6 +12,7 @@ import { prisma } from './prisma';
  * @param topic - The topic associated with the dataset.
  * @param description - The description of the dataset.
  * @param organization - The name of the organization providing the dataset.
+ * @param userId - The ID of the user uploading the dataset.
  */
 export default async function uploadDataset({
   file,
@@ -21,6 +22,7 @@ export default async function uploadDataset({
   topic,
   description,
   organization,
+  userId,
 }: {
   file: File;
   name: string;
@@ -29,6 +31,7 @@ export default async function uploadDataset({
   topic: string;
   description: string;
   organization: string;
+  userId: string;
 }) {
   try {
     // Read and parse CSV file
@@ -47,8 +50,9 @@ export default async function uploadDataset({
         org: organization,
         orgIcon: '',
         url,
-        csvData: parsedDataArray, // Save as JSON object
-        fileName, // Save the filename here
+        csvData: parsedDataArray,
+        fileName,
+        ownerId: parseInt(userId, 10),
       },
     });
     console.log('Dataset successfully uploaded and saved to the database.');
