@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 
-export default function UploadDatasetForm() {
+interface UploadDatasetFormProps {
+  userId: string; // Add this prop to receive the userId of the owner
+}
+
+export default function UploadDatasetForm({ userId }: UploadDatasetFormProps) {
   const [file, setFile] = useState<File | null>(null);
   const [name, setName] = useState('');
   const [url, setUrl] = useState('');
@@ -31,6 +35,7 @@ export default function UploadDatasetForm() {
     formData.append('topic', topic);
     formData.append('description', description);
     formData.append('organization', organization);
+    formData.append('userId', userId);
 
     try {
       const response = await fetch('/api/upload-dataset', {

@@ -23,11 +23,12 @@ enum Role {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  password  String
-  role      Role      @default(USER)
-  favorites Dataset[]
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  password      String
+  role          Role      @default(USER)
+  favorites     Dataset[]
+  ownedDatasets Dataset[] @relation("UserOwnedDatasets")
 }
 
 model PersonaQuiz {
@@ -52,5 +53,11 @@ model Dataset {
   orgIcon     String
   csvData     Json?
   fileName    String @default("")
-  users       User[]
+
+  // For users who favorited the dataset
+  users User[]
+
+  // For admin who manage the dataset
+  ownerId Int?  @default(1)
+  owner   User? @relation("UserOwnedDatasets", fields: [ownerId], references: [id])
 }

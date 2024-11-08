@@ -1,8 +1,7 @@
 // src/components/DatasetRow.tsx
 
 import React from 'react';
-import DeleteFavoriteButton from '@/components/DeleteFavoriteButton';
-import DeleteDatasetButton from '@/components/DeleteDatasetButton';
+import DeleteButton from '@/components/DeleteButton';
 
 interface Dataset {
   id: string;
@@ -17,9 +16,10 @@ interface DatasetRowProps {
   userId: string;
   dataset: Dataset;
   isFavoritesContext: boolean;
+  onDatasetDeleted: (datasetId: string) => void;
 }
 
-const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesContext = false }) => (
+const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesContext, onDatasetDeleted }) => (
   <tr>
     <td>{dataset.name}</td>
     <td>
@@ -29,11 +29,12 @@ const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesCon
     <td>{dataset.description}</td>
     <td>{dataset.org}</td>
     <td>
-      {isFavoritesContext ? (
-        <DeleteFavoriteButton userId={userId} datasetId={dataset.id} />
-      ) : (
-        <DeleteDatasetButton datasetId={dataset.id} />
-      )}
+      <DeleteButton
+        userId={userId}
+        isFavoritesContext={isFavoritesContext}
+        datasetId={dataset.id}
+        onDeleteSuccess={() => onDatasetDeleted(dataset.id)}
+      />
     </td>
   </tr>
 );

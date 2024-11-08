@@ -1,7 +1,7 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"]},
-    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"]}
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"] },
+    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[]}
   ],
 
   "defaultDataMetadata": [
@@ -23,7 +23,9 @@
         { "Indicator": 3, "Year": 2020, "Value": 14.8 },
         { "Indicator": 3, "Year": 2021, "Value": 14.5 },
         { "Indicator": 3, "Year": 2022, "Value": 14.3 }
-      ]
+      ],
+      "fileName": "",
+      "owner": "admin@foo.com"
     },
     {
       "name": "Bus Routes for the City and County of Honolulu",
@@ -39,7 +41,9 @@
         { "RouteID": 3, "RouteName": 3, "Borough": 2, "Distance": 20.3 },
         { "RouteID": 4, "RouteName": 4, "Borough": 2, "Distance": 22.1 },
         { "RouteID": 5, "RouteName": 5, "Borough": 1, "Distance": 15.6 }
-      ]
+      ],
+      "fileName": "",
+      "owner": "admin@foo.com"
     },
     {
       "name": "DBEDT Section 1: Population Data in Hawaii",
@@ -54,7 +58,9 @@
         { "Year": 2021, "Population": 1420000, "GrowthRate": 0.3 },
         { "Year": 2022, "Population": 1432500, "GrowthRate": 0.4 },
         { "Year": 2023, "Population": 1445000, "GrowthRate": 0.5 }
-      ]
+      ],
+      "fileName": "",
+      "owner": "admin@foo.com"
     },
     {
       "name": "2023 ACS Demographics and Housing Estimates",
@@ -73,7 +79,9 @@
         { "AGEP": 28, "SEX": 0, "RACE": 2, "PUMA": 6, "HINCP": 53000 },
         { "AGEP": 51, "SEX": 1, "RACE": 6, "PUMA": 7, "HINCP": 72000 },
         { "AGEP": 65, "SEX": 0, "RACE": 1, "PUMA": 8, "HINCP": 91000 }
-      ]
+      ],
+      "fileName": "",
+      "owner": "admin@foo.com"
     },
     {
       "name": "Existing Bike Facilities for the City and County of Honolulu",
@@ -89,7 +97,9 @@
         { "FacilityID": 3, "Type": 3, "Length": 1.8, "Location": 3 },
         { "FacilityID": 4, "Type": 4, "Length": 4.5, "Location": 4 },
         { "FacilityID": 5, "Type": 1, "Length": 2.2, "Location": 5 }
-      ]
+      ],
+      "fileName": "",
+      "owner": "admin@foo.com"
     },
     {
       "name": "2022 ACS Hawaii - Age and Population Estimates",
@@ -110,7 +120,9 @@
         { "AGEP": 73, "SEX": 1, "RACE": 6, "PUMA": 8, "PWGTP": 65 },
         { "AGEP": 28, "SEX": 0, "RACE": 2, "PUMA": 9, "PWGTP": 58 },
         { "AGEP": 31, "SEX": 1, "RACE": 1, "PUMA": 10, "PWGTP": 80 }
-      ]
+      ],
+      "fileName": "",
+      "owner": "admin@foo.com"
     }
   ]
 }

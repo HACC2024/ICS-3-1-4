@@ -1,23 +1,38 @@
+// src/components/DeleteDatasetButton.tsx (Client Component)
+
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { FaTrash } from 'react-icons/fa';
 
-interface DeleteButtonProps {
+interface DeleteDatasetButtonProps {
   datasetId: string;
+  userId: string;
+  onDeleteSuccess: () => void;
+  isFavoritesContext: boolean; // Determines which delete action to perform
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({ datasetId }) => {
+const DeleteDatasetButton: React.FC<DeleteDatasetButtonProps> = ({ userId, datasetId, onDeleteSuccess, isFavoritesContext = false }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleDelete = async () => {
     try {
-      await fetch(`/api/datasets/${datasetId}`, { method: 'DELETE' });
-      setShowModal(false);
-      // Optionally add a callback or state to refresh the list on deletion
+      const endpoint = isFavoritesContext
+        ? `/api/user/${userId}/favorites/${datasetId}`
+        : `/api/datasets/${datasetId}`;
+
+      const response = await fetch(endpoint, { method: 'DELETE' });
+
+      if (response.ok) {
+        setShowModal(false);
+        onDeleteSuccess();
+      } else {
+        console.error('Failed to delete dataset');
+      }
     } catch (error) {
-      console.error('Failed to delete dataset:', error);
+      console.error('Error deleting dataset:', error);
     }
   };
 
@@ -32,7 +47,9 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ datasetId }) => {
           <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to delete this dataset?
+          {isFavoritesContext
+            ? 'Are you sure you want to delete this dataset from your favorites?'
+            : 'Are you sure you want to delete this dataset?'}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
@@ -47,4 +64,4 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ datasetId }) => {
   );
 };
 
-export default DeleteButton;
+export default DeleteDatasetButton;
