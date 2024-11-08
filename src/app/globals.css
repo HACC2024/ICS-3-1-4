@@ -73,9 +73,10 @@ body::before {
   border-radius: 50px;
   padding: 10px 20px;
   width: 100%;
-  background-color: transparent;
-  color: var(--blue);
-  border-color: var(--blue);
+  background-color: var(--teal);
+  color: var(--black);
+  border-color: var(seashell);
+  border: none;
 }
 
 .btn.filter-button:hover {
@@ -193,6 +194,11 @@ footer {
   color: var(--teal) !important;
 }
 
+.dataset-table-container {
+  background-color: white;
+  margin: 20px;
+}
+
 .text-white {
   color: white !important;
 }
@@ -200,4 +206,16 @@ footer {
 .text-contrast {
   color: grey; /* Or any contrasting color */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Optional: adds subtle shadow for better readability */
+}
+
+.layout-container {
+  background-color: white;
+  padding-block: 40px !important;
+  padding-inline: 40px !important;
+  margin: 10px;
+}
+
+.home-page-container {
+  background-color: transparent !important;
+  background-image: none !important;
 }

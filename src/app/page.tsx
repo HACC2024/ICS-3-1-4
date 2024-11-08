@@ -1,3 +1,5 @@
+// src/app/page.tsx
+
 import dynamic from 'next/dynamic';
 import './globals.css';
 import { Container } from 'react-bootstrap';
@@ -7,7 +9,7 @@ const TrendingDatasets = dynamic(() => import('@/components/TrendingDatasets'), 
 
 const Home = () => (
   <main>
-    <Container id="landing-page" fluid className="py-3">
+    <Container fluid className="py-3 home-page-container">
       <Explore />
       <TrendingDatasets />
     </Container>
