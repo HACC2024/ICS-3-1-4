@@ -28,7 +28,7 @@ const SearchBar = () => {
 
   return (
     <Container>
-      <InputGroup className="mb-3">
+      <InputGroup>
         <Form.Control
           type="text"
           value={query}
