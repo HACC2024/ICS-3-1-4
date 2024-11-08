@@ -83,7 +83,7 @@ const SignUp = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary">
+                        <Button type="submit" className="btn btn-primary" style={{ backgroundColor: 'var(--blue)' }}>
                           Register
                         </Button>
                       </Col>
@@ -98,6 +98,7 @@ const SignUp = () => {
               </Card.Body>
               <Card.Footer>
                 Already have an account?
+                {' '}
                 <a href="/auth/signin">Sign in</a>
               </Card.Footer>
             </Card>

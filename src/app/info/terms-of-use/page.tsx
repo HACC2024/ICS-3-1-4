@@ -1,3 +1,10 @@
-export default function TermsOfUse() {
-  return <div>Terms of Use Page Coming Soon</div>;
-}
+import TermsOfUseText from '@/components/TermsOfUseText';
+import { Container } from 'react-bootstrap';
+
+const TermsOfUse = () => (
+  <Container>
+    <TermsOfUseText />
+  </Container>
+);
+
+export default TermsOfUse;

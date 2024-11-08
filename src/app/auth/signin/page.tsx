@@ -41,7 +41,7 @@ const SignIn = () => {
                     <Form.Label>Password</Form.Label>
                     <input name="password" type="password" className="form-control" />
                   </Form.Group>
-                  <Button type="submit" className="mt-3">
+                  <Button type="submit" className="mt-3" style={{ backgroundColor: 'var(--blue)', outline: 'none' }}>
                     Sign In
                   </Button>
                 </Form>

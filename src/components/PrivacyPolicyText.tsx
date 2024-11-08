@@ -101,6 +101,7 @@ const PrivacyPolicyText = () => (
       For information regarding personally identifiable information you have provided, please contact directly the agency or
       department you provided it to. For questions about the State of Hawaiʻi website privacy policy and access to government
       records generally, visit the Office of Information Practices’ website:
+      {' '}
       <a href="https://www.hawaii.gov/oip" target="_blank" rel="noopener noreferrer">www.hawaii.gov/oip</a>
       .
     </p>

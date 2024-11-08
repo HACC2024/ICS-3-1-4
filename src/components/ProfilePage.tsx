@@ -22,7 +22,7 @@ const ProfilePage = () => (
           <Link className="no-underline" href="/persona" passHref>
             <Card style={{ width: '200px', height: '200px' }} className="text-center">
               <Card.Body>
-                <Card.Title style={{ fontSize: '1.5rem' }}>My Data Sets</Card.Title>
+                <Card.Title style={{ fontSize: '1.5rem' }}>My Datasets</Card.Title>
                 <BarChartFill size={100} className="mt-3" />
               </Card.Body>
             </Card>
