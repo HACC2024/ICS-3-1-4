@@ -38,12 +38,17 @@ const ListFavoriteDatasetsPage: React.FC<ListFavoriteDatasetsPageProps> = ({ use
   }, [userId]);
 
   // Delete dataset by ID
-  const deleteDataset = async (id: string) => {
+  const deleteDataset = async (datasetId: string) => {
     try {
-      await fetch(`/api/datasets/${id}`, { method: 'DELETE' });
-      setDatasets(datasets.filter(dataset => dataset.id !== id));
+      const response = await fetch(`/api/user/${userId}/favorites/${datasetId}`, { method: 'DELETE' });
+      if (response.ok) {
+        // Update the UI by filtering out the deleted dataset
+        setDatasets(datasets.filter(dataset => dataset.id !== datasetId));
+      } else {
+        console.error('Failed to delete favorite dataset');
+      }
     } catch (error) {
-      console.error('Error deleting dataset:', error);
+      console.error('Error deleting favorite dataset:', error);
     }
   };
 
@@ -53,6 +58,7 @@ const ListFavoriteDatasetsPage: React.FC<ListFavoriteDatasetsPageProps> = ({ use
         <Row>
           <Col>
             <h2>Favorite Datasets</h2>
+            {/* Pass the deleteDataset function to DatasetTable */}
             <DatasetTable datasets={datasets} onDelete={deleteDataset} />
           </Col>
         </Row>

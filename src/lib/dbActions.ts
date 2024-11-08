@@ -63,3 +63,19 @@ export async function changePassword(credentials: { email: string; password: str
     },
   });
 }
+
+/**
+ * Removes a dataset from the user's favorites list.
+ * @param userId - The ID of the user.
+ * @param datasetId - The ID of the dataset to remove from favorites.
+ */
+export async function removeFavoriteDataset(userId: number, datasetId: number) {
+  await prisma.user.update({
+    where: { id: userId },
+    data: {
+      favorites: {
+        disconnect: { id: datasetId },
+      },
+    },
+  });
+}
