@@ -4,7 +4,7 @@ import React from 'react';
 function TermsOfUse() {
   return (
     <div>
-      <h1 style={{ padding: '10px' }}>Terms of Use Policy for Aloha Archives</h1>
+      <h1 style={{ paddingTop: '10px' }}>Terms of Use Policy for Aloha Archives</h1>
 
       {/* Definitions Section */}
       <section>
@@ -274,6 +274,7 @@ function TermsOfUse() {
         <h2>Contact Information</h2>
         <p>
           By email:
+          {' '}
           <a href="mailto:ets@hawaii.gov">ets@hawaii.gov</a>
         </p>
         <p>By phone: (808) 586-6000</p>
