@@ -5,8 +5,9 @@
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Col, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, Lock, PersonCircle, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import NavSearchBar from './NavSearchBar';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -17,15 +18,15 @@ const NavBar: React.FC = () => {
   return (
     <Navbar className="custom-navbar" expand="lg">
       <Container>
-      <Navbar.Brand href="/">
-      <Image
-        src="/Seal_of_the_State_of_Hawaii.png"
-        alt="Hawaii State Seal"
-        width={100}
-        height={100}
-        className="d-inline-block align-top"
-      />
-      </Navbar.Brand>
+        <Navbar.Brand href="/">
+          <Image
+            src="/Seal_of_the_State_of_Hawaii.png"
+            alt="Hawaii State Seal"
+            width={100}
+            height={100}
+            className="d-inline-block align-top"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start p-3">
@@ -41,26 +42,31 @@ const NavBar: React.FC = () => {
                 ]
               : ''}
             {currentUser && role === 'ADMIN' ? (
-  <>
-  {/* <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
+              <>
+                {/* <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
                 Admin
   </Nav.Link> */}
     <Nav.Link id="list-datasets-nav" href="/manage-data" key="/manage-data" active={pathName === '/manage-data'}>
       Manage Datasets
     </Nav.Link>
-  </>
+              </>
 ) : (
   ''
 )}
           </Nav>
           {/* Right-aligned links */}
-          <Nav className="ms-auto">
+          <Nav className="ms-auto d-flex align-items-center">
             {currentUser && (
-              <Nav.Link id="profile-nav" href="/profile" active={pathName === '/profile'} className="d-flex align-items-center">
-                My Profile
-                {' '}
-                <PersonCircle size={20} className="ms-2" />
-              </Nav.Link>
+              <>
+                <Col>
+                  <NavSearchBar />
+                </Col>
+                <Nav.Link id="profile-nav" href="/profile" active={pathName === '/profile'} className="d-flex align-items-center">
+                  My Profile
+                  {' '}
+                  <PersonCircle size={20} className="ms-2" />
+                </Nav.Link>
+              </>
             )}
           </Nav>
           <Nav>
