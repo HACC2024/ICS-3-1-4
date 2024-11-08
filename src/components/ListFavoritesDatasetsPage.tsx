@@ -21,18 +21,17 @@ const ListFavoriteDatasetsPage: React.FC<ListFavoriteDatasetsPageProps> = ({ use
   const [datasets, setDatasets] = useState<Dataset[]>([]);
 
   // Fetch favorite datasets for the specific user
-  const fetchFavoriteDatasets = async () => {
-    try {
-      const response = await fetch(`/api/user/${userId}/favorites`);
-      const data = await response.json();
-      setDatasets(data);
-    } catch (error) {
-      console.error('Error fetching favorite datasets:', error);
-    }
-  };
-
   useEffect(() => {
     if (userId) {
+      const fetchFavoriteDatasets = async () => {
+        try {
+          const response = await fetch(`/api/user/${userId}/favorites`);
+          const data = await response.json();
+          setDatasets(data);
+        } catch (error) {
+          console.error('Error fetching favorite datasets:', error);
+        }
+      };
       fetchFavoriteDatasets();
     }
   }, [userId]);
