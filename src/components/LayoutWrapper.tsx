@@ -1,9 +1,9 @@
 // src/components/LayoutWrapper.tsx
 
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import { Container } from "react-bootstrap";
+import { usePathname } from 'next/navigation';
+import { Container } from 'react-bootstrap';
 
 interface LayoutWrapperProps {
   children: React.ReactNode;
@@ -11,10 +11,10 @@ interface LayoutWrapperProps {
 
 export default function LayoutWrapper({ children }: LayoutWrapperProps) {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === '/';
 
   return (
-    <Container className={`layout-container ${isHomePage ? "home-page-container" : ""}`}>
+    <Container className={`layout-container ${isHomePage ? 'home-page-container' : ''}`}>
       {children}
     </Container>
   );

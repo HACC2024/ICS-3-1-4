@@ -1,7 +1,7 @@
 import AboutUsText from '@/components/text/AboutUsText';
 
 const AboutUs = () => (
-    <AboutUsText />
+  <AboutUsText />
 );
 
 export default AboutUs;

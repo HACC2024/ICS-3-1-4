@@ -1,7 +1,7 @@
 import PrivacyPolicyText from '@/components/text/PrivacyPolicyText';
 
 const PrivacyPolicy = () => (
-    <PrivacyPolicyText />
+  <PrivacyPolicyText />
 );
 
 export default PrivacyPolicy;

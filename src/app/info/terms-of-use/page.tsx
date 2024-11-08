@@ -1,7 +1,7 @@
 import TermsOfUseText from '@/components/text/TermsOfUseText';
 
 const TermsOfUse = () => (
-    <TermsOfUseText />
+  <TermsOfUseText />
 );
 
 export default TermsOfUse;
