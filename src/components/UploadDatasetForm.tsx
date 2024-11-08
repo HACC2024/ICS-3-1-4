@@ -51,6 +51,8 @@ export default function UploadDatasetForm({ userId }: UploadDatasetFormProps) {
         setTopic('');
         setDescription('');
         setOrganization('');
+        // Reload the page
+        window.location.reload();
       } else {
         const errorData = await response.json();
         setMessage(`Error: ${errorData.error}`);
