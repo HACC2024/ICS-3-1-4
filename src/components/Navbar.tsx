@@ -64,11 +64,9 @@ const NavBar: React.FC = () => {
           </Nav>
           {/* Right-aligned links */}
           <Nav className="ms-auto d-flex align-items-center">
-            {currentUser && (
-              <Col>
-                <NavSearchBar />
-              </Col>
-            )}
+            <Col>
+              <NavSearchBar />
+            </Col>
           </Nav>
           <Nav>
             {session ? (

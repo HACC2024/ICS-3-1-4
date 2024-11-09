@@ -1,7 +1,7 @@
 import { Col, Row } from 'react-bootstrap';
 
 const ContactUsText = () => (
-  <Row>
+  <Row className="text-contrast">
     <Col>
       <h1>Contact Us</h1>
       <p>

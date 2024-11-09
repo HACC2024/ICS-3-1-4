@@ -8,11 +8,15 @@ const SearchBar = dynamic(() => import('@/components/SearchBar'), { ssr: false }
 
 const ResultsPage = () => {
   const [isOpen1, setIsOpen1] = useState(true);
+  const [isOpen2, setIsOpen2] = useState(true);
   const [selectedTopic, setSelectedTopic] = useState<string>('');
+  const [selectedOrg, setSelectedOrg] = useState<string>('');
   const [filteredResults, setFilteredResults] = useState<any[]>([]);
   const [topics, setTopics] = useState<string[]>([]);
+  const [orgs, setOrgs] = useState<string[]>([]);
 
   const toggleMenu1 = () => setIsOpen1(!isOpen1);
+  const toggleMenu2 = () => setIsOpen2(!isOpen2);
 
   const fetchTopics = async () => {
     try {
@@ -24,42 +28,37 @@ const ResultsPage = () => {
     }
   };
 
-  // Filter results based on query and selected topic
-  const filterResults = (query: string, datasets: any[], topic: string) => {
+  const fetchOrgs = async () => {
+    try {
+      const response = await fetch('/api/orgs');
+      const data = await response.json();
+      console.log('Fetched organizations:', data); // Added logging to inspect org data
+      setOrgs(data);
+    } catch (error) {
+      console.error('Failed to fetch organizations:', error);
+    }
+  };
+
+  const filterResults = (query: string, datasets: any[], topic: string, org: string) => {
     const lowercasedQuery = query.toLowerCase();
     const results = datasets.filter(
-      (item) => (item.name.toLowerCase().includes(lowercasedQuery) || item.topic.toLowerCase().includes(lowercasedQuery))
-        && (topic ? item.topic === topic : true),
+      (item) => (item.name.toLowerCase().includes(lowercasedQuery)
+          || item.topic.toLowerCase().includes(lowercasedQuery))
+        && (topic ? item.topic === topic : true)
+        && (org ? item.org === org : true),
     );
     setFilteredResults(results);
   };
 
-  // Fetch datasets and apply filtering
-  const fetchDatasets = async (query: string, topic: string) => {
+  const fetchDatasets = async (query: string, topic: string, org: string) => {
     try {
       const response = await fetch('/api/datasets');
       const data = await response.json();
-      filterResults(query, data, topic);
+      filterResults(query, data, topic, org);
     } catch (error) {
       console.error('Failed to fetch datasets:', error);
     }
   };
-
-  useEffect(() => {
-    fetchTopics();
-
-    const fetchData = async () => {
-      if (typeof window !== 'undefined') {
-        const urlParams = new URLSearchParams(window.location.search);
-        const query = urlParams.get('search') || '';
-        const topicFromURL = urlParams.get('topic') || '';
-        setSelectedTopic(topicFromURL);
-        await fetchDatasets(query, topicFromURL);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleTopicFilter = (topic: string) => {
     const newTopic = selectedTopic === topic ? '' : topic;
@@ -76,8 +75,46 @@ const ResultsPage = () => {
     }
 
     const query = new URLSearchParams(window.location.search).get('search') || '';
-    fetchDatasets(query, newTopic);
+    fetchDatasets(query, newTopic, selectedOrg);
   };
+
+  const handleOrgFilter = (org: string) => {
+    const newOrg = selectedOrg === org ? '' : org;
+    setSelectedOrg(newOrg);
+
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (newOrg) {
+        urlParams.set('org', newOrg);
+      } else {
+        urlParams.delete('org');
+      }
+      window.history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    }
+
+    const query = new URLSearchParams(window.location.search).get('search') || '';
+    const topicFromURL = new URLSearchParams(window.location.search).get('topic') || '';
+    fetchDatasets(query, topicFromURL, newOrg);
+  };
+
+  useEffect(() => {
+    fetchTopics();
+    fetchOrgs();
+
+    const fetchData = async () => {
+      if (typeof window !== 'undefined') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('search') || '';
+        const topicFromURL = urlParams.get('topic') || '';
+        const orgFromURL = urlParams.get('org') || '';
+        setSelectedTopic(topicFromURL);
+        setSelectedOrg(orgFromURL);
+        await fetchDatasets(query, topicFromURL, orgFromURL);
+      }
+    };
+
+    fetchData();
+  }, []); // Only runs once, on mount
 
   return (
     <main>
@@ -106,6 +143,28 @@ const ResultsPage = () => {
                         onClick={() => handleTopicFilter(topic)}
                       >
                         {topic}
+                      </button>
+                    ))}
+                  </ul>
+                )}
+              </Row>
+
+              {/* Organization Filter */}
+              <Row className="mb-3">
+                <button type="button" onClick={toggleMenu2} className="btn btn-primary" id="filterMenu">
+                  {isOpen2 ? 'Hide Organizations' : 'Show Organizations'}
+                </button>
+                {isOpen2 && (
+                  <ul className="list-group mt-2 pe-0">
+                    {orgs.map((org) => (
+                      <button
+                        type="button"
+                        id="resultsFilterButton"
+                        key={org}
+                        className={`list-group-item ${selectedOrg === org ? 'active' : ''}`}
+                        onClick={() => handleOrgFilter(org)}
+                      >
+                        {org}
                       </button>
                     ))}
                   </ul>
