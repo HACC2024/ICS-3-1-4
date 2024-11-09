@@ -13,11 +13,15 @@ async function main() {
   await Promise.all(
     config.defaultAccounts.map(async (account) => {
       const role: Role = account.role === 'ADMIN' ? 'ADMIN' : 'USER';
-      console.log(`  Creating user: ${account.email} with role: ${role}`);
+      console.log(`  Creating or updating user: ${account.email} with role: ${role}`);
 
       const user = await prisma.user.upsert({
         where: { email: account.email },
-        update: {},
+        update: {
+          role,
+          persona: account.persona,
+          password, // Updating password, adjust as needed to avoid resetting
+        },
         create: {
           email: account.email,
           password,
@@ -32,7 +36,7 @@ async function main() {
   // Step 2: Seed datasets with ownerId and populate the dataset map
   const datasetMap: { [name: string]: number } = {};
   const datasetPromises = config.defaultDataMetadata.map(async (data) => {
-    console.log(`  Adding dataset metadata: ${data.name}`);
+    console.log(`  Adding or updating dataset metadata: ${data.name}`);
 
     // Look up ownerId from userMap using data.ownerEmail
     const ownerId = data.owner ? userMap[data.owner] : null;
@@ -43,7 +47,17 @@ async function main() {
 
     const dataset = await prisma.dataset.upsert({
       where: { name: data.name },
-      update: {},
+      update: {
+        url: data.url,
+        viewCount: data.viewCount,
+        topic: data.topic,
+        description: data.description,
+        org: data.org,
+        orgIcon: data.orgIcon,
+        csvData: data.csvData,
+        fileName: data.fileName,
+        ownerId,
+      },
       create: {
         name: data.name,
         url: data.url,
@@ -106,7 +120,7 @@ async function main() {
                 datasetId,
               },
             },
-            update: {},
+            update: {}, // No fields specified here to prevent accidental overrides, but add fields if needed.
             create: {
               persona: personaRec.persona,
               datasetId,

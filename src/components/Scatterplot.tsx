@@ -22,11 +22,14 @@ const Scatterplot: React.FC<ScatterplotProps> = ({ data, xVariable, yVariable })
 
     const width = 500;
     const height = 300;
-    const margin = { top: 40, right: 30, bottom: 50, left: 50 };
+    const margin = { top: 40, right: 30, bottom: 50, left: 80 };
+
+    const minX = d3.min(data, d => d[0]) ?? 0;
+    const maxX = d3.max(data, d => d[0]) ?? 0;
 
     // Define scales
     const x = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d[0]) ?? 0])
+      .domain([minX, maxX])
       .range([margin.left, width - margin.right]);
 
     const y = d3.scaleLinear()
@@ -61,7 +64,7 @@ const Scatterplot: React.FC<ScatterplotProps> = ({ data, xVariable, yVariable })
       .call(d3.axisLeft(y))
       .append("text")
       .attr("x", -height / 2)
-      .attr("y", -37)
+      .attr("y", -50)
       .attr("fill", "black")
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")

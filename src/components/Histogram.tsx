@@ -23,7 +23,7 @@ const Histogram: React.FC<HistogramProps> = ({ data, variable = "AGEP" }) => {
 
     const width = 500;
     const height = 300;
-    const margin = { top: 40, right: 30, bottom: 50, left: 50 };
+    const margin = { top: 40, right: 30, bottom: 50, left: 70 };
 
     // X scale
     const x = d3.scaleLinear()
@@ -69,7 +69,7 @@ const Histogram: React.FC<HistogramProps> = ({ data, variable = "AGEP" }) => {
       .append("text")
       .attr("class", "y-axis-label")
       .attr("x", -height / 2)
-      .attr("y", -37)
+      .attr("y", -50)
       .attr("fill", "black")
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")
