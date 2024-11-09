@@ -24,16 +24,15 @@ interface DatasetPageWrapperProps {
 }
 
 export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps) {
-  const [chartType, setChartType] = useState<'histogram' | 'scatterplot'>('histogram');
-  const [selectedVariable, setSelectedVariable] = useState<string>('AGEP'); // Default for histogram
-  const [xVariable, setXVariable] = useState<string>('AGEP'); // Default for scatterplot x-axis
-  const [yVariable, setYVariable] = useState<string>('PWGTP'); // Default for scatterplot y-axis
-  const [chartData, setChartData] = useState<number[]>([]);
-  const [scatterData, setScatterData] = useState<Array<[number, number]>>([]);
-
   const variables = Array.isArray(dataset.csvData) && dataset.csvData.length > 0
     ? Object.keys(dataset.csvData[0])
     : [];
+  const [chartType, setChartType] = useState<'histogram' | 'scatterplot'>('histogram');
+  const [selectedVariable, setSelectedVariable] = useState<string>(variables[0] ?? '');
+  const [xVariable, setXVariable] = useState<string>(variables[0] ?? '');
+  const [yVariable, setYVariable] = useState<string>(variables[1] ?? '');
+  const [chartData, setChartData] = useState<number[]>([]);
+  const [scatterData, setScatterData] = useState<Array<[number, number]>>([]);
 
   // Update data based on chart type and selected variables
   useEffect(() => {
