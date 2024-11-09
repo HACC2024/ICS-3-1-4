@@ -1,5 +1,5 @@
 const AboutUsText = () => (
-  <div>
+  <div className="text-contrast">
     <h1>About Us</h1>
     <p>
       We are a team of students in the Computer Science department at the University of Hawaii.

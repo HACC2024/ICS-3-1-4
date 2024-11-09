@@ -4,6 +4,7 @@ import authOptions from '@/lib/authOptions';
 import { prisma } from '@/lib/prisma';
 import DatasetTable from '@/components/DatasetTable'; // Component to display all datasets
 import UploadDatasetForm from '@/components/UploadDatasetForm'; // Component to upload a dataset
+import { Container } from 'react-bootstrap';
 
 interface CustomUser {
   id: string;
@@ -43,13 +44,14 @@ export default async function Page() {
 
   return (
     <div>
-      <h1 className="text-contrast">Manage Datasets</h1>
+      <h1 className="text-contrast mt-3">Manage Datasets</h1>
+      <Container className="bg-white p-4 rounded mb-5">
+        {/* Render the UploadDatasetForm component */}
+        <UploadDatasetForm userId={session.user.id} />
 
-      {/* Render the UploadDatasetForm component */}
-      <UploadDatasetForm userId={session.user.id} />
-
-      {/* Render all datasets in the DatasetTable component */}
-      <DatasetTable datasets={allDatasets} userId={session.user.id} isFavoritesContext={false} />
+        {/* Render all datasets in the DatasetTable component */}
+        <DatasetTable datasets={allDatasets} userId={session.user.id} isFavoritesContext={false} />
+      </Container>
     </div>
   );
 }
