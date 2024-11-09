@@ -171,6 +171,7 @@ footer {
 /* For Data Set Page */
 
 .dataset-table-container {
+  background-color: white;
   max-width: 600px;
   margin: 0 auto;
   padding: 3rem;
@@ -197,11 +198,6 @@ footer {
 
 .dataset-table-container a:hover {
   color: var(--teal) !important;
-}
-
-.dataset-table-container {
-  background-color: white;
-  margin: 20px;
 }
 
 .text-white {

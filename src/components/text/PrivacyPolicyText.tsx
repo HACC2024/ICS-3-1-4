@@ -1,5 +1,5 @@
 const PrivacyPolicyText = () => (
-  <div>
+  <div className="text-contrast">
     <h1>Privacy Policy</h1>
     <p>
       By visiting and using this website, its subpages, and content, you are agreeing to our Terms of Access and Use.
