@@ -84,8 +84,8 @@ const ResultsPage = () => {
       <Container>
         <Row className="mt-5 mb-5">
           {/* Filters Sidebar */}
-          <Col md={3} className="mx-auto bg-light">
-            <Container className="mt-1">
+          <Col md={3} className="mx-auto bg-light filter-height">
+            <Container className="mt-2">
               <Row>
                 <h2 className="text-center">Filters</h2>
               </Row>
@@ -96,7 +96,7 @@ const ResultsPage = () => {
                   {isOpen1 ? 'Hide Topics' : 'Show Topics'}
                 </button>
                 {isOpen1 && (
-                  <ul className="list-group mt-2">
+                  <ul className="list-group mt-2 pe-0">
                     {topics.map((topic) => (
                       <button
                         type="button"
@@ -120,7 +120,7 @@ const ResultsPage = () => {
               <SearchBar />
             </Row>
             <Row>
-              <h1 className="ms-3">Results</h1>
+              <h1 className="ms-3 text-contrast">Results</h1>
             </Row>
             <Row>
               {filteredResults.length > 0 ? (
@@ -160,7 +160,7 @@ const ResultsPage = () => {
                   </button>
                 ))
               ) : (
-                <p>No results found.</p>
+                <p className="ps-5 text-contrast">No results found.</p>
               )}
             </Row>
           </Col>

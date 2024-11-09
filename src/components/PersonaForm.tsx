@@ -79,6 +79,7 @@ const PersonaForm = () => {
 
   return (
     <Container>
+      <h1 className="text-contrast">Persona Quiz</h1>
       <Card>
         <Card.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>

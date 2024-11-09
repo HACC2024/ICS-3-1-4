@@ -32,7 +32,7 @@ const ListFavoriteDatasetsPage: React.FC<ListFavoriteDatasetsPageProps> = ({ use
       <Container id="dataset-list" fluid className="py-3">
         <Row>
           <Col>
-            <h2>Favorite Datasets</h2>
+            <h2 className="text-contrast">Favorite Datasets</h2>
             <DatasetTable
               onDatasetDeleted={onDatasetDeleted} // Pass the callback to DatasetTable
               isFavoritesContext

@@ -73,7 +73,7 @@ body::before {
   border-radius: 50px;
   padding: 10px 20px;
   width: 100%;
-  background-color: var(--teal);
+  background-color: white;
   color: var(--black);
   border-color: var(seashell);
   border: none;
@@ -149,6 +149,11 @@ footer {
   font-family: var(--hind);
 }
 
+.filter-height {
+  height: min-content;
+  border-radius: 20px;
+}
+
 #hind {
   font-family: var(--hind);
 }
@@ -204,18 +209,26 @@ footer {
 }
 /* globals.css */
 .text-contrast {
-  color: grey; /* Or any contrasting color */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Optional: adds subtle shadow for better readability */
+  color: white; /* Or any contrasting color */
+  text-shadow: 
+    1px 1px 20px rgba(0, 0, 0, 1), 
+    1px 1px 20px rgba(0, 0, 0, 1), 
+    1px 1px 20px rgba(0, 0, 0, 1), 
+    1px 1px 20px rgba(0, 0, 0, 1); /* Optional: adds subtle shadow for better readability */
 }
 
-.layout-container {
+/*.layout-container {
   background-color: white;
   padding-block: 40px !important;
   padding-inline: 40px !important;
-  margin: 10px;
-}
+}*/
 
 .home-page-container {
   background-color: transparent !important;
   background-image: none !important;
+}
+
+.upload-button {
+  width: 21.5%;
+  cursor: pointer;
 }
