@@ -59,7 +59,7 @@ const ResultsPage = () => {
     };
 
     fetchData();
-  }, []);
+  });
 
   const handleTopicFilter = (topic: string) => {
     const newTopic = selectedTopic === topic ? '' : topic;
