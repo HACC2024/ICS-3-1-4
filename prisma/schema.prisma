@@ -59,6 +59,19 @@ model Dataset {
   users User[]
 
   // For admin who manage the dataset
-  ownerId Int?  @default(1)
+  ownerId Int? 
   owner   User? @relation("UserOwnedDatasets", fields: [ownerId], references: [id])
+
+  recommendations PersonaRecommendation[]  @relation("DatasetRecommendations")
 }
+
+model PersonaRecommendation {
+  id             Int      @id @default(autoincrement())
+  persona        String
+  datasetId      Int
+  dataset        Dataset  @relation("DatasetRecommendations", fields: [datasetId], references: [id])
+  updatedAt      DateTime @updatedAt
+
+  @@unique([persona, datasetId]) // Composite unique constraint
+}
+

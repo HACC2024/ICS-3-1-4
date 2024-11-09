@@ -1,3 +1,4 @@
+// Dummy tests from template; these will be changed to real tests eventually
 import { test, expect } from '@playwright/test';
 
 test.use({

@@ -1,7 +1,7 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "persona": "" },
-    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[], "persona": ""}
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "persona": "businessDecisionMaker" },
+    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[], "persona": "communityMember"}
   ],
 
   "defaultDataMetadata": [
@@ -212,21 +212,6 @@
         { "IncomeBracket": "$25k-$50k", "Percentage": 20.1 },
         { "IncomeBracket": "$50k-$75k", "Percentage": 25.5 },
         { "IncomeBracket": ">$100k", "Percentage": 44.2 }
-      ],
-      "fileName": "",
-      "owner": "admin@foo.com"
-    },
-    {
-      "name": "Oahu Crime Rates",
-      "url": "https://data.honolulu.gov/crime-stats",
-      "viewCount": 205,
-      "topic": "Public Safety",
-      "description": "Annual crime rate reports for Oahu by type of crime.",
-      "org": "City and County of Honolulu",
-      "orgIcon": "/org_icons/cch_seal.png",
-      "csvData": [
-        { "Year": 2020, "CrimeType": "Theft", "Incidents": 3520 },
-        { "Year": 2020, "CrimeType": "Assault", "Incidents": 678 }
       ],
       "fileName": "",
       "owner": "admin@foo.com"
@@ -726,6 +711,28 @@
       ],
       "fileName": "",
       "owner": "admin@foo.com"
+    }
+  ],
+  "personaRecommendations": [
+    {
+      "persona": "educator",
+      "recommendations": []
+    },
+    {
+      "persona": "researcher",
+      "recommendations": []
+    },
+    {
+      "persona": "communityMember",
+      "recommendations": []
+    },
+    {
+      "persona": "publicInformer",
+      "recommendations": []
+    },
+    {
+      "persona": "businessDecisionMaker",
+      "recommendations": []
     }
   ]
 }

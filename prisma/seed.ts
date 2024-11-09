@@ -88,6 +88,37 @@ async function main() {
     }),
   );
 
+  // Step 4: Seed PersonaRecommendations using dataset IDs
+  await Promise.all(
+    config.personaRecommendations.map(async (personaRec) => {
+      // Map dataset names to IDs using datasetMap
+      const datasetIds = (personaRec.recommendations || [])
+        .map((datasetName: string) => datasetMap[datasetName])
+        .filter(Boolean); // Ensure only valid dataset IDs
+
+      // Create or update a PersonaRecommendation for each datasetId
+      await Promise.all(
+        datasetIds.map(async (datasetId) => {
+          await prisma.personaRecommendation.upsert({
+            where: {
+              persona_datasetId: {
+                persona: personaRec.persona,
+                datasetId,
+              },
+            },
+            update: {},
+            create: {
+              persona: personaRec.persona,
+              datasetId,
+            },
+          });
+        }),
+      );
+
+      console.log(`  Stored recommendations for persona: ${personaRec.persona}`);
+    }),
+  );
+
   console.log('Seeding completed.');
 }
 
