@@ -7,6 +7,7 @@ import { Search } from 'react-bootstrap-icons';
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [currentTopic, setCurrentTopic] = useState('');
+  const [currentOrg, setCurrentOrg] = useState('');
 
   // Use useEffect to only access the window object after the component mounts
   useEffect(() => {
@@ -14,14 +15,20 @@ const SearchBar = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const initialQuery = urlParams.get('search') || ''; // Default to empty string if no search query in URL
     const initialTopic = urlParams.get('topic') || ''; // Get current topic from URL
+    const initialOrg = urlParams.get('org') || ''; // Get current topic from URL
 
     setQuery(initialQuery);
     setCurrentTopic(initialTopic);
+    setCurrentOrg(initialOrg);
   }, []); // This will run only once when the component mounts
 
   const handleSearch = () => {
     // Construct the new URL with both search and topic params
-    const newUrl = `/results?search=${encodeURIComponent(query)}${currentTopic ? `&topic=${encodeURIComponent(currentTopic)}` : ''}`;
+    const newUrl = `/results?search=${encodeURIComponent(query)}${
+      currentTopic ? `&topic=${encodeURIComponent(currentTopic)}` : ''
+    }${
+      currentOrg ? `&org=${encodeURIComponent(currentOrg)}` : ''
+    }`;
 
     // Navigate to the new URL
     window.location.href = newUrl;

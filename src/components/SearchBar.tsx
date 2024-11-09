@@ -11,10 +11,15 @@ const SearchBar = () => {
 
   const [query, setQuery] = React.useState(initialQuery);
   const currentTopic = urlParams.get('topic') || ''; // Get current topic from URL
+  const currentOrg = urlParams.get('org') || ''; // Get current org from URL
 
   const handleSearch = () => {
     // Construct the new URL with both search and topic params
-    const newUrl = `/results?search=${encodeURIComponent(query)}${currentTopic ? `&topic=${encodeURIComponent(currentTopic)}` : ''}`;
+    const newUrl = `/results?search=${encodeURIComponent(query)}${
+      currentTopic ? `&topic=${encodeURIComponent(currentTopic)}` : ''
+    }${
+      currentOrg ? `&org=${encodeURIComponent(currentOrg)}` : ''
+    }`;
 
     // Navigate to the new URL
     window.location.href = newUrl;
