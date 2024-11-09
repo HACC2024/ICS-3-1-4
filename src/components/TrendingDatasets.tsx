@@ -34,9 +34,13 @@ const TrendingDatasets: React.FC = () => {
     fetchDatasets();
   }, []);
 
+  const topDatasets = datasets
+    .sort((a, b) => b.viewCount - a.viewCount)
+    .slice(0, 6);
+
   const groupedData = [];
-  for (let i = 0; i < datasets.length; i += 3) {
-    groupedData.push(datasets.slice(i, i + 3));
+  for (let i = 0; i < topDatasets.length; i += 3) {
+    groupedData.push(topDatasets.slice(i, i + 3));
   }
 
   return (
