@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -10,30 +8,37 @@ const SearchBar = dynamic(() => import('@/components/SearchBar'), { ssr: false }
 
 const ResultsPage = () => {
   const [isOpen1, setIsOpen1] = useState(true);
-  // const [isOpen2, setIsOpen2] = useState(true);
-  // const [isOpen3, setIsOpen3] = useState(true);
   const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [filteredResults, setFilteredResults] = useState<any[]>([]);
-  const [, setDatasets] = useState<{ name: string; topic: string; id: number; url: string; viewCount: number }[]>([]);
+  const [topics, setTopics] = useState<string[]>([]);
 
   const toggleMenu1 = () => setIsOpen1(!isOpen1);
-  // const toggleMenu2 = () => setIsOpen2(!isOpen2);
-  // const toggleMenu3 = () => setIsOpen3(!isOpen3);
 
+  const fetchTopics = async () => {
+    try {
+      const response = await fetch('/api/topics');
+      const data = await response.json();
+      setTopics(data);
+    } catch (error) {
+      console.error('Failed to fetch topics:', error);
+    }
+  };
+
+  // Filter results based on query and selected topic
   const filterResults = (query: string, datasets: any[], topic: string) => {
     const lowercasedQuery = query.toLowerCase();
     const results = datasets.filter(
       (item) => (item.name.toLowerCase().includes(lowercasedQuery) || item.topic.toLowerCase().includes(lowercasedQuery))
-      && (topic ? item.topic === topic : true),
+        && (topic ? item.topic === topic : true),
     );
     setFilteredResults(results);
   };
 
+  // Fetch datasets and apply filtering
   const fetchDatasets = async (query: string, topic: string) => {
     try {
       const response = await fetch('/api/datasets');
       const data = await response.json();
-      setDatasets(data);
       filterResults(query, data, topic);
     } catch (error) {
       console.error('Failed to fetch datasets:', error);
@@ -41,6 +46,8 @@ const ResultsPage = () => {
   };
 
   useEffect(() => {
+    fetchTopics();
+
     const fetchData = async () => {
       if (typeof window !== 'undefined') {
         const urlParams = new URLSearchParams(window.location.search);
@@ -50,6 +57,7 @@ const ResultsPage = () => {
         await fetchDatasets(query, topicFromURL);
       }
     };
+
     fetchData();
   }, []);
 
@@ -89,21 +97,20 @@ const ResultsPage = () => {
                 </button>
                 {isOpen1 && (
                   <ul className="list-group mt-2">
-                    <button type="button" id="resultsFilterButton" className={`list-group-item ${selectedTopic === 'Health' ? 'active' : ''}`} onClick={() => handleTopicFilter('Health')}>
-                      Health
-                    </button>
-                    <button type="button" id="resultsFilterButton" className={`list-group-item ${selectedTopic === 'Transportation' ? 'active' : ''}`} onClick={() => handleTopicFilter('Transportation')}>
-                      Transportation
-                    </button>
-                    <button type="button" id="resultsFilterButton" className={`list-group-item ${selectedTopic === 'Demographics' ? 'active' : ''}`} onClick={() => handleTopicFilter('Demographics')}>
-                      Demographics
-                    </button>
+                    {topics.map((topic) => (
+                      <button
+                        type="button"
+                        id="resultsFilterButton"
+                        key={topic}
+                        className={`list-group-item ${selectedTopic === topic ? 'active' : ''}`}
+                        onClick={() => handleTopicFilter(topic)}
+                      >
+                        {topic}
+                      </button>
+                    ))}
                   </ul>
                 )}
               </Row>
-
-              {/* Other Filters */}
-              {/* Remaining code unchanged... */}
             </Container>
           </Col>
 
@@ -121,13 +128,25 @@ const ResultsPage = () => {
                   <button
                     type="button"
                     key={item.id}
-                    style={{ padding: 0, border: 'none', background: 'none', width: '18rem', marginLeft: '2rem', marginBottom: '2rem' }}
+                    style={{
+                      padding: 0,
+                      border: 'none',
+                      background: 'none',
+                      width: '18rem',
+                      marginLeft: '2rem',
+                      marginBottom: '2rem',
+                    }}
                     onClick={() => (window.location.href = `/dataset/${item.id}`)}
                   >
                     <Card>
                       <Card.Header>
                         <Container className="d-flex justify-content-center">
-                          <Card.Img variant="top" src={item.orgIcon} alt={`${item.org} logo`} style={{ maxWidth: '100px', height: 'auto' }} />
+                          <Card.Img
+                            variant="top"
+                            src={item.orgIcon}
+                            alt={`${item.org} logo`}
+                            style={{ maxWidth: '100px', height: 'auto' }}
+                          />
                         </Container>
                         <Card.Title className="pt-3">{item.name}</Card.Title>
                       </Card.Header>
