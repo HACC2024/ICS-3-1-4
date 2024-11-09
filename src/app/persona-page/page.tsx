@@ -62,7 +62,7 @@ const PersonaPage = () => {
 
   return (
     <Container>
-      <h1>User Persona</h1>
+      <h1 className="text-contrast mt-3">User Persona</h1>
       <Card className="p-4">
         <Row>
           <Col>
