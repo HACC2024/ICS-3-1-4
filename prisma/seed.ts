@@ -22,6 +22,7 @@ async function main() {
           email: account.email,
           password,
           role,
+          persona: account.persona,
         },
       });
       userMap[account.email] = user.id;
