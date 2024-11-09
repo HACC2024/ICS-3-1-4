@@ -62,7 +62,7 @@ const RecommendationsDisplay = () => {
   }, [session, persona]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="text-contrast">Loading...</p>;
   }
 
   return (
