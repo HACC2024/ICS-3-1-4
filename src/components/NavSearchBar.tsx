@@ -1,16 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 
 const SearchBar = () => {
-  // Read the search query from the URL when the component is first rendered
-  const urlParams = new URLSearchParams(window.location.search);
-  const initialQuery = urlParams.get('search') || ''; // Default to empty string if no search query in URL
+  const [query, setQuery] = useState('');
+  const [currentTopic, setCurrentTopic] = useState('');
 
-  const [query, setQuery] = React.useState(initialQuery);
-  const currentTopic = urlParams.get('topic') || ''; // Get current topic from URL
+  // Use useEffect to only access the window object after the component mounts
+  useEffect(() => {
+    // Read the search query from the URL when the component is first rendered
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get('search') || ''; // Default to empty string if no search query in URL
+    const initialTopic = urlParams.get('topic') || ''; // Get current topic from URL
+
+    setQuery(initialQuery);
+    setCurrentTopic(initialTopic);
+  }, []); // This will run only once when the component mounts
 
   const handleSearch = () => {
     // Construct the new URL with both search and topic params
