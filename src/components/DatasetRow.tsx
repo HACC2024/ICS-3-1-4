@@ -1,6 +1,7 @@
 // src/components/DatasetRow.tsx
 
 import React from 'react';
+import Link from 'next/link';
 import DeleteButton from '@/components/DeleteButton';
 
 interface Dataset {
@@ -21,7 +22,11 @@ interface DatasetRowProps {
 
 const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesContext, onDatasetDeleted }) => (
   <tr>
-    <td>{dataset.name}</td>
+    <td>
+      <Link href={`/dataset/${dataset.id}`}>
+        {dataset.name}
+      </Link>
+    </td>
     <td>
       <a href={dataset.url} target="_blank" rel="noopener noreferrer">Link</a>
     </td>
