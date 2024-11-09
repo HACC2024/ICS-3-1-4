@@ -12,6 +12,18 @@ const PersonaForm = () => {
   const [persona, setPersona] = useState<string | null>(null);
   const formPadding = 'py-1';
 
+  // Define the type for persona keys
+  type PersonaKey = 'educator' | 'researcher' | 'communityMember' | 'publicInformer' | 'businessDecisionMaker';
+
+  // Mapping raw persona values to formatted display names
+  const personaDisplayNames: Record<PersonaKey, string> = {
+    educator: 'Educator',
+    researcher: 'Researcher',
+    communityMember: 'Community Member',
+    publicInformer: 'Public Informer',
+    businessDecisionMaker: 'Business Decision Maker',
+  };
+
   const {
     register,
     handleSubmit,
@@ -28,8 +40,8 @@ const PersonaForm = () => {
     dataType: string;
     interaction: string;
   }) => {
-    // Temporary count object to track each persona's tally
-    const tempCounts = {
+    // Define the tempCounts object with the correct types
+    const tempCounts: Record<PersonaKey, number> = {
       educator: 0,
       researcher: 0,
       communityMember: 0,
@@ -62,14 +74,17 @@ const PersonaForm = () => {
     if (data.interaction === 'Reports with key insights') tempCounts.businessDecisionMaker += 1;
     if (data.interaction === 'Raw data with filtering') tempCounts.educator += 1;
 
-    const topPersona = Object.entries(tempCounts).reduce((prev, current) => (current[1] > prev[1] ? current : prev))[0];
+    // Ensure TypeScript knows topPersona is of type PersonaKey
+    const topPersona = Object.entries(tempCounts).reduce(
+      (prev, current) => (current[1] > prev[1] ? current : prev),
+    )[0] as PersonaKey;
 
     setPersona(topPersona);
 
     try {
       const response = { ...data, email: 'user@example.com', assignedPersona: topPersona };
       await addPersonaQuizResponse(response); // Save response to database
-      swal('Success!', `You are a ${topPersona}!`, 'success');
+      swal('Success!', `You are a ${personaDisplayNames[topPersona]}!`, 'success');
       reset(); // Reset form
     } catch (error) {
       console.error(error);
@@ -197,7 +212,9 @@ const PersonaForm = () => {
           <Alert variant="success">
             You have been assigned the persona:
             {' '}
-            <strong>{persona}</strong>
+            <strong>
+              {personaDisplayNames[persona as PersonaKey]}
+            </strong>
             !
           </Alert>
         ) : (
