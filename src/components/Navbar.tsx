@@ -30,9 +30,15 @@ const NavBar: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start p-3">
-
+            <Nav.Link id="home-nav" href="/" key="home" active={pathName === '/'}>
+              Home
+            </Nav.Link>
+            <Nav.Link id="datasets-nav" href="/results" key="results" active={pathName === '/results'}>
+              Datasets
+            </Nav.Link>
             {currentUser
               ? [
+
                   <Nav.Link id="home-nav" href="/" key="home" active={pathName === '/'}>
                     Home
                   </Nav.Link>,
@@ -65,11 +71,9 @@ const NavBar: React.FC = () => {
           </Nav>
           {/* Right-aligned links */}
           <Nav className="ms-auto d-flex align-items-center">
-            {currentUser && (
-              <Col>
-                <NavSearchBar />
-              </Col>
-            )}
+            <Col>
+              <NavSearchBar />
+            </Col>
           </Nav>
           <Nav>
             {session ? (
