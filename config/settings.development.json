@@ -1,7 +1,7 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"] },
-    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[]}
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "persona": "" },
+    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[], "persona": ""}
   ],
 
   "defaultDataMetadata": [

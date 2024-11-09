@@ -6,16 +6,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
 import { PersonaQuizSchema } from '@/lib/validationSchemas';
-import { addPersonaQuizResponse } from '@/lib/dbActions';
+import { addPersonaQuizResponse, updateUserPersona } from '@/lib/dbActions';
+import { getSession } from 'next-auth/react';
 
 const PersonaForm = () => {
   const [persona, setPersona] = useState<string | null>(null);
   const formPadding = 'py-1';
 
-  // Define the type for persona keys
   type PersonaKey = 'educator' | 'researcher' | 'communityMember' | 'publicInformer' | 'businessDecisionMaker';
 
-  // Mapping raw persona values to formatted display names
   const personaDisplayNames: Record<PersonaKey, string> = {
     educator: 'Educator',
     researcher: 'Researcher',
@@ -24,12 +23,7 @@ const PersonaForm = () => {
     businessDecisionMaker: 'Business Decision Maker',
   };
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(PersonaQuizSchema),
   });
 
@@ -40,7 +34,14 @@ const PersonaForm = () => {
     dataType: string;
     interaction: string;
   }) => {
-    // Define the tempCounts object with the correct types
+    const session = await getSession();
+    const userEmail = session?.user?.email;
+
+    if (!userEmail) {
+      swal('Error!', 'Could not determine the logged-in user’s email.', 'error');
+      return;
+    }
+
     const tempCounts: Record<PersonaKey, number> = {
       educator: 0,
       researcher: 0,
@@ -64,7 +65,7 @@ const PersonaForm = () => {
 
     if (data.dataType === 'Population or demographics') tempCounts.publicInformer += 1;
     if (data.dataType === 'Economic or financial') tempCounts.businessDecisionMaker += 1;
-    if (data.dataType === 'Eductional or academic') tempCounts.educator += 1;
+    if (data.dataType === 'Educational or academic') tempCounts.educator += 1;
     if (data.dataType === 'Environmental data') tempCounts.communityMember += 1;
     if (data.dataType === 'Health or Social services') tempCounts.researcher += 1;
 
@@ -74,7 +75,6 @@ const PersonaForm = () => {
     if (data.interaction === 'Reports with key insights') tempCounts.businessDecisionMaker += 1;
     if (data.interaction === 'Raw data with filtering') tempCounts.educator += 1;
 
-    // Ensure TypeScript knows topPersona is of type PersonaKey
     const topPersona = Object.entries(tempCounts).reduce(
       (prev, current) => (current[1] > prev[1] ? current : prev),
     )[0] as PersonaKey;
@@ -82,8 +82,9 @@ const PersonaForm = () => {
     setPersona(topPersona);
 
     try {
-      const response = { ...data, email: 'user@example.com', assignedPersona: topPersona };
-      await addPersonaQuizResponse(response); // Save response to database
+      const response = { ...data, email: userEmail, assignedPersona: topPersona };
+      await addPersonaQuizResponse(response); // Save quiz response
+      await updateUserPersona(userEmail, topPersona); // Update user persona in profile
       swal('Success!', `You are a ${personaDisplayNames[topPersona]}!`, 'success');
       reset(); // Reset form
     } catch (error) {
@@ -173,7 +174,7 @@ const PersonaForm = () => {
                     <option value="">Select an option</option>
                     <option value="Population or demographics">Population, demographics, or community data</option>
                     <option value="Economic or financial">Economic, business, or financial data.</option>
-                    <option value="Eductional or academic">Educational or academic performance data.</option>
+                    <option value="Educational or academic">Educational or academic performance data.</option>
                     <option value="Environmental data">Environmental or sustainability data.</option>
                     <option value="Health or Social services">Health or social services data.</option>
                   </Form.Select>
