@@ -33,11 +33,17 @@ const NavBar: React.FC = () => {
 
             {currentUser
               ? [
+                  <Nav.Link id="home-nav" href="/" key="home" active={pathName === '/'}>
+                    Home
+                  </Nav.Link>,
+                  <Nav.Link id="datasets-nav" href="/results" key="results" active={pathName === '/results'}>
+                    Datasets
+                  </Nav.Link>,
                   <Nav.Link id="persona-stuff-nav" href="/persona" key="persona" active={pathName === '/persona'}>
-                  Persona Quiz
+                    Persona Quiz
                   </Nav.Link>,
                   <Nav.Link id="favorites" href="/favorites" key="favorites" active={pathName === '/favorites'}>
-                  Favorite Datasets
+                    Favorite Datasets
                   </Nav.Link>,
                 ]
               : ''}
@@ -45,10 +51,10 @@ const NavBar: React.FC = () => {
               <>
                 {/* <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
                 Admin
-  </Nav.Link> */}
-    <Nav.Link id="manage-datasets-nav" href="/manage-datasets" key="/manage-datasets" active={pathName === '/manage-datasets'}>
-      Manage Datasets
-    </Nav.Link>
+              </Nav.Link> */}
+                <Nav.Link id="manage-datasets-nav" href="/manage-datasets" key="/manage-datasets" active={pathName === '/manage-datasets'}>
+                  Manage Datasets
+                </Nav.Link>
               </>
 ) : (
   ''
@@ -57,21 +63,19 @@ const NavBar: React.FC = () => {
           {/* Right-aligned links */}
           <Nav className="ms-auto d-flex align-items-center">
             {currentUser && (
-              <>
-                <Col>
-                  <NavSearchBar />
-                </Col>
-                <Nav.Link id="profile-nav" href="/profile" active={pathName === '/profile'} className="d-flex align-items-center">
-                  My Profile
-                  {' '}
-                  <PersonCircle size={20} className="ms-2" />
-                </Nav.Link>
-              </>
+              <Col>
+                <NavSearchBar />
+              </Col>
             )}
           </Nav>
           <Nav>
             {session ? (
               <NavDropdown id="login-dropdown" title={currentUser}>
+                <NavDropdown.Item id="profile-nav" href="/profile">
+                  <PersonCircle />
+                  {' '}
+                  My Profile
+                </NavDropdown.Item>
                 <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
                   <BoxArrowRight />
                   {' '}

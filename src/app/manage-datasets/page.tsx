@@ -43,7 +43,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Manage Datasets</h1>
+      <h1 className="text-contrast">Manage Datasets</h1>
 
       {/* Render the UploadDatasetForm component */}
       <UploadDatasetForm userId={session.user.id} />

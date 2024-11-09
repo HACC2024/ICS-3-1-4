@@ -100,7 +100,7 @@ export default function UploadDatasetForm({ userId }: UploadDatasetFormProps) {
         onChange={(e) => setOrganization(e.target.value)}
         required
       />
-      <input type="file" accept=".csv" onChange={handleFileChange} required />
+      <input type="file" className="text-contrast upload-button" accept=".csv" onChange={handleFileChange} required />
       <button type="submit">Upload Dataset</button>
       {message && <p>{message}</p>}
     </form>
