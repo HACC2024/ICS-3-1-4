@@ -156,21 +156,17 @@ const ResultsPage = () => {
                 </button>
                 {isOpen2 && (
                   <ul className="list-group mt-2 pe-0">
-                    {orgs.length > 0 ? (
-                      orgs.map((org) => (
-                        <button
-                          type="button"
-                          id="resultsFilterButton"
-                          key={org}
-                          className={`list-group-item ${selectedOrg === org ? 'active' : ''}`}
-                          onClick={() => handleOrgFilter(org)}
-                        >
-                          {org}
-                        </button>
-                      ))
-                    ) : (
-                      <li className="list-group-item">No organizations available</li>
-                    )}
+                    {orgs.map((org) => (
+                      <button
+                        type="button"
+                        id="resultsFilterButton"
+                        key={org}
+                        className={`list-group-item ${selectedOrg === org ? 'active' : ''}`}
+                        onClick={() => handleOrgFilter(org)}
+                      >
+                        {org}
+                      </button>
+                    ))}
                   </ul>
                 )}
               </Row>
