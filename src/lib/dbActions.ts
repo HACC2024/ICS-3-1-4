@@ -96,3 +96,33 @@ export async function removeFavoriteDataset(userId: number, datasetId: number) {
     },
   });
 }
+
+export const editDataset = async (updatedDataset: {
+  id: number;
+  name: string;
+  url: string;
+  topic: string;
+  description: string;
+  organization: string;
+}) => {
+  try {
+    // Update only the specified fields in the dataset
+    const { id, name, url, topic, description, organization } = updatedDataset;
+
+    const updated = await prisma.dataset.update({
+      where: { id }, // Find the dataset by its ID
+      data: {
+        name, // Update Name
+        url, // Update URL
+        topic, // Update Topic
+        description, // Update Description
+        org: organization, // Update Organization
+      },
+    });
+
+    return updated; // Return the updated dataset
+  } catch (error) {
+    console.error('Error updating dataset:', error);
+    throw new Error('Failed to update dataset');
+  }
+};
