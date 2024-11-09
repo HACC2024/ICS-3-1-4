@@ -43,7 +43,10 @@ const NavBar: React.FC = () => {
                     Persona Quiz
                   </Nav.Link>,
                   <Nav.Link id="favorites" href="/favorites" key="favorites" active={pathName === '/favorites'}>
-                    Favorite Datasets
+                    Favorites
+                  </Nav.Link>,
+                  <Nav.Link id="favorites" href="/recommended" key="recommended" active={pathName === '/recommended'}>
+                    Recommended
                   </Nav.Link>,
                 ]
               : ''}
