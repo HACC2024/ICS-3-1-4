@@ -35,6 +35,23 @@ export const addPersonaQuizResponse = async (response: {
 };
 
 /**
+ * Updates the persona attribute in the user's profile.
+ * @param email - The email of the user to update.
+ * @param assignedPersona - The new persona to assign to the user.
+ */
+export const updateUserPersona = async (email: string, assignedPersona: string) => {
+  try {
+    await prisma.user.update({
+      where: { email },
+      data: { persona: assignedPersona },
+    });
+  } catch (error) {
+    console.error('Error updating user persona:', error);
+    throw new Error('Failed to update user persona');
+  }
+};
+
+/**
  * Creates a new user in the database.
  * @param credentials, an object with the following properties: email, password.
  */

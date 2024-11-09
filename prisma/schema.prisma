@@ -29,6 +29,7 @@ model User {
   role          Role      @default(USER)
   favorites     Dataset[]
   ownedDatasets Dataset[] @relation("UserOwnedDatasets")
+  persona       String    @default("communityMember")
 }
 
 model PersonaQuiz {
