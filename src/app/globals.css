@@ -63,6 +63,11 @@ body::before {
   color: var(--red) !important;
 }
 
+input:focus, .form-control:focus {
+  box-shadow: none !important;
+  border-color: #dee2e6 !important;
+}
+
 #searchIcon {
   background-color: transparent;
   color: black;
