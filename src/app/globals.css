@@ -63,6 +63,11 @@ body::before {
   color: var(--red) !important;
 }
 
+.navbar-toggler {
+  border-color: var(--white) !important;
+  background-color: var(--white) !important;
+}
+
 input:focus, .form-control:focus {
   box-shadow: none !important;
   border-color: #dee2e6 !important;
@@ -208,21 +213,15 @@ footer {
 .text-white {
   color: white !important;
 }
-/* globals.css */
+
 .text-contrast {
-  color: white; /* Or any contrasting color */
+  color: white;
   text-shadow: 
     1px 1px 20px rgba(0, 0, 0, 1), 
     1px 1px 20px rgba(0, 0, 0, 1), 
     1px 1px 20px rgba(0, 0, 0, 1), 
-    1px 1px 20px rgba(0, 0, 0, 1); /* Optional: adds subtle shadow for better readability */
+    1px 1px 20px rgba(0, 0, 0, 1);
 }
-
-/*.layout-container {
-  background-color: white;
-  padding-block: 40px !important;
-  padding-inline: 40px !important;
-}*/
 
 .home-page-container {
   background-color: transparent !important;
