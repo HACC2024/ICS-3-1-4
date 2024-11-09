@@ -1,9 +1,7 @@
-/* eslint-disable max-len */
-
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession, getSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { updateUserPersona } from '@/lib/dbActions';
 import { useRouter } from 'next/navigation';
 import { Button, Container, Form, Card, Row, Col, Alert } from 'react-bootstrap';
@@ -24,13 +22,21 @@ const PersonaPage = () => {
   ];
 
   useEffect(() => {
-    // Fetch the initial persona from the session data
+    // Fetch the initial persona from the database via API
     const fetchPersona = async () => {
-      const currentSession = await getSession();
-      setPersona(currentSession?.user?.persona || 'Unknown');
+      if (session?.user?.email) {
+        try {
+          const res = await fetch(`/api/getPersona?email=${session.user.email}`);
+          const data = await res.json();
+          setPersona(data.persona || null);
+        } catch (error) {
+          console.error('Error fetching persona:', error);
+          setPersona(null); // Handle case where persona is not found or there's an error
+        }
+      }
     };
     fetchPersona();
-  }, []);
+  }, [session?.user?.email]);
 
   const handlePersonaChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newPersona = e.target.value;
@@ -40,11 +46,11 @@ const PersonaPage = () => {
     try {
       setIsUpdating(true);
       await updateUserPersona(session?.user?.email as string, newPersona);
-      setIsUpdating(false);
       swal('Persona updated successfully!');
     } catch (error) {
       console.error('Failed to update persona:', error);
       swal('Error updating persona.');
+    } finally {
       setIsUpdating(false);
     }
   };
@@ -81,7 +87,12 @@ const PersonaPage = () => {
                 ))}
               </Form.Select>
             </Form.Group>
-            <Button variant="primary" onClick={handleRetakeQuiz} className="mt-3" style={{ backgroundColor: 'var(--blue)', border: 'none' }}>
+            <Button
+              variant="primary"
+              onClick={handleRetakeQuiz}
+              className="mt-3"
+              style={{ backgroundColor: 'var(--blue)', border: 'none' }}
+            >
               Retake Quiz
             </Button>
           </Col>
