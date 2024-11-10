@@ -2,7 +2,6 @@ import { Dataset } from '@prisma/client';
 import Link from 'next/link';
 import Image from 'next/image';
 
-/* Renders a single row in the List Dataset table. See list/page.tsx. */
 const DatasetItem = ({ id, name, url, topic, description, org, orgIcon }: Dataset) => (
   <tr>
     <td>{name}</td>
