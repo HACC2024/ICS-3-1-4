@@ -1,23 +1,23 @@
 'use client';
 
-import React from 'react';
-import { Carousel, Card, Row, Col, Container } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Carousel, Container, Row, Col } from 'react-bootstrap';
+import DatasetCard from './DatasetCard';
 
 interface Dataset {
-  description: string;
-  org: any;
   id: string;
   name: string;
-  url: string;
-  viewCount: number;
+  description: string;
   topic: string;
-  orgIcon: string; // Added orgIcon property
+  org: string;
+  orgIcon: string;
+  viewCount: number;
 }
 
 const TrendingDatasets: React.FC = () => {
-  const [datasets, setDatasets] = React.useState<Dataset[]>([]);
+  const [datasets, setDatasets] = useState<Dataset[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchDatasets = async () => {
       try {
         const response = await fetch(`/api/datasets?timestamp=${Date.now()}`, {
@@ -44,57 +44,29 @@ const TrendingDatasets: React.FC = () => {
   }
 
   return (
-    <div className="trending-section" style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h3 className="text-contrast" style={{ textAlign: 'center', marginBottom: '1rem', color: 'seashell' }}>
+    <div
+      className="trending-section"
+      style={{
+        marginTop: '50px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <h3
+        className="text-contrast"
+        style={{ textAlign: 'center', marginBottom: '1rem', color: 'seashell' }}
+      >
         Trending Datasets
       </h3>
       <Carousel controls indicators={false} interval={5000} pause="hover">
-        {groupedData.map((group, groupIndex) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Carousel.Item key={`group-${groupIndex}`}>
+        {groupedData.map((group) => (
+          <Carousel.Item key={group[0]?.id || `group-${Math.random()}`}>
             <Container style={{ minHeight: '250px' }}>
               <Row className="justify-content-center text-center">
-                {group.map((item) => (
-                  <Col key={item.id} md={group.length === 2 ? 6 : 4}>
-                    <button
-                      type="button"
-                      key={item.id}
-                      style={{
-                        padding: 0,
-                        border: 'none',
-                        background: 'none',
-                        width: '18rem',
-                        marginLeft: '',
-                        marginBottom: '2rem',
-                      }}
-                      onClick={() => (window.location.href = `/dataset/${item.id}`)}
-                    >
-                      <Card>
-                        <Card.Header>
-                          <Container className="d-flex justify-content-center">
-                            <Card.Img
-                              variant="top"
-                              src={item.orgIcon}
-                              alt={`${item.org} logo`}
-                              style={{ maxWidth: '100px', height: 'auto' }}
-                            />
-                          </Container>
-                          <Card.Title className="pt-3">{item.name}</Card.Title>
-                        </Card.Header>
-                        <Card.Body>
-                          <Card.Text>{item.description}</Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                          <Card.Text>
-                            {item.topic}
-                            <br />
-                            {item.viewCount}
-                            {' '}
-                            views
-                          </Card.Text>
-                        </Card.Footer>
-                      </Card>
-                    </button>
+                {group.map((dataset) => (
+                  <Col key={dataset.id} md={group.length === 2 ? 6 : 4}>
+                    <DatasetCard dataset={dataset} />
                   </Col>
                 ))}
               </Row>

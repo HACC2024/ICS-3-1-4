@@ -1,13 +1,16 @@
+// src/app/recommendations/page.tsx
+
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { useSession } from 'next-auth/react';
+import DatasetCard from '@/components/DatasetCard';
 
 type Recommendation = {
   id: number;
   persona: string;
-  dataset: { id: number; name: string, description: string, topic: string, org: string, orgIcon: string };
+  dataset: { id: string; name: string; description: string; topic: string; org: string; orgIcon: string };
 };
 
 const RecommendationsDisplay = () => {
@@ -69,41 +72,7 @@ const RecommendationsDisplay = () => {
       <h1 className="text-contrast">Recommended Datasets:</h1>
       <Row>
         {recommendations.map((rec) => (
-          <button
-            type="button"
-            key={rec.dataset.id}
-            style={{
-              padding: 0,
-              border: 'none',
-              background: 'none',
-              width: '18rem',
-              marginLeft: '2rem',
-              marginBottom: '2rem',
-            }}
-            onClick={() => (window.location.href = `/dataset/${rec.dataset.id}`)}
-          >
-            <Card>
-              <Card.Header>
-                <Container className="d-flex justify-content-center">
-                  <Card.Img
-                    variant="top"
-                    src={rec.dataset.orgIcon}
-                    alt={`${rec.dataset.org} logo`}
-                    style={{ maxWidth: '100px', height: 'auto' }}
-                  />
-                </Container>
-                <Card.Title className="pt-3">{rec.dataset.name}</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>{rec.dataset.description}</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <Card.Text>
-                  {rec.dataset.topic}
-                </Card.Text>
-              </Card.Footer>
-            </Card>
-          </button>
+          <DatasetCard key={rec.dataset.id} dataset={rec.dataset} />
         ))}
       </Row>
     </Container>
