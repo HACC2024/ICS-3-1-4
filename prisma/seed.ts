@@ -102,36 +102,61 @@ async function main() {
     }),
   );
 
-  // Step 4: Seed PersonaRecommendations using dataset IDs
+  // Step 4: Seed PersonaRecommendations using single datasetId entries
   await Promise.all(
     config.personaRecommendations.map(async (personaRec) => {
-      // Map dataset names to IDs using datasetMap
-      const datasetIds = (personaRec.recommendations || [])
-        .map((datasetName: string) => datasetMap[datasetName])
-        .filter(Boolean); // Ensure only valid dataset IDs
+      const { persona, datasetId } = personaRec;
+      if (!persona || !datasetId) return;
 
-      // Create or update a PersonaRecommendation for each datasetId
-      await Promise.all(
-        datasetIds.map(async (datasetId) => {
-          await prisma.personaRecommendation.upsert({
-            where: {
-              persona_datasetId: {
-                persona: personaRec.persona,
-                datasetId,
-              },
-            },
-            update: {}, // No fields specified here to prevent accidental overrides, but add fields if needed.
-            create: {
-              persona: personaRec.persona,
-              datasetId,
-            },
-          });
-        }),
-      );
+      // Upsert each persona-dataset recommendation individually
+      await prisma.personaRecommendation.upsert({
+        where: {
+          persona_datasetId: {
+            persona,
+            datasetId,
+          },
+        },
+        update: {}, // No fields specified here to prevent accidental overrides, but add fields if needed.
+        create: {
+          persona,
+          datasetId,
+        },
+      });
 
-      console.log(`  Stored recommendations for persona: ${personaRec.persona}`);
+      console.log(`  Stored recommendation for persona: ${persona} with dataset ID: ${datasetId}`);
     }),
   );
+
+  // // Step 4: Seed PersonaRecommendations using dataset IDs (for when seeding from data retrieved from OpenAI API)
+  // await Promise.all(
+  //   config.personaRecommendations.map(async (personaRec) => {
+  //     // Map dataset names to IDs using datasetMap
+  //     const datasetIds = (personaRec.recommendations || [])
+  //       .map((datasetName: string) => datasetMap[datasetName])
+  //       .filter(Boolean); // Ensure only valid dataset IDs
+
+  //     // Create or update a PersonaRecommendation for each datasetId
+  //     await Promise.all(
+  //       datasetIds.map(async (datasetId) => {
+  //         await prisma.personaRecommendation.upsert({
+  //           where: {
+  //             persona_datasetId: {
+  //               persona: personaRec.persona,
+  //               datasetId,
+  //             },
+  //           },
+  //           update: {}, // No fields specified here to prevent accidental overrides, but add fields if needed.
+  //           create: {
+  //             persona: personaRec.persona,
+  //             datasetId,
+  //           },
+  //         });
+  //       }),
+  //     );
+
+  //     console.log(`  Stored recommendations for persona: ${personaRec.persona}`);
+  //   }),
+  // );
 
   console.log('Seeding completed.');
 }
