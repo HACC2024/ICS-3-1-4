@@ -34,6 +34,9 @@ const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesCon
     <td>{dataset.description}</td>
     <td>{dataset.org}</td>
     <td>
+      <Link href={`/edit/${dataset.id}`}>Edit</Link>
+    </td>
+    <td>
       <DeleteButton
         userId={userId}
         isFavoritesContext={isFavoritesContext}

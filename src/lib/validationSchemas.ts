@@ -32,3 +32,12 @@ export const EditStuffSchema = Yup.object({
   condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
   owner: Yup.string().required(),
 });
+
+export const EditDatasetSchema = Yup.object().shape({
+  id: Yup.number().required(),
+  name: Yup.string().required('Name is required'),
+  url: Yup.string().url('URL is invalid').required('URL is required'),
+  topic: Yup.string().required('Topic is required'),
+  description: Yup.string().required('Description is required'),
+  org: Yup.string().required('Organization is required'),
+});
