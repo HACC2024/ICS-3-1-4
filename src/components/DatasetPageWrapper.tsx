@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Histogram from '@/components/Histogram';
 import Scatterplot from '@/components/Scatterplot';
 import { addFavoriteDataset, removeFavoriteDataset } from '@/lib/dbActions';
+import { prisma } from '@/lib/prisma';
 
 interface Dataset {
   id: number;
@@ -22,7 +23,7 @@ interface Dataset {
 
 interface DatasetPageWrapperProps {
   dataset: Dataset;
-  userId: number; // Assume userId is passed as a prop for now
+  userId: number;
 }
 
 export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapperProps) {
@@ -35,6 +36,26 @@ export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapp
   const [chartData, setChartData] = useState<number[]>([]);
   const [scatterData, setScatterData] = useState<Array<[number, number]>>([]);
   const [isFavorite, setIsFavorite] = useState(false);
+
+  // Fetch favorite status on mount
+  useEffect(() => {
+    async function fetchFavoriteStatus() {
+      try {
+        const user = await prisma.user.findUnique({
+          where: { id: userId },
+          include: { favorites: true },
+        });
+
+        if (user?.favorites.some((favorite) => favorite.id === dataset.id)) {
+          setIsFavorite(true);
+        }
+      } catch (error) {
+        console.error('Failed to fetch favorite status:', error);
+      }
+    }
+
+    fetchFavoriteStatus();
+  }, [userId, dataset.id]);
 
   // Function to handle favorite toggle
   async function handleFavoriteToggle() {
