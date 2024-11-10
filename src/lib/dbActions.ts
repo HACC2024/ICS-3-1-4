@@ -97,6 +97,22 @@ export async function removeFavoriteDataset(userId: number, datasetId: number) {
   });
 }
 
+/**
+ * Adds a dataset to the user's favorites list.
+ * @param userId - The ID of the user.
+ * @param datasetId - The ID of the dataset to add to favorites.
+ */
+export async function addFavoriteDataset(userId: number, datasetId: number) {
+  await prisma.user.update({
+    where: { id: userId },
+    data: {
+      favorites: {
+        connect: { id: datasetId },
+      },
+    },
+  });
+}
+
 export const editDataset = async (updatedDataset: {
   id: number;
   name: string;
