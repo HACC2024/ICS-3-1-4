@@ -11,6 +11,7 @@ Aloha Archives enables both general users and administrators to easily navigate 
 # How to use Aloha Archives
 ## Deployed version
 ### User Instructions
+The depolyed version of Aloha Archives can be accessed from: [https://aloha-archives.vercel.app/](https://aloha-archives.vercel.app/)
 1. Sign in/Sign up
     - Create an account or log into an existing one.
 2. Begin Exploring
