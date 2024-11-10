@@ -1,8 +1,8 @@
-'use client';
+// src/components/DatasetRow.tsx
 
 import React from 'react';
-import DeleteButton from '@/components/DeleteButton';
 import Link from 'next/link';
+import DeleteButton from '@/components/DeleteButton';
 
 interface Dataset {
   id: string;
