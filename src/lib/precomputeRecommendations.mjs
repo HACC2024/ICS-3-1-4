@@ -18,7 +18,8 @@ const personas = [
 async function getRecommendationsForPersona(persona, datasetList) {
   // Update the prompt to include dataset IDs alongside names
   const prompt = `Based on the persona of "${persona}", recommend relevant dataset IDs from the following list:\n\n${datasetList.map(
-    (dataset) => `ID: ${dataset.id}, Name: ${dataset.name}`,
+    (dataset) => `ID: ${dataset.id}, Name: ${dataset.name}, Topic: ${dataset.topic}, 
+    Description: ${dataset.description}, Org: ${dataset.org}, Org Icon: ${dataset.orgIcon}`,
   ).join('\n')}\n\nRespond with only the IDs, separated by commas.`;
 
   const completion = await openai.chat.completions.create({

@@ -10,7 +10,7 @@ async function exportPersonaRecommendations() {
   try {
     // Fetch data from personaRecommendation table with dataset details
     const recommendations = await prisma.personaRecommendation.findMany({
-      include: { dataset: { select: { id: true, name: true } } },
+      include: { dataset: { select: { id: true, name: true, topic: true, description: true, org: true, orgIcon: true } } },
     });
     console.log('Recommendations from DB:', recommendations);
 

@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Container } from 'react-bootstrap';
+import { Card, Container, Row } from 'react-bootstrap';
 import { useSession } from 'next-auth/react';
 
 type Recommendation = {
   id: number;
   persona: string;
-  dataset: { id: number; name: string };
+  dataset: { id: number; name: string, description: string, topic: string, org: string, orgIcon: string };
 };
 
 const RecommendationsDisplay = () => {
@@ -68,17 +67,45 @@ const RecommendationsDisplay = () => {
   return (
     <Container id="landing-page" fluid className="py-3">
       <h1 className="text-contrast">Recommended Datasets:</h1>
-      <ul>
+      <Row>
         {recommendations.map((rec) => (
-          <li key={rec.id}>
-            <ul>
-              <Link href={`/dataset/${rec.dataset.id}`}>
-                {rec.dataset.name}
-              </Link>
-            </ul>
-          </li>
+          <button
+            type="button"
+            key={rec.dataset.id}
+            style={{
+              padding: 0,
+              border: 'none',
+              background: 'none',
+              width: '18rem',
+              marginLeft: '2rem',
+              marginBottom: '2rem',
+            }}
+            onClick={() => (window.location.href = `/dataset/${rec.dataset.id}`)}
+          >
+            <Card>
+              <Card.Header>
+                <Container className="d-flex justify-content-center">
+                  <Card.Img
+                    variant="top"
+                    src={rec.dataset.orgIcon}
+                    alt={`${rec.dataset.org} logo`}
+                    style={{ maxWidth: '100px', height: 'auto' }}
+                  />
+                </Container>
+                <Card.Title className="pt-3">{rec.dataset.name}</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>{rec.dataset.description}</Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <Card.Text>
+                  {rec.dataset.topic}
+                </Card.Text>
+              </Card.Footer>
+            </Card>
+          </button>
         ))}
-      </ul>
+      </Row>
     </Container>
   );
 };
