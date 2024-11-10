@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import DeleteButton from '@/components/DeleteButton';
+import Link from 'next/link';
 
 interface Dataset {
   id: string;
@@ -33,6 +34,9 @@ const DatasetRow: React.FC<DatasetRowProps> = ({ userId, dataset, isFavoritesCon
     <td>{dataset.topic}</td>
     <td>{dataset.description}</td>
     <td>{dataset.org}</td>
+    <td>
+      <Link href={`/edit/${dataset.id}`}>Edit</Link>
+    </td>
     <td>
       <DeleteButton
         userId={userId}

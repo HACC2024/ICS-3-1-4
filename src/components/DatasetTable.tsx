@@ -36,6 +36,7 @@ const DatasetTable: React.FC<DatasetTableProps> = ({
         <th>Description</th>
         <th>Organization</th>
         <th>Actions</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
