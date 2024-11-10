@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Histogram from '@/components/Histogram';
 import Scatterplot from '@/components/Scatterplot';
+import { addFavoriteDataset, removeFavoriteDataset } from '@/lib/dbActions';
 
 interface Dataset {
   id: number;
@@ -21,9 +22,11 @@ interface Dataset {
 
 interface DatasetPageWrapperProps {
   dataset: Dataset;
+  userId: number; // Assume userId is passed as a prop for now
 }
 
-export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps) {
+export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapperProps) {
+  console.log('Received userId:', userId);
   const variables = Array.isArray(dataset.csvData) && dataset.csvData.length > 0 ? Object.keys(dataset.csvData[0]) : [];
   const [chartType, setChartType] = useState<'histogram' | 'scatterplot'>('histogram');
   const [selectedVariable, setSelectedVariable] = useState<string>(variables[0] ?? '');
@@ -32,6 +35,21 @@ export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps)
   const [chartData, setChartData] = useState<number[]>([]);
   const [scatterData, setScatterData] = useState<Array<[number, number]>>([]);
   const [isFavorite, setIsFavorite] = useState(false);
+
+  // Function to handle favorite toggle
+  async function handleFavoriteToggle() {
+    console.log('Toggling favorite status for userId:', userId, 'datasetId:', dataset.id);
+    try {
+      if (isFavorite) {
+        await removeFavoriteDataset(userId, dataset.id);
+      } else {
+        await addFavoriteDataset(userId, dataset.id);
+      }
+      setIsFavorite(!isFavorite); // Toggle the favorite state
+    } catch (error) {
+      console.error('Failed to update favorite status:', error);
+    }
+  }
 
   // Update data based on chart type and selected variables
   useEffect(() => {
@@ -176,7 +194,7 @@ export default function DatasetPageWrapper({ dataset }: DatasetPageWrapperProps)
         <button
           type="button"
           className="favorite-button"
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={handleFavoriteToggle}
           aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
         >
           <svg

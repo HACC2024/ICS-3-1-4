@@ -82,35 +82,48 @@ export async function changePassword(credentials: { email: string; password: str
 }
 
 /**
- * Removes a dataset from the user's favorites list.
- * @param userId - The ID of the user.
- * @param datasetId - The ID of the dataset to remove from favorites.
- */
-export async function removeFavoriteDataset(userId: number, datasetId: number) {
-  await prisma.user.update({
-    where: { id: userId },
-    data: {
-      favorites: {
-        disconnect: { id: datasetId },
-      },
-    },
-  });
-}
-
-/**
  * Adds a dataset to the user's favorites list.
  * @param userId - The ID of the user.
  * @param datasetId - The ID of the dataset to add to favorites.
  */
 export async function addFavoriteDataset(userId: number, datasetId: number) {
-  await prisma.user.update({
-    where: { id: userId },
-    data: {
-      favorites: {
-        connect: { id: datasetId },
+  console.log('Adding favorite: userId:', userId, 'datasetId:', datasetId);
+  try {
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        favorites: {
+          connect: { id: datasetId },
+        },
       },
-    },
-  });
+    });
+  } catch (error: any) {
+    // Cast error to any
+    console.error('Error adding dataset to favorites:', error.message || error);
+    console.error('Full error details:', error); // Log the full error object for more information
+    throw new Error('Failed to add dataset to favorites');
+  }
+}
+
+/**
+ * Removes a dataset from the user's favorites list.
+ * @param userId - The ID of the user.
+ * @param datasetId - The ID of the dataset to remove from favorites.
+ */
+export async function removeFavoriteDataset(userId: number, datasetId: number) {
+  try {
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        favorites: {
+          disconnect: { id: datasetId },
+        },
+      },
+    });
+  } catch (error) {
+    console.error('Error removing dataset from favorites:', error);
+    throw new Error('Failed to remove dataset from favorites');
+  }
 }
 
 export const editDataset = async (updatedDataset: {
