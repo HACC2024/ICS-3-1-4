@@ -35,6 +35,7 @@ export default async function Page() {
           topic: true,
           description: true,
           org: true,
+          orgIcon: true,
         },
       },
     },
@@ -47,7 +48,7 @@ export default async function Page() {
 
   return (
     <div>
-      <ListFavoriteDatasetsPage userId={userId.toString()} datasets={datasets} />
+      <ListFavoriteDatasetsPage datasets={datasets} />
     </div>
   );
 }
