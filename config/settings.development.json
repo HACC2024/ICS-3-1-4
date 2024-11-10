@@ -833,24 +833,200 @@
   ],
   "personaRecommendations": [
     {
-      "persona": "educator",
-      "recommendations": []
-    },
-    {
-      "persona": "researcher",
-      "recommendations": []
-    },
-    {
-      "persona": "communityMember",
-      "recommendations": []
-    },
-    {
-      "persona": "publicInformer",
-      "recommendations": []
-    },
-    {
+      "id": 1,
       "persona": "businessDecisionMaker",
-      "recommendations": []
+      "datasetId": 6,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 6, "name": "Oahu Employment Data" }
+    },
+    {
+      "id": 2,
+      "persona": "businessDecisionMaker",
+      "datasetId": 30,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 30, "name": "Hawaii Census Data" }
+    },
+    {
+      "id": 3,
+      "persona": "businessDecisionMaker",
+      "datasetId": 8,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 8, "name": "DBEDT Section 1: Population Data in Hawaii" }
+    },
+    {
+      "id": 4,
+      "persona": "businessDecisionMaker",
+      "datasetId": 38,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 38, "name": "Hawaii Small Business Data" }
+    },
+    {
+      "id": 5,
+      "persona": "communityMember",
+      "datasetId": 3,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 3, "name": "Hawaii Rainfall Data by Region" }
+    },
+    {
+      "id": 7,
+      "persona": "educator",
+      "datasetId": 8,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 8, "name": "DBEDT Section 1: Population Data in Hawaii" }
+    },
+    {
+      "id": 8,
+      "persona": "communityMember",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 6,
+      "persona": "researcher",
+      "datasetId": 24,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 24, "name": "Hawaii Air Quality Data" }
+    },
+    {
+      "id": 9,
+      "persona": "communityMember",
+      "datasetId": 24,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 24, "name": "Hawaii Air Quality Data" }
+    },
+    {
+      "id": 10,
+      "persona": "educator",
+      "datasetId": 3,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 3, "name": "Hawaii Rainfall Data by Region" }
+    },
+    {
+      "id": 11,
+      "persona": "communityMember",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 12,
+      "persona": "communityMember",
+      "datasetId": 12,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 12, "name": "Hawaii Climate Adaptation Projects" }
+    },
+    {
+      "id": 13,
+      "persona": "educator",
+      "datasetId": 40,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 40, "name": "Hawaii School Enrollment Statistics" }
+    },
+    {
+      "id": 14,
+      "persona": "researcher",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 15,
+      "persona": "researcher",
+      "datasetId": 12,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 12, "name": "Hawaii Climate Adaptation Projects" }
+    },
+    {
+      "id": 16,
+      "persona": "educator",
+      "datasetId": 20,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 20, "name": "Hawaii Educational Attainment Levels" }
+    },
+    {
+      "id": 19,
+      "persona": "researcher",
+      "datasetId": 1,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 1, "name": "Native Hawaiian Plant Species" }
+    },
+    {
+      "id": 17,
+      "persona": "educator",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 18,
+      "persona": "educator",
+      "datasetId": 30,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 30, "name": "Hawaii Census Data" }
+    },
+    {
+      "id": 20,
+      "persona": "educator",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 21,
+      "persona": "educator",
+      "datasetId": 1,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 1, "name": "Native Hawaiian Plant Species" }
+    },
+    {
+      "id": 22,
+      "persona": "researcher",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 23,
+      "persona": "researcher",
+      "datasetId": 35,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 35, "name": "Hawaii Agriculture Crop Data" }
+    },
+    {
+      "id": 24,
+      "persona": "publicInformer",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 25,
+      "persona": "publicInformer",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 26,
+      "persona": "publicInformer",
+      "datasetId": 12,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 12, "name": "Hawaii Climate Adaptation Projects" }
+    },
+    {
+      "id": 27,
+      "persona": "publicInformer",
+      "datasetId": 24,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 24, "name": "Hawaii Air Quality Data" }
+    },
+    {
+      "id": 28,
+      "persona": "publicInformer",
+      "datasetId": 37,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 37, "name": "Hawaii Coastal Water Quality" }
     }
-  ]
+  ]  
 }
