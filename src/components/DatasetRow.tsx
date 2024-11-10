@@ -1,4 +1,4 @@
-// src/components/DatasetRow.tsx
+'use client';
 
 import React from 'react';
 import DeleteButton from '@/components/DeleteButton';
