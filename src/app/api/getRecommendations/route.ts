@@ -22,6 +22,10 @@ export async function GET(request: Request) {
           select: {
             id: true,
             name: true,
+            description: true,
+            topic: true,
+            org: true,
+            orgIcon: true,
           },
         },
       },
