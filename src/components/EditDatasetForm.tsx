@@ -1,32 +1,40 @@
+'use client';
+
 // edit/EditDatasetForm.tsx
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Dataset } from '@prisma/client';
+// import { Dataset } from '@prisma/client';
 import { EditDatasetSchema } from '@/lib/validationSchemas';
 import { editDataset } from '@/lib/dbActions';
 
-const onSubmit = async (data: Dataset) => {
-  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  const formattedData = { ...data, organization: data.org };
+type EditableDatasetFields = {
+  id: number;
+  name: string;
+  url: string;
+  topic: string;
+  description: string;
+  org: string;
+};
+const onSubmit = async (data: EditableDatasetFields) => {
+  const formattedData = { ...data, organization: data.org, id: data.id };
   await editDataset(formattedData);
   swal('Success', 'Your item has been updated', 'success', {
     timer: 2000,
   });
 };
 
-const EditDatasetForm = ({ dataset }: { dataset: Dataset }) => {
+const EditDatasetForm = ({ dataset }: { dataset: EditableDatasetFields }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Dataset>({
+  } = useForm<EditableDatasetFields>({
     resolver: yupResolver(EditDatasetSchema),
     defaultValues: dataset, // Populate form fields with dataset values
   });
-    // console.log(stuff);
 
   return (
     <Card>

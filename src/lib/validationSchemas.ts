@@ -34,6 +34,7 @@ export const EditStuffSchema = Yup.object({
 });
 
 export const EditDatasetSchema = Yup.object().shape({
+  id: Yup.number().required(),
   name: Yup.string().required('Name is required'),
   url: Yup.string().url('URL is invalid').required('URL is required'),
   topic: Yup.string().required('Topic is required'),

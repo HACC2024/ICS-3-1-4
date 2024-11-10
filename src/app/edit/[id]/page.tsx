@@ -1,4 +1,3 @@
-// edit/page.tsx
 import { getServerSession } from 'next-auth';
 import { notFound } from 'next/navigation';
 import { Dataset } from '@prisma/client';
@@ -8,20 +7,27 @@ import { prisma } from '@/lib/prisma';
 import EditDatasetForm from '@/components/EditDatasetForm';
 
 export default async function EditDatasetPage({ params }: { params: { id: string | string[] } }) {
-  // Protect the page, only logged in users can access it.
+  // Protect the page, only logged-in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
     session as {
       user: { email: string; id: string; randomKey: string };
-      // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
-  const id = Number(Array.isArray(params?.id) ? params?.id[0] : params?.id);
-  // console.log(id);
+
+  // Extract and validate `id`
+  const rawId = Array.isArray(params?.id) ? params?.id[0] : params?.id;
+  const id = Number(rawId);
+
+  if (Number.isNaN(id)) {
+    return notFound(); // Handle invalid `id` gracefully
+  }
+
+  // Fetch the dataset
   const dataset: Dataset | null = await prisma.dataset.findUnique({
     where: { id },
   });
-    // console.log(stuff);
+
   if (!dataset) {
     return notFound();
   }
