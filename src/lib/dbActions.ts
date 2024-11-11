@@ -1,6 +1,8 @@
 'use server';
 
 import { hash } from 'bcrypt';
+import Papa from 'papaparse';
+import { Prisma } from '@prisma/client';
 import { prisma } from './prisma';
 
 /**
@@ -97,30 +99,37 @@ export async function removeFavoriteDataset(userId: number, datasetId: number) {
   });
 }
 
-export const editDataset = async (updatedDataset: {
-  id: number;
-  name: string;
-  url: string;
-  topic: string;
-  description: string;
-  organization: string;
-}) => {
+export const editDataset = async (formData: FormData) => {
   try {
-    // Update only the specified fields in the dataset
-    const { id, name, url, topic, description, organization } = updatedDataset;
+    // Extract the JSON data string from FormData and parse it
+    const data = JSON.parse(formData.get('data') as string);
 
+    // Extract the file if present
+    const file = formData.get('file') as File | null;
+    let csvData: Prisma.JsonValue | null = null;
+    let fileName: string | null = null;
+
+    if (file) {
+      // Read and parse CSV file if a file was uploaded
+      const fileContent = await file.text();
+      csvData = Papa.parse(fileContent, { header: true }).data as Prisma.JsonValue;
+      fileName = file.name;
+    }
+
+    // Update the dataset in the database
     const updated = await prisma.dataset.update({
-      where: { id }, // Find the dataset by its ID
+      where: { id: data.id },
       data: {
-        name, // Update Name
-        url, // Update URL
-        topic, // Update Topic
-        description, // Update Description
-        org: organization, // Update Organization
+        name: data.name,
+        url: data.url,
+        topic: data.topic,
+        description: data.description,
+        org: data.organization,
+        ...(fileName && csvData && { fileName, csvData }), // Only add if both fileName and csvData are provided
       },
     });
 
-    return updated; // Return the updated dataset
+    return updated;
   } catch (error) {
     console.error('Error updating dataset:', error);
     throw new Error('Failed to update dataset');
