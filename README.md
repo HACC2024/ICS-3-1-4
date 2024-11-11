@@ -17,6 +17,7 @@ The deployed version of Aloha Archives can be accessed from: [https://aloha-arch
 2. Begin Exploring
     - Start searching for a database either using the search bar, the filter toggles, or browsing trending datasets on the home page.
     - Go straight to the dataset explore page by clicking on the 'Datasets' tab.
+    - Get hands-on with the data via interactive visualizations.
 3. Save your favorites
     - While browsing the dataset explore page, you have the option to "favorite" datasets and view them under the 'Favorites' tab
 4. Learn your Persona
