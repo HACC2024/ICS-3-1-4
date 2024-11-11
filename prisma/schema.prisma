@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // for local development
+  //url      = env("DATABASE_URL")
+  // // for Vercel
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  password      String
+  role          Role      @default(USER)
+  favorites     Dataset[]
+  ownedDatasets Dataset[] @relation("UserOwnedDatasets")
+  persona       String    @default("communityMember")
+}
+
+model PersonaQuiz {
+  id              Int    @id @default(autoincrement())
+  goal            String
+  usage           String
+  comfortLevel    String
+  dataType        String
+  interaction     String
+  email           String
+  assignedPersona String
+}
+
+model Dataset {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  url         String
+  viewCount   Int    @default(0)
+  topic       String
+  description String
+  org         String
+  orgIcon     String
+  csvData     Json?
+  fileName    String @default("")
+
+  // For users who favorited the dataset
+  users User[]
+
+  // For admin who manage the dataset
+  ownerId Int?
+  owner   User? @relation("UserOwnedDatasets", fields: [ownerId], references: [id])
+
+  recommendations PersonaRecommendation[] @relation("DatasetRecommendations")
+}
+
+model PersonaRecommendation {
+  id        Int      @id @default(autoincrement())
+  persona   String
+  datasetId Int
+  dataset   Dataset  @relation("DatasetRecommendations", fields: [datasetId], references: [id])
+  updatedAt DateTime @updatedAt
+
+  @@unique([persona, datasetId]) // Composite unique constraint
+}

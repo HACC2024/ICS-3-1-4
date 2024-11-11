@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+html,
+body {
+  --bs-light-rgb: 236, 236, 236;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: var(--hind);
+  background-image: url('/Background.jpg'); /* Replace with the correct file name */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* Adjust transparency */
+  z-index: -1;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --red: #d32f2f; /* Bright red */
+  --black: #212121; /* Deep black */
+  --white: #ffffff; /* Pure white for contrast */
+  --hind: 'Hind', sans-serif;
+  --teal: #50d8d7;
+  --blue: #547aa5;
+  --dark-gray: #4f5165;
+  --charcoal: #474044;
+  --dark-green: #293132;
+  --hind: 'Hind', sans-serif;
+}
+
+.custom-navbar {
+  font-family: 'Crimson Text', serif;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.custom-navbar .nav-link,
+.custom-navbar .nav-dropdown-item {
+  color: var(--white) !important;
+  font-size: 20px;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-dropdown-item:hover {
+  color: var(--red) !important;
+}
+
+.navbar-toggler {
+  border-color: var(--white) !important;
+  background-color: var(--white) !important;
+}
+
+input:focus,
+.form-control:focus {
+  box-shadow: none !important;
+  border-color: #dee2e6 !important;
+}
+
+#searchIcon {
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+
+.btn.filter-button {
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: white;
+  color: var(--black);
+  border-color: var(seashell);
+  border: none;
+}
+
+.btn.filter-button:hover {
+  background-color: var(--teal);
+  color: white;
+}
+
+a,
+.btn {
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+
+/* Center arrows vertically and move them to the side */
+.carousel-control-prev,
+.carousel-control-next {
+  width: min-content !important; /* Adjust width to control how far the arrows are positioned from the carousel */
+  height: min-content;
+  top: 50% !important;
+}
+
+.carousel-control-prev {
+  left: -2rem !important; /* Move the left arrow further to the left */
+}
+
+.carousel-control-next {
+  right: -2rem !important; /* Move the right arrow further to the right */
+}
+
+/* Center the arrow icons vertically */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--dark-green);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+/* Optional hover effect for better visibility */
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: var(--teal);
+}
+
+footer {
+  font-family: 'Playfair Display', serif;
+  background-color: var(--black);
+  color: var(--white);
+  height: 100px;
+}
+
+footer a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--red);
+}
+.custom-navbar,
+footer {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Adds depth to text */
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+#filterMenu {
+  background-color: var(--blue);
+  color: white;
+  font-family: var(--hind);
+}
+
+.filter-height {
+  height: min-content;
+  border-radius: 20px;
+}
+
+#hind {
+  font-family: var(--hind);
+}
+
+#resultsFilterButton.active {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+/* For Data Set Page */
+
+.dataset-table-container {
+  background-color: white;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.org-icon {
+  width: 200px;
+  height: 200px;
+}
+
+.table {
+  width: 100%;
+}
+
+.histogram-container {
+  text-align: center;
+}
+
+.dataset-table-container a {
+  color: var(--blue) !important;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+.dataset-table-container a:hover {
+  color: var(--teal) !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.text-contrast {
+  color: white;
+  text-shadow:
+    1px 1px 20px rgba(0, 0, 0, 1),
+    1px 1px 20px rgba(0, 0, 0, 1),
+    1px 1px 20px rgba(0, 0, 0, 1),
+    1px 1px 20px rgba(0, 0, 0, 1);
+}
+
+.home-page-container {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.upload-button {
+  width: 21.5%;
+  cursor: pointer;
+}
+
+
+/*favorite button stuff*/
+.favorite-section {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+
+.favorite-button.favorited {
+  color: red; /* Filled heart color */
+}
+
+.favorite-button:not(.favorited) {
+  color: #ccc; /* Outline heart color */
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
+.custom-btn {
+  background-color: var(--blue) !important;
+  border: none !important;
+}
+

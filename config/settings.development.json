@@ -1,0 +1,1032 @@
+{
+  "defaultAccounts": [
+    { "email": "admin@aloha-archives.com", "password": "admin2024!", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "persona": "businessDecisionMaker" },
+    { "email": "user@aloha-archives.com", "password": "user1234!", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[], "persona": "communityMember"}
+  ],
+
+  "defaultDataMetadata": [
+    {
+      "name": "Community Health Dashboard",
+      "url": "https://www.hawaiihealthmatters.org/index.php?module=indicators&controller=index",
+      "viewCount": 120,
+      "topic": "Health",
+      "description": "Dashboard providing health indicators for Hawaii communities.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Indicator": 1, "Year": 2020, "Value": 23.5 },
+        { "Indicator": 1, "Year": 2021, "Value": 24.1 },
+        { "Indicator": 1, "Year": 2022, "Value": 25.2 },
+        { "Indicator": 2, "Year": 2020, "Value": 8.2 },
+        { "Indicator": 2, "Year": 2021, "Value": 8.5 },
+        { "Indicator": 2, "Year": 2022, "Value": 8.9 },
+        { "Indicator": 3, "Year": 2020, "Value": 14.8 },
+        { "Indicator": 3, "Year": 2021, "Value": 14.5 },
+        { "Indicator": 3, "Year": 2022, "Value": 14.3 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Bus Routes for the City and County of Honolulu",
+      "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::bus-routes/explore",
+      "viewCount": 130,
+      "topic": "Transportation",
+      "description": "Detailed information about bus routes in Honolulu.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "RouteID": 1, "RouteName": 1, "Borough": 1, "Distance": 12.5 },
+        { "RouteID": 2, "RouteName": 2, "Borough": 1, "Distance": 18.7 },
+        { "RouteID": 3, "RouteName": 3, "Borough": 2, "Distance": 20.3 },
+        { "RouteID": 4, "RouteName": 4, "Borough": 2, "Distance": 22.1 },
+        { "RouteID": 5, "RouteName": 5, "Borough": 1, "Distance": 15.6 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "DBEDT Section 1: Population Data in Hawaii",
+      "url": "https://dbedt.hawaii.gov/economic/databook/2023-individual/_01/",
+      "viewCount": 140,
+      "topic": "Demographics",
+      "description": "Population statistics and trends from DBEDT.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "Population": 1415872, "GrowthRate": 0.2 },
+        { "Year": 2021, "Population": 1420000, "GrowthRate": 0.3 },
+        { "Year": 2022, "Population": 1432500, "GrowthRate": 0.4 },
+        { "Year": 2023, "Population": 1445000, "GrowthRate": 0.5 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "2023 ACS Demographics and Housing Estimates",
+      "url": "https://data.census.gov/table?g=040XX00US15&y=2023&d=ACS+1-Year+Estimates+Data+Profiles",
+      "viewCount": 750,
+      "topic": "Demographics",
+      "description": "Annual population and housing estimates from the ACS.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "AGEP": 30, "SEX": 1, "RACE": 1, "PUMA": 1, "HINCP": 50000 },
+        { "AGEP": 45, "SEX": 0, "RACE": 2, "PUMA": 2, "HINCP": 75000 },
+        { "AGEP": 22, "SEX": 1, "RACE": 3, "PUMA": 3, "HINCP": 42000 },
+        { "AGEP": 38, "SEX": 0, "RACE": 4, "PUMA": 4, "HINCP": 62000 },
+        { "AGEP": 60, "SEX": 1, "RACE": 5, "PUMA": 5, "HINCP": 82000 },
+        { "AGEP": 28, "SEX": 0, "RACE": 2, "PUMA": 6, "HINCP": 53000 },
+        { "AGEP": 51, "SEX": 1, "RACE": 6, "PUMA": 7, "HINCP": 72000 },
+        { "AGEP": 65, "SEX": 0, "RACE": 1, "PUMA": 8, "HINCP": 91000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Existing Bike Facilities for the City and County of Honolulu",
+      "url": "https://prod-histategis.opendata.arcgis.com/datasets/cchnl::existing-bike-facilities/explore",
+      "viewCount": 60,
+      "topic": "Transportation",
+      "description": "Locations of bike facilities in Honolulu.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "FacilityID": 1, "Type": 1, "Length": 2.5, "Location": 1 },
+        { "FacilityID": 2, "Type": 2, "Length": 3.2, "Location": 2 },
+        { "FacilityID": 3, "Type": 3, "Length": 1.8, "Location": 3 },
+        { "FacilityID": 4, "Type": 4, "Length": 4.5, "Location": 4 },
+        { "FacilityID": 5, "Type": 1, "Length": 2.2, "Location": 5 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "2022 ACS Hawaii - Age and Population Estimates",
+      "url": "",
+      "viewCount": 500,
+      "topic": "Demographics",
+      "description": "Age and population estimates for Hawaii in 2022.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "AGEP": 23, "SEX": 0, "RACE": 1, "PUMA": 1, "PWGTP": 45 },
+        { "AGEP": 35, "SEX": 1, "RACE": 2, "PUMA": 2, "PWGTP": 60 },
+        { "AGEP": 29, "SEX": 0, "RACE": 3, "PUMA": 3, "PWGTP": 54 },
+        { "AGEP": 42, "SEX": 1, "RACE": 4, "PUMA": 4, "PWGTP": 72 },
+        { "AGEP": 18, "SEX": 0, "RACE": 5, "PUMA": 5, "PWGTP": 33 },
+        { "AGEP": 55, "SEX": 1, "RACE": 1, "PUMA": 6, "PWGTP": 88 },
+        { "AGEP": 67, "SEX": 0, "RACE": 2, "PUMA": 7, "PWGTP": 49 },
+        { "AGEP": 73, "SEX": 1, "RACE": 6, "PUMA": 8, "PWGTP": 65 },
+        { "AGEP": 28, "SEX": 0, "RACE": 2, "PUMA": 9, "PWGTP": 58 },
+        { "AGEP": 31, "SEX": 1, "RACE": 1, "PUMA": 10, "PWGTP": 80 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Air Quality Data",
+      "url": "https://www.hawaiihealthmatters.org/environment/air-quality",
+      "viewCount": 75,
+      "topic": "Environment",
+      "description": "Real-time air quality information in different areas of Hawaii.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Station": "Honolulu", "Year": 2021, "PM2.5": 7.1, "PM10": 10.2 },
+        { "Station": "Hilo", "Year": 2021, "PM2.5": 5.5, "PM10": 7.3 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Native Hawaiian Plant Species",
+      "url": "https://hawaii.plantatlas.com/species/native",
+      "viewCount": 120,
+      "topic": "Environment",
+      "description": "Database of native Hawaiian plant species with habitat information.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "Species": "Hau", "Family": "Malvaceae", "Habitat": "Coastal" },
+        { "Species": "Ohia", "Family": "Myrtaceae", "Habitat": "Forest" }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Oahu Real Estate Market Trends",
+      "url": "https://www.hicentral.com/market-trends",
+      "viewCount": 230,
+      "topic": "Economy",
+      "description": "Monthly trends for real estate on Oahu, including sales and prices.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Month": "Jan", "Year": 2022, "MedianPrice": 870000, "Sales": 110 },
+        { "Month": "Feb", "Year": 2022, "MedianPrice": 890000, "Sales": 100 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Coral Reefs Health",
+      "url": "https://coralreef.gov/hawaii/status",
+      "viewCount": 140,
+      "topic": "Environment",
+      "description": "Annual report on coral reef health and conservation efforts.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Location": "Molokini", "Year": 2020, "CoralCover": 45.3, "Bleaching": 15 },
+        { "Location": "Kauai", "Year": 2020, "CoralCover": 30.2, "Bleaching": 20 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "COVID-19 Vaccination Rates in Hawaii",
+      "url": "https://health.hawaii.gov/covid19/vaccine",
+      "viewCount": 410,
+      "topic": "Health",
+      "description": "Tracking vaccination rates across different islands in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Island": "Oahu", "Vaccinated": 74.5, "Unvaccinated": 25.5 },
+        { "Island": "Maui", "Vaccinated": 67.3, "Unvaccinated": 32.7 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "2023 Hawaii Household Income Survey",
+      "url": "https://dbedt.hawaii.gov/income",
+      "viewCount": 180,
+      "topic": "Economy",
+      "description": "Income distribution among households in Hawaii for the year 2023.",
+      "org": "DBEDT",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "IncomeBracket": "<$25k", "Percentage": 10.2 },
+        { "IncomeBracket": "$25k-$50k", "Percentage": 20.1 },
+        { "IncomeBracket": "$50k-$75k", "Percentage": 25.5 },
+        { "IncomeBracket": ">$100k", "Percentage": 44.2 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Kauai Shoreline Erosion Data",
+      "url": "https://www.soest.hawaii.edu/erosion/kauai",
+      "viewCount": 130,
+      "topic": "Environment",
+      "description": "Study on shoreline erosion and its impact on Kauai beaches.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Year": 2019, "Location": "Poipu", "ErosionRate": 0.5 },
+        { "Year": 2019, "Location": "Hanalei", "ErosionRate": 0.9 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Maui Water Usage Statistics",
+      "url": "https://water.maui.gov/usage",
+      "viewCount": 190,
+      "topic": "Environment",
+      "description": "Annual water usage statistics for Maui by sector.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Sector": "Residential", "Year": 2021, "Usage": 120000 },
+        { "Sector": "Agriculture", "Year": 2021, "Usage": 70000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Educational Attainment Levels",
+      "url": "https://census.gov/education-hawaii",
+      "viewCount": 250,
+      "topic": "Education",
+      "description": "Educational attainment statistics for residents of Hawaii.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "Level": "High School", "Percentage": 30.2 },
+        { "Level": "Bachelor's", "Percentage": 20.8 },
+        { "Level": "Graduate", "Percentage": 9.5 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Tourism Data for Hawaii - Monthly Visitors",
+      "url": "https://dbedt.hawaii.gov/tourism",
+      "viewCount": 970,
+      "topic": "Economy",
+      "description": "Statistics on visitor arrivals in Hawaii by month.",
+      "org": "DBEDT",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Month": 1, "Year": 2013, "Visitors": 600000 },
+        { "Month": 2, "Year": 2013, "Visitors": 590000 },
+        { "Month": 3, "Year": 2013, "Visitors": 620000 },
+        { "Month": 4, "Year": 2013, "Visitors": 650000 },
+        { "Month": 5, "Year": 2013, "Visitors": 670000 },
+        { "Month": 6, "Year": 2013, "Visitors": 710000 },
+        { "Month": 7, "Year": 2013, "Visitors": 750000 },
+        { "Month": 8, "Year": 2013, "Visitors": 720000 },
+        { "Month": 9, "Year": 2013, "Visitors": 680000 },
+        { "Month": 10, "Year": 2013, "Visitors": 690000 },
+        { "Month": 11, "Year": 2013, "Visitors": 650000 },
+        { "Month": 12, "Year": 2013, "Visitors": 630000 },
+        { "Month": 1, "Year": 2014, "Visitors": 605000 },
+        { "Month": 2, "Year": 2014, "Visitors": 595000 },
+        { "Month": 3, "Year": 2014, "Visitors": 625000 },
+        { "Month": 4, "Year": 2014, "Visitors": 655000 },
+        { "Month": 5, "Year": 2014, "Visitors": 675000 },
+        { "Month": 6, "Year": 2014, "Visitors": 715000 },
+        { "Month": 7, "Year": 2014, "Visitors": 755000 },
+        { "Month": 8, "Year": 2014, "Visitors": 725000 },
+        { "Month": 9, "Year": 2014, "Visitors": 685000 },
+        { "Month": 10, "Year": 2014, "Visitors": 695000 },
+        { "Month": 11, "Year": 2014, "Visitors": 655000 },
+        { "Month": 12, "Year": 2014, "Visitors": 635000 },
+        { "Month": 1, "Year": 2015, "Visitors": 610000 },
+        { "Month": 2, "Year": 2015, "Visitors": 600000 },
+        { "Month": 3, "Year": 2015, "Visitors": 630000 },
+        { "Month": 4, "Year": 2015, "Visitors": 660000 },
+        { "Month": 5, "Year": 2015, "Visitors": 680000 },
+        { "Month": 6, "Year": 2015, "Visitors": 720000 },
+        { "Month": 7, "Year": 2015, "Visitors": 760000 },
+        { "Month": 8, "Year": 2015, "Visitors": 730000 },
+        { "Month": 9, "Year": 2015, "Visitors": 690000 },
+        { "Month": 10, "Year": 2015, "Visitors": 700000 },
+        { "Month": 11, "Year": 2015, "Visitors": 660000 },
+        { "Month": 12, "Year": 2015, "Visitors": 640000 },
+        { "Month": 1, "Year": 2016, "Visitors": 615000 },
+        { "Month": 2, "Year": 2016, "Visitors": 605000 },
+        { "Month": 3, "Year": 2016, "Visitors": 635000 },
+        { "Month": 4, "Year": 2016, "Visitors": 665000 },
+        { "Month": 5, "Year": 2016, "Visitors": 685000 },
+        { "Month": 6, "Year": 2016, "Visitors": 725000 },
+        { "Month": 7, "Year": 2016, "Visitors": 765000 },
+        { "Month": 8, "Year": 2016, "Visitors": 735000 },
+        { "Month": 9, "Year": 2016, "Visitors": 695000 },
+        { "Month": 10, "Year": 2016, "Visitors": 705000 },
+        { "Month": 11, "Year": 2016, "Visitors": 665000 },
+        { "Month": 12, "Year": 2016, "Visitors": 645000 },
+        { "Month": 1, "Year": 2017, "Visitors": 620000 },
+        { "Month": 2, "Year": 2017, "Visitors": 610000 },
+        { "Month": 3, "Year": 2017, "Visitors": 640000 },
+        { "Month": 4, "Year": 2017, "Visitors": 670000 },
+        { "Month": 5, "Year": 2017, "Visitors": 690000 },
+        { "Month": 6, "Year": 2017, "Visitors": 730000 },
+        { "Month": 7, "Year": 2017, "Visitors": 770000 },
+        { "Month": 8, "Year": 2017, "Visitors": 740000 },
+        { "Month": 9, "Year": 2017, "Visitors": 700000 },
+        { "Month": 10, "Year": 2017, "Visitors": 710000 },
+        { "Month": 11, "Year": 2017, "Visitors": 670000 },
+        { "Month": 12, "Year": 2017, "Visitors": 650000 },
+        { "Month": 1, "Year": 2018, "Visitors": 625000 },
+        { "Month": 2, "Year": 2018, "Visitors": 615000 },
+        { "Month": 3, "Year": 2018, "Visitors": 645000 },
+        { "Month": 4, "Year": 2018, "Visitors": 675000 },
+        { "Month": 5, "Year": 2018, "Visitors": 695000 },
+        { "Month": 6, "Year": 2018, "Visitors": 735000 },
+        { "Month": 7, "Year": 2018, "Visitors": 775000 },
+        { "Month": 8, "Year": 2018, "Visitors": 745000 },
+        { "Month": 9, "Year": 2018, "Visitors": 705000 },
+        { "Month": 10, "Year": 2018, "Visitors": 715000 },
+        { "Month": 11, "Year": 2018, "Visitors": 675000 },
+        { "Month": 12, "Year": 2018, "Visitors": 655000 },
+        { "Month": 1, "Year": 2019, "Visitors": 630000 },
+        { "Month": 2, "Year": 2019, "Visitors": 620000 },
+        { "Month": 3, "Year": 2019, "Visitors": 650000 },
+        { "Month": 4, "Year": 2019, "Visitors": 680000 },
+        { "Month": 5, "Year": 2019, "Visitors": 700000 },
+        { "Month": 6, "Year": 2019, "Visitors": 740000 },
+        { "Month": 7, "Year": 2019, "Visitors": 780000 },
+        { "Month": 8, "Year": 2019, "Visitors": 750000 },
+        { "Month": 9, "Year": 2019, "Visitors": 710000 },
+        { "Month": 10, "Year": 2019, "Visitors": 720000 },
+        { "Month": 11, "Year": 2019, "Visitors": 680000 },
+        { "Month": 12, "Year": 2019, "Visitors": 660000 },
+        { "Month": 1, "Year": 2020, "Visitors": 645000 },
+        { "Month": 2, "Year": 2020, "Visitors": 630000 },
+        { "Month": 3, "Year": 2020, "Visitors": 300000 },
+        { "Month": 4, "Year": 2020, "Visitors": 20000 },
+        { "Month": 5, "Year": 2020, "Visitors": 15000 },
+        { "Month": 6, "Year": 2020, "Visitors": 10000 },
+        { "Month": 7, "Year": 2020, "Visitors": 20000 },
+        { "Month": 8, "Year": 2020, "Visitors": 25000 },
+        { "Month": 9, "Year": 2020, "Visitors": 30000 },
+        { "Month": 10, "Year": 2020, "Visitors": 35000 },
+        { "Month": 11, "Year": 2020, "Visitors": 40000 },
+        { "Month": 12, "Year": 2020, "Visitors": 45000 },
+        { "Month": 1, "Year": 2021, "Visitors": 50000 },
+        { "Month": 2, "Year": 2021, "Visitors": 55000 },
+        { "Month": 3, "Year": 2021, "Visitors": 60000 },
+        { "Month": 4, "Year": 2021, "Visitors": 65000 },
+        { "Month": 5, "Year": 2021, "Visitors": 70000 },
+        { "Month": 6, "Year": 2021, "Visitors": 75000 },
+        { "Month": 7, "Year": 2021, "Visitors": 80000 },
+        { "Month": 8, "Year": 2021, "Visitors": 85000 },
+        { "Month": 9, "Year": 2021, "Visitors": 90000 },
+        { "Month": 10, "Year": 2021, "Visitors": 95000 },
+        { "Month": 11, "Year": 2021, "Visitors": 100000 },
+        { "Month": 12, "Year": 2021, "Visitors": 105000 },
+        { "Month": 1, "Year": 2022, "Visitors": 650000 },
+        { "Month": 2, "Year": 2022, "Visitors": 620000 },
+        { "Month": 3, "Year": 2022, "Visitors": 640000 },
+        { "Month": 4, "Year": 2022, "Visitors": 670000 },
+        { "Month": 5, "Year": 2022, "Visitors": 690000 },
+        { "Month": 6, "Year": 2022, "Visitors": 730000 },
+        { "Month": 7, "Year": 2022, "Visitors": 770000 },
+        { "Month": 8, "Year": 2022, "Visitors": 750000 },
+        { "Month": 9, "Year": 2022, "Visitors": 710000 },
+        { "Month": 10, "Year": 2022, "Visitors": 720000 },
+        { "Month": 11, "Year": 2022, "Visitors": 680000 },
+        { "Month": 12, "Year": 2022, "Visitors": 660000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Agricultural Production",
+      "url": "https://www.nass.usda.gov/Statistics_by_State/Hawaii/",
+      "viewCount": 90,
+      "topic": "Agriculture",
+      "description": "Annual agricultural production data for major crops in Hawaii.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "Crop": "Pineapple", "Year": 2020, "Production": 10000 },
+        { "Crop": "Sugarcane", "Year": 2020, "Production": 15000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Honolulu Public Park Facilities",
+      "url": "https://www.honolulu.gov/parks",
+      "viewCount": 115,
+      "topic": "Public Services",
+      "description": "List of public parks in Honolulu, including available facilities.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "ParkName": "Ala Moana Beach Park", "Facilities": "Beach, Picnic Areas", "Size": 100 },
+        { "ParkName": "Kapiolani Park", "Facilities": "Zoo, Tennis Courts", "Size": 130 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Energy Consumption Statistics",
+      "url": "https://energy.hawaii.gov/data-resources",
+      "viewCount": 200,
+      "topic": "Environment",
+      "description": "Annual energy consumption by type and sector in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "Sector": "Residential", "Consumption": 1200 },
+        { "Year": 2020, "Sector": "Commercial", "Consumption": 2400 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Homelessness Data",
+      "url": "https://www.hawaiihomelessprograms.org/",
+      "viewCount": 180,
+      "topic": "Public Services",
+      "description": "Data on homelessness trends in Hawaii, including demographics.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Year": 2021, "HomelessCount": 6000, "Sheltered": 1500, "Unsheltered": 4500 },
+        { "Year": 2022, "HomelessCount": 5800, "Sheltered": 1600, "Unsheltered": 4200 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Climate Adaptation Projects",
+      "url": "https://climateadaptation.hawaii.gov/projects",
+      "viewCount": 95,
+      "topic": "Environment",
+      "description": "List of climate adaptation and resilience projects in Hawaii.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "ProjectName": "Beach Restoration", "Location": "Kailua", "Cost": 500000 },
+        { "ProjectName": "Mangrove Planting", "Location": "Kauai", "Cost": 200000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii School Enrollment Statistics",
+      "url": "https://www.hawaiipublicschools.org/Pages/Home.aspx",
+      "viewCount": 300,
+      "topic": "Education",
+      "description": "Annual enrollment data for public schools in Hawaii.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "Year": 2020, "Grade": "K-5", "Enrollment": 45000 },
+        { "Year": 2020, "Grade": "6-8", "Enrollment": 22000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Maui Hospital Bed Availability",
+      "url": "https://health.hawaii.gov/maui/hospitals",
+      "viewCount": 150,
+      "topic": "Health",
+      "description": "Real-time data on hospital bed availability in Maui hospitals.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Hospital": "Maui Memorial", "BedsAvailable": 15 },
+        { "Hospital": "Kula Hospital", "BedsAvailable": 5 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Shoreline Fish Populations",
+      "url": "https://hawaii.gov/fish",
+      "viewCount": 90,
+      "topic": "Environment",
+      "description": "Study of fish populations along Hawaii's shorelines.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "Location": "Oahu", "Species": "Yellow Tang", "PopulationEstimate": 1000 },
+        { "Location": "Kauai", "Species": "Butterflyfish", "PopulationEstimate": 1200 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Rainfall Data by Region",
+      "url": "https://www.hawaiiweather.gov/rainfall",
+      "viewCount": 270,
+      "topic": "Environment",
+      "description": "Monthly rainfall data across various Hawaiian regions.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Month": "January", "Location": "Hilo", "RainfallInches": 14.2 },
+        { "Month": "January", "Location": "Honolulu", "RainfallInches": 3.7 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Agricultural Water Usage",
+      "url": "https://hawaii.agriculture.usage",
+      "viewCount": 100,
+      "topic": "Agriculture",
+      "description": "Annual water usage data for agriculture in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2019, "Crop": "Taro", "WaterUsage": 30000 },
+        { "Year": 2019, "Crop": "Sugarcane", "WaterUsage": 50000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Maui Traffic Data",
+      "url": "https://maui.gov/traffic",
+      "viewCount": 80,
+      "topic": "Transportation",
+      "description": "Monthly data on traffic congestion and travel times in Maui.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "Month": "March", "AvgTravelTime": 25, "Incidents": 45 },
+        { "Month": "April", "AvgTravelTime": 22, "Incidents": 30 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Renewable Energy Production",
+      "url": "https://hawaii.gov/renewable-energy",
+      "viewCount": 210,
+      "topic": "Environment",
+      "description": "Annual data on renewable energy production in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "Source": "Solar", "Production": 500 },
+        { "Year": 2020, "Source": "Wind", "Production": 300 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Housing Market Trends",
+      "url": "https://hawaiihousing.gov/market",
+      "viewCount": 400,
+      "topic": "Economy",
+      "description": "Annual housing market trends across the islands.",
+      "org": "DBEDT",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2021, "MedianHomePrice": 800000, "Sales": 1200 },
+        { "Year": 2021, "MedianCondoPrice": 500000, "Sales": 900 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Waikiki Beach Erosion Rates",
+      "url": "https://honolulu.gov/erosion/waikiki",
+      "viewCount": 140,
+      "topic": "Environment",
+      "description": "Study of erosion rates along Waikiki Beach.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "Year": 2019, "ErosionRate": 0.5 },
+        { "Year": 2020, "ErosionRate": 0.6 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Oahu Employment Data",
+      "url": "https://oahu.gov/employment",
+      "viewCount": 230,
+      "topic": "Economy",
+      "description": "Employment data and industry trends on Oahu.",
+      "org": "DBEDT",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2021, "Industry": "Tourism", "Employees": 45000 },
+        { "Year": 2021, "Industry": "Healthcare", "Employees": 30000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Electric Vehicle Statistics",
+      "url": "https://energy.hawaii.gov/evs",
+      "viewCount": 60,
+      "topic": "Environment",
+      "description": "Data on electric vehicle adoption in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "TotalEVs": 1500, "NewEVs": 300 },
+        { "Year": 2021, "TotalEVs": 1800, "NewEVs": 400 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Census Data",
+      "url": "https://data.census.gov/cedsci/",
+      "viewCount": 320,
+      "topic": "Demographics",
+      "description": "Census data and demographic information for Hawaii.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "Year": 2020, "Population": 1415000, "MedianAge": 39.5, "Households": 475000 },
+        { "Year": 2021, "Population": 1420000, "MedianAge": 39.7, "Households": 478000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Honolulu Rail Transit Progress",
+      "url": "https://honolulutransit.org/",
+      "viewCount": 220,
+      "topic": "Transportation",
+      "description": "Updates and progress reports on the Honolulu rail project.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "Segment": "East Kapolei to Aloha Stadium", "Status": "Completed", "CompletionYear": 2020 },
+        { "Segment": "Aloha Stadium to Middle Street", "Status": "In Progress", "CompletionYear": 2023 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Renewable Energy Data",
+      "url": "https://energy.hawaii.gov/resources/",
+      "viewCount": 400,
+      "topic": "Environment",
+      "description": "Renewable energy production and goals in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "Solar": 220, "Wind": 180, "Biomass": 90 },
+        { "Year": 2021, "Solar": 250, "Wind": 200, "Biomass": 95 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Honolulu Bike Path Facilities",
+      "url": "https://honolulu.gov/bikepaths",
+      "viewCount": 140,
+      "topic": "Transportation",
+      "description": "Information on bike paths and facilities across Honolulu.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "PathName": "Ala Wai Canal Path", "LengthMiles": 2.2, "Type": "Shared Path" },
+        { "PathName": "Ke Ala Pupukea Bike Path", "LengthMiles": 3.5, "Type": "Dedicated Path" }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii COVID-19 Data",
+      "url": "https://health.hawaii.gov/coronavirusdisease2019/",
+      "viewCount": 620,
+      "topic": "Health",
+      "description": "Up-to-date information on COVID-19 cases and vaccinations in Hawaii.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Date": "2022-01-01", "Cases": 45000, "Vaccinations": 600000 },
+        { "Date": "2022-06-01", "Cases": 50000, "Vaccinations": 650000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Public Schools Enrollment Data",
+      "url": "https://www.hawaiipublicschools.org/Pages/Home.aspx",
+      "viewCount": 200,
+      "topic": "Education",
+      "description": "Enrollment and demographic information for Hawaii public schools.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "SchoolYear": "2020-2021", "Enrollment": 179000, "Grade": "K-5" },
+        { "SchoolYear": "2021-2022", "Enrollment": 182000, "Grade": "6-12" }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Statewide Land Use",
+      "url": "https://planning.hawaii.gov/gis/",
+      "viewCount": 110,
+      "topic": "Environment",
+      "description": "Data on land use distribution and zoning across Hawaii.",
+      "org": "DBEDT",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "LandType": "Urban", "Percentage": 20.5 },
+        { "LandType": "Agricultural", "Percentage": 25.0 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Oahu Crime Rates",
+      "url": "https://www.honolulupd.org/crime-data/",
+      "viewCount": 150,
+      "topic": "Public Safety",
+      "description": "Statistics on crime rates and trends in Oahu.",
+      "org": "City and County of Honolulu",
+      "orgIcon": "/org_icons/cch_seal.png",
+      "csvData": [
+        { "Year": 2020, "ViolentCrime": 400, "PropertyCrime": 2500 },
+        { "Year": 2021, "ViolentCrime": 380, "PropertyCrime": 2400 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Agriculture Crop Data",
+      "url": "https://hdoa.hawaii.gov/",
+      "viewCount": 180,
+      "topic": "Agriculture",
+      "description": "Data on major crops and production trends in Hawaii.",
+      "org": "State of Hawaii",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "Crop": "Pineapple", "YieldTons": 10000 },
+        { "Year": 2021, "Crop": "Coffee", "YieldTons": 15000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Coastal Water Quality",
+      "url": "https://health.hawaii.gov/cwb/",
+      "viewCount": 190,
+      "topic": "Environment",
+      "description": "Monthly data on water quality along Hawaiian coastlines.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Location": "Waikiki Beach", "Month": "January", "BacteriaLevel": 15 },
+        { "Location": "Ala Moana Beach", "Month": "February", "BacteriaLevel": 20 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Climate and Temperature Data",
+      "url": "https://www.weather.gov/hfo/",
+      "viewCount": 210,
+      "topic": "Environment",
+      "description": "Average monthly temperatures across the Hawaiian islands.",
+      "org": "Hawaii Health Matters",
+      "orgIcon": "/org_icons/hawaii_health_matters.png",
+      "csvData": [
+        { "Month": "January", "Location": "Hilo", "AvgTempF": 72 },
+        { "Month": "July", "Location": "Honolulu", "AvgTempF": 84 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Maui Visitor Statistics",
+      "url": "https://dbedt.hawaii.gov/visitor/",
+      "viewCount": 300,
+      "topic": "Tourism",
+      "description": "Monthly visitor statistics for Maui and other islands.",
+      "org": "DBEDT",
+      "orgIcon": "/org_icons/Seal_of_the_State_of_Hawaii.png",
+      "csvData": [
+        { "Year": 2020, "Visitors": 1200000, "AverageStayDays": 7.5 },
+        { "Year": 2021, "Visitors": 1400000, "AverageStayDays": 8.0 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    },
+    {
+      "name": "Hawaii Small Business Data",
+      "url": "https://www.census.gov/programs-surveys/susb.html",
+      "viewCount": 170,
+      "topic": "Economy",
+      "description": "Data on small businesses in Hawaii by industry.",
+      "org": "Census Bureau",
+      "orgIcon": "/org_icons/us_census_bureau.png",
+      "csvData": [
+        { "Industry": "Accommodation", "Businesses": 3000, "Employees": 10000 },
+        { "Industry": "Retail", "Businesses": 2500, "Employees": 8000 }
+      ],
+      "fileName": "",
+      "owner": "admin@aloha-archives.com"
+    }
+  ],
+  "personaRecommendations": [
+    {
+      "id": 1,
+      "persona": "businessDecisionMaker",
+      "datasetId": 6,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 6, "name": "Oahu Employment Data" }
+    },
+    {
+      "id": 2,
+      "persona": "businessDecisionMaker",
+      "datasetId": 30,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 30, "name": "Hawaii Census Data" }
+    },
+    {
+      "id": 3,
+      "persona": "businessDecisionMaker",
+      "datasetId": 8,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 8, "name": "DBEDT Section 1: Population Data in Hawaii" }
+    },
+    {
+      "id": 4,
+      "persona": "businessDecisionMaker",
+      "datasetId": 38,
+      "updatedAt": "2024-11-09T18:56:32.086Z",
+      "dataset": { "id": 38, "name": "Hawaii Small Business Data" }
+    },
+    {
+      "id": 5,
+      "persona": "communityMember",
+      "datasetId": 3,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 3, "name": "Hawaii Rainfall Data by Region" }
+    },
+    {
+      "id": 7,
+      "persona": "educator",
+      "datasetId": 8,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 8, "name": "DBEDT Section 1: Population Data in Hawaii" }
+    },
+    {
+      "id": 8,
+      "persona": "communityMember",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 6,
+      "persona": "researcher",
+      "datasetId": 24,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 24, "name": "Hawaii Air Quality Data" }
+    },
+    {
+      "id": 9,
+      "persona": "communityMember",
+      "datasetId": 24,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 24, "name": "Hawaii Air Quality Data" }
+    },
+    {
+      "id": 10,
+      "persona": "educator",
+      "datasetId": 3,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 3, "name": "Hawaii Rainfall Data by Region" }
+    },
+    {
+      "id": 11,
+      "persona": "communityMember",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 12,
+      "persona": "communityMember",
+      "datasetId": 12,
+      "updatedAt": "2024-11-09T18:56:32.188Z",
+      "dataset": { "id": 12, "name": "Hawaii Climate Adaptation Projects" }
+    },
+    {
+      "id": 13,
+      "persona": "educator",
+      "datasetId": 40,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 40, "name": "Hawaii School Enrollment Statistics" }
+    },
+    {
+      "id": 14,
+      "persona": "researcher",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 15,
+      "persona": "researcher",
+      "datasetId": 12,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 12, "name": "Hawaii Climate Adaptation Projects" }
+    },
+    {
+      "id": 16,
+      "persona": "educator",
+      "datasetId": 20,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 20, "name": "Hawaii Educational Attainment Levels" }
+    },
+    {
+      "id": 19,
+      "persona": "researcher",
+      "datasetId": 1,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 1, "name": "Native Hawaiian Plant Species" }
+    },
+    {
+      "id": 17,
+      "persona": "educator",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 18,
+      "persona": "educator",
+      "datasetId": 30,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 30, "name": "Hawaii Census Data" }
+    },
+    {
+      "id": 20,
+      "persona": "educator",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 21,
+      "persona": "educator",
+      "datasetId": 1,
+      "updatedAt": "2024-11-09T18:56:32.187Z",
+      "dataset": { "id": 1, "name": "Native Hawaiian Plant Species" }
+    },
+    {
+      "id": 22,
+      "persona": "researcher",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 23,
+      "persona": "researcher",
+      "datasetId": 35,
+      "updatedAt": "2024-11-09T18:56:32.211Z",
+      "dataset": { "id": 35, "name": "Hawaii Agriculture Crop Data" }
+    },
+    {
+      "id": 24,
+      "persona": "publicInformer",
+      "datasetId": 7,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 7, "name": "Hawaii Shoreline Fish Populations" }
+    },
+    {
+      "id": 25,
+      "persona": "publicInformer",
+      "datasetId": 5,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 5, "name": "Hawaii Coral Reefs Health" }
+    },
+    {
+      "id": 26,
+      "persona": "publicInformer",
+      "datasetId": 12,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 12, "name": "Hawaii Climate Adaptation Projects" }
+    },
+    {
+      "id": 27,
+      "persona": "publicInformer",
+      "datasetId": 24,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 24, "name": "Hawaii Air Quality Data" }
+    },
+    {
+      "id": 28,
+      "persona": "publicInformer",
+      "datasetId": 37,
+      "updatedAt": "2024-11-09T18:56:32.230Z",
+      "dataset": { "id": 37, "name": "Hawaii Coastal Water Quality" }
+    }
+  ]  
+}
