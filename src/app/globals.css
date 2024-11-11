@@ -68,7 +68,8 @@ body::before {
   background-color: var(--white) !important;
 }
 
-input:focus, .form-control:focus {
+input:focus,
+.form-control:focus {
   box-shadow: none !important;
   border-color: #dee2e6 !important;
 }
@@ -216,10 +217,10 @@ footer {
 
 .text-contrast {
   color: white;
-  text-shadow: 
-    1px 1px 20px rgba(0, 0, 0, 1), 
-    1px 1px 20px rgba(0, 0, 0, 1), 
-    1px 1px 20px rgba(0, 0, 0, 1), 
+  text-shadow:
+    1px 1px 20px rgba(0, 0, 0, 1),
+    1px 1px 20px rgba(0, 0, 0, 1),
+    1px 1px 20px rgba(0, 0, 0, 1),
     1px 1px 20px rgba(0, 0, 0, 1);
 }
 
@@ -233,7 +234,37 @@ footer {
   cursor: pointer;
 }
 
+
+/*favorite button stuff*/
+.favorite-section {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+
+.favorite-button.favorited {
+  color: red; /* Filled heart color */
+}
+
+.favorite-button:not(.favorited) {
+  color: #ccc; /* Outline heart color */
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
 .custom-btn {
   background-color: var(--blue) !important;
   border: none !important;
 }
+

@@ -3,9 +3,6 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import DatasetPageWrapper from '@/components/DatasetPageWrapper';
 
-/**
- * Dataset Page for a specific dataset ID
- */
 export default async function DatasetPage({ params }: { params: { id: string | string[] } }) {
   const idString = Array.isArray(params?.id) ? params.id[0] : params.id;
   const id = Number(idString.replace(/[^\d]/g, ''));
@@ -25,13 +22,15 @@ export default async function DatasetPage({ params }: { params: { id: string | s
       return notFound();
     }
 
+    // Mock user ID for testing; replace with actual user ID retrieval logic
+    const userId = 1; // Replace with logic to retrieve the actual logged-in user's ID
+    console.log('Passing userId to DatasetPageWrapper:', userId); // Confirm userId is available
+
     // Add type check for csvData property to ensure it is an array of objects
-    const csvData = Array.isArray(dataset.csvData) ? dataset.csvData as { [key: string]: string | number }[] : [];
+    const csvData = Array.isArray(dataset.csvData) ? (dataset.csvData as { [key: string]: string | number }[]) : [];
 
-    console.log('Fetched Dataset:', { ...dataset, csvData }); // Log the fetched dataset with validated csvData
-
-    // Pass dataset to the client component, including validated csvData
-    return <DatasetPageWrapper dataset={{ ...dataset, csvData }} />;
+    // Pass dataset and userId to the client component
+    return <DatasetPageWrapper dataset={{ ...dataset, csvData }} userId={userId} />;
   } catch (error) {
     console.error('Error fetching dataset:', error);
     return notFound();
