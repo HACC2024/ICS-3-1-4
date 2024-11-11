@@ -1,7 +1,7 @@
 // src/app/api/upload-dataset/route.ts
 
 import { NextRequest, NextResponse } from 'next/server';
-import uploadDataset from '@/lib/uploadDataset';
+import uploadDataset from '@/lib/dbActions';
 
 // eslint-disable-next-line import/prefer-default-export
 export async function POST(req: NextRequest) {

@@ -1,6 +1,8 @@
 'use server';
 
 import { hash } from 'bcrypt';
+import Papa from 'papaparse';
+import { Prisma } from '@prisma/client';
 import { prisma } from './prisma';
 
 /**
@@ -126,32 +128,98 @@ export async function removeFavoriteDataset(userId: number, datasetId: number) {
   }
 }
 
-export const editDataset = async (updatedDataset: {
-  id: number;
-  name: string;
-  url: string;
-  topic: string;
-  description: string;
-  organization: string;
-}) => {
+export const editDataset = async (formData: FormData) => {
   try {
-    // Update only the specified fields in the dataset
-    const { id, name, url, topic, description, organization } = updatedDataset;
+    // Extract the JSON data string from FormData and parse it
+    const data = JSON.parse(formData.get('data') as string);
 
+    // Extract the file if present
+    const file = formData.get('file') as File | null;
+    let csvData: Prisma.JsonValue | null = null;
+    let fileName: string | null = null;
+
+    if (file) {
+      // Read and parse CSV file if a file was uploaded
+      const fileContent = await file.text();
+      csvData = Papa.parse(fileContent, { header: true }).data as Prisma.JsonValue;
+      fileName = file.name;
+    }
+
+    // Update the dataset in the database
     const updated = await prisma.dataset.update({
-      where: { id }, // Find the dataset by its ID
+      where: { id: data.id },
       data: {
-        name, // Update Name
-        url, // Update URL
-        topic, // Update Topic
-        description, // Update Description
-        org: organization, // Update Organization
+        name: data.name,
+        url: data.url,
+        topic: data.topic,
+        description: data.description,
+        org: data.organization,
+        ...(fileName && csvData && { fileName, csvData }), // Only add if both fileName and csvData are provided
       },
     });
 
-    return updated; // Return the updated dataset
+    return updated;
   } catch (error) {
     console.error('Error updating dataset:', error);
     throw new Error('Failed to update dataset');
   }
 };
+
+/**
+ * Uploads and parses a CSV file, saving it to the database as JSON.
+ * @param file - The CSV file to be uploaded.
+ * @param name - The name of the dataset.
+ * @param url - The URL associated with the dataset.
+ * @param fileName - The name of the uploaded file.
+ * @param topic - The topic associated with the dataset.
+ * @param description - The description of the dataset.
+ * @param organization - The name of the organization providing the dataset.
+ * @param userId - The ID of the user uploading the dataset.
+ */
+export default async function uploadDataset({
+  file,
+  name,
+  url,
+  fileName,
+  topic,
+  description,
+  organization,
+  userId,
+}: {
+  file: File;
+  name: string;
+  url: string;
+  fileName: string;
+  topic: string;
+  description: string;
+  organization: string;
+  userId: string;
+}) {
+  try {
+    // Read and parse CSV file
+    const fileContent = await file.text();
+    const parsedData = Papa.parse(fileContent, { header: true }).data;
+
+    // Convert the parsed data array to a JSON array
+    const parsedDataArray = parsedData.map((row) => ({ ...row as object }));
+
+    // Save the parsed data and filename to the database with the additional fields
+    await prisma.dataset.create({
+      data: {
+        name,
+        topic,
+        description,
+        org: organization,
+        orgIcon: '',
+        url,
+        csvData: parsedDataArray,
+        fileName,
+        ownerId: parseInt(userId, 10),
+      },
+    });
+    console.log('Dataset successfully uploaded and saved to the database.');
+  } catch (error) {
+    console.error('Error uploading dataset:', error);
+    throw new Error('Failed to upload dataset');
+  }
+}

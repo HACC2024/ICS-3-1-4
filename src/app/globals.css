@@ -234,6 +234,7 @@ footer {
   cursor: pointer;
 }
 
+
 /*favorite button stuff*/
 .favorite-section {
   margin-top: 2rem;
@@ -261,3 +262,9 @@ footer {
 .favorite-button:hover {
   transform: scale(1.1);
 }
+
+.custom-btn {
+  background-color: var(--blue) !important;
+  border: none !important;
+}
+

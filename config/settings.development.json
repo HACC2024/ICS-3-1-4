@@ -1,7 +1,7 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "persona": "businessDecisionMaker" },
-    { "email": "john@foo.com", "password": "changeme", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[], "persona": "communityMember"}
+    { "email": "admin@aloha-archives.com", "password": "admin2024!", "role": "ADMIN", "favorites": [ "Community Health Dashboard", "Bus Routes for the City and County of Honolulu"], "ownedDatasets": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "persona": "businessDecisionMaker" },
+    { "email": "user@aloha-archives.com", "password": "user1234!", "favorites": ["Existing Bike Facilities for the City and County of Honolulu", "2022 ACS Hawaii - Age and Population Estimates"], "ownedDatasets":[], "persona": "communityMember"}
   ],
 
   "defaultDataMetadata": [
@@ -25,7 +25,7 @@
         { "Indicator": 3, "Year": 2022, "Value": 14.3 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Bus Routes for the City and County of Honolulu",
@@ -43,7 +43,7 @@
         { "RouteID": 5, "RouteName": 5, "Borough": 1, "Distance": 15.6 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "DBEDT Section 1: Population Data in Hawaii",
@@ -60,7 +60,7 @@
         { "Year": 2023, "Population": 1445000, "GrowthRate": 0.5 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "2023 ACS Demographics and Housing Estimates",
@@ -81,7 +81,7 @@
         { "AGEP": 65, "SEX": 0, "RACE": 1, "PUMA": 8, "HINCP": 91000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Existing Bike Facilities for the City and County of Honolulu",
@@ -99,7 +99,7 @@
         { "FacilityID": 5, "Type": 1, "Length": 2.2, "Location": 5 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "2022 ACS Hawaii - Age and Population Estimates",
@@ -122,7 +122,7 @@
         { "AGEP": 31, "SEX": 1, "RACE": 1, "PUMA": 10, "PWGTP": 80 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Air Quality Data",
@@ -137,7 +137,7 @@
         { "Station": "Hilo", "Year": 2021, "PM2.5": 5.5, "PM10": 7.3 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Native Hawaiian Plant Species",
@@ -152,7 +152,7 @@
         { "Species": "Ohia", "Family": "Myrtaceae", "Habitat": "Forest" }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Oahu Real Estate Market Trends",
@@ -167,7 +167,7 @@
         { "Month": "Feb", "Year": 2022, "MedianPrice": 890000, "Sales": 100 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Coral Reefs Health",
@@ -182,7 +182,7 @@
         { "Location": "Kauai", "Year": 2020, "CoralCover": 30.2, "Bleaching": 20 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "COVID-19 Vaccination Rates in Hawaii",
@@ -197,7 +197,7 @@
         { "Island": "Maui", "Vaccinated": 67.3, "Unvaccinated": 32.7 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "2023 Hawaii Household Income Survey",
@@ -214,7 +214,7 @@
         { "IncomeBracket": ">$100k", "Percentage": 44.2 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Kauai Shoreline Erosion Data",
@@ -229,7 +229,7 @@
         { "Year": 2019, "Location": "Hanalei", "ErosionRate": 0.9 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Maui Water Usage Statistics",
@@ -244,7 +244,7 @@
         { "Sector": "Agriculture", "Year": 2021, "Usage": 70000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Educational Attainment Levels",
@@ -260,7 +260,7 @@
         { "Level": "Graduate", "Percentage": 9.5 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Tourism Data for Hawaii - Monthly Visitors",
@@ -393,7 +393,7 @@
         { "Month": 12, "Year": 2022, "Visitors": 660000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Agricultural Production",
@@ -408,7 +408,7 @@
         { "Crop": "Sugarcane", "Year": 2020, "Production": 15000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Honolulu Public Park Facilities",
@@ -423,7 +423,7 @@
         { "ParkName": "Kapiolani Park", "Facilities": "Zoo, Tennis Courts", "Size": 130 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Energy Consumption Statistics",
@@ -438,7 +438,7 @@
         { "Year": 2020, "Sector": "Commercial", "Consumption": 2400 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Homelessness Data",
@@ -453,7 +453,7 @@
         { "Year": 2022, "HomelessCount": 5800, "Sheltered": 1600, "Unsheltered": 4200 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Climate Adaptation Projects",
@@ -468,7 +468,7 @@
         { "ProjectName": "Mangrove Planting", "Location": "Kauai", "Cost": 200000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii School Enrollment Statistics",
@@ -483,7 +483,7 @@
         { "Year": 2020, "Grade": "6-8", "Enrollment": 22000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Maui Hospital Bed Availability",
@@ -498,7 +498,7 @@
         { "Hospital": "Kula Hospital", "BedsAvailable": 5 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Shoreline Fish Populations",
@@ -513,7 +513,7 @@
         { "Location": "Kauai", "Species": "Butterflyfish", "PopulationEstimate": 1200 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Rainfall Data by Region",
@@ -528,7 +528,7 @@
         { "Month": "January", "Location": "Honolulu", "RainfallInches": 3.7 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Agricultural Water Usage",
@@ -543,7 +543,7 @@
         { "Year": 2019, "Crop": "Sugarcane", "WaterUsage": 50000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Maui Traffic Data",
@@ -558,7 +558,7 @@
         { "Month": "April", "AvgTravelTime": 22, "Incidents": 30 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Renewable Energy Production",
@@ -573,7 +573,7 @@
         { "Year": 2020, "Source": "Wind", "Production": 300 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Housing Market Trends",
@@ -588,7 +588,7 @@
         { "Year": 2021, "MedianCondoPrice": 500000, "Sales": 900 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Waikiki Beach Erosion Rates",
@@ -603,7 +603,7 @@
         { "Year": 2020, "ErosionRate": 0.6 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Oahu Employment Data",
@@ -618,7 +618,7 @@
         { "Year": 2021, "Industry": "Healthcare", "Employees": 30000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Electric Vehicle Statistics",
@@ -633,7 +633,7 @@
         { "Year": 2021, "TotalEVs": 1800, "NewEVs": 400 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Census Data",
@@ -648,7 +648,7 @@
         { "Year": 2021, "Population": 1420000, "MedianAge": 39.7, "Households": 478000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Honolulu Rail Transit Progress",
@@ -663,7 +663,7 @@
         { "Segment": "Aloha Stadium to Middle Street", "Status": "In Progress", "CompletionYear": 2023 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Renewable Energy Data",
@@ -678,7 +678,7 @@
         { "Year": 2021, "Solar": 250, "Wind": 200, "Biomass": 95 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Honolulu Bike Path Facilities",
@@ -693,7 +693,7 @@
         { "PathName": "Ke Ala Pupukea Bike Path", "LengthMiles": 3.5, "Type": "Dedicated Path" }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii COVID-19 Data",
@@ -708,7 +708,7 @@
         { "Date": "2022-06-01", "Cases": 50000, "Vaccinations": 650000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Public Schools Enrollment Data",
@@ -723,7 +723,7 @@
         { "SchoolYear": "2021-2022", "Enrollment": 182000, "Grade": "6-12" }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Statewide Land Use",
@@ -738,7 +738,7 @@
         { "LandType": "Agricultural", "Percentage": 25.0 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Oahu Crime Rates",
@@ -753,7 +753,7 @@
         { "Year": 2021, "ViolentCrime": 380, "PropertyCrime": 2400 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Agriculture Crop Data",
@@ -768,7 +768,7 @@
         { "Year": 2021, "Crop": "Coffee", "YieldTons": 15000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Coastal Water Quality",
@@ -783,7 +783,7 @@
         { "Location": "Ala Moana Beach", "Month": "February", "BacteriaLevel": 20 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Climate and Temperature Data",
@@ -798,7 +798,7 @@
         { "Month": "July", "Location": "Honolulu", "AvgTempF": 84 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Maui Visitor Statistics",
@@ -813,7 +813,7 @@
         { "Year": 2021, "Visitors": 1400000, "AverageStayDays": 8.0 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     },
     {
       "name": "Hawaii Small Business Data",
@@ -828,7 +828,7 @@
         { "Industry": "Retail", "Businesses": 2500, "Employees": 8000 }
       ],
       "fileName": "",
-      "owner": "admin@foo.com"
+      "owner": "admin@aloha-archives.com"
     }
   ],
   "personaRecommendations": [

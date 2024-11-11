@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -91,12 +93,12 @@ const ChangePassword = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button type="submit" className="btn btn-primary">
+                        <Button type="submit" className="btn btn-primary custom-btn">
                           Change
                         </Button>
                       </Col>
                       <Col>
-                        <Button type="button" onClick={() => reset()} className="btn btn-warning float-right">
+                        <Button type="button" onClick={() => reset()} className="btn btn-warning float-right" style={{ border: 'none' }}>
                           Reset
                         </Button>
                       </Col>

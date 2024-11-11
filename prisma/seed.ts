@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log('Seeding the database');
-  const password = await hash('changeme', 10);
 
   // Step 1: Seed users and map their email to IDs
   const userMap: { [email: string]: number } = {};
@@ -15,16 +14,19 @@ async function main() {
       const role: Role = account.role === 'ADMIN' ? 'ADMIN' : 'USER';
       console.log(`  Creating or updating user: ${account.email} with role: ${role}`);
 
+      // Hash the password dynamically based on the config
+      const hashedPassword = await hash(account.password, 10);
+
       const user = await prisma.user.upsert({
         where: { email: account.email },
         update: {
           role,
           persona: account.persona,
-          password, // Updating password, adjust as needed to avoid resetting
+          password: hashedPassword, // Use the hashed password
         },
         create: {
           email: account.email,
-          password,
+          password: hashedPassword, // Use the hashed password
           role,
           persona: account.persona,
         },
@@ -108,7 +110,6 @@ async function main() {
       const { persona, datasetId } = personaRec;
       if (!persona || !datasetId) return;
 
-      // Upsert each persona-dataset recommendation individually
       await prisma.personaRecommendation.upsert({
         where: {
           persona_datasetId: {
@@ -126,37 +127,6 @@ async function main() {
       console.log(`  Stored recommendation for persona: ${persona} with dataset ID: ${datasetId}`);
     }),
   );
-
-  // // Step 4: Seed PersonaRecommendations using dataset IDs (for when seeding from data retrieved from OpenAI API)
-  // await Promise.all(
-  //   config.personaRecommendations.map(async (personaRec) => {
-  //     // Map dataset names to IDs using datasetMap
-  //     const datasetIds = (personaRec.recommendations || [])
-  //       .map((datasetName: string) => datasetMap[datasetName])
-  //       .filter(Boolean); // Ensure only valid dataset IDs
-
-  //     // Create or update a PersonaRecommendation for each datasetId
-  //     await Promise.all(
-  //       datasetIds.map(async (datasetId) => {
-  //         await prisma.personaRecommendation.upsert({
-  //           where: {
-  //             persona_datasetId: {
-  //               persona: personaRec.persona,
-  //               datasetId,
-  //             },
-  //           },
-  //           update: {}, // No fields specified here to prevent accidental overrides, but add fields if needed.
-  //           create: {
-  //             persona: personaRec.persona,
-  //             datasetId,
-  //           },
-  //         });
-  //       }),
-  //     );
-
-  //     console.log(`  Stored recommendations for persona: ${personaRec.persona}`);
-  //   }),
-  // );
 
   console.log('Seeding completed.');
 }

@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // import { Dataset } from '@prisma/client';
 import { EditDatasetSchema } from '@/lib/validationSchemas';
 import { editDataset } from '@/lib/dbActions';
+import { useState } from 'react';
 
 type EditableDatasetFields = {
   id: number;
@@ -16,13 +17,7 @@ type EditableDatasetFields = {
   topic: string;
   description: string;
   org: string;
-};
-const onSubmit = async (data: EditableDatasetFields) => {
-  const formattedData = { ...data, organization: data.org, id: data.id };
-  await editDataset(formattedData);
-  swal('Success', 'Your item has been updated', 'success', {
-    timer: 2000,
-  });
+  fileName?: string;
 };
 
 const EditDatasetForm = ({ dataset }: { dataset: EditableDatasetFields }) => {
@@ -35,6 +30,29 @@ const EditDatasetForm = ({ dataset }: { dataset: EditableDatasetFields }) => {
     resolver: yupResolver(EditDatasetSchema),
     defaultValues: dataset, // Populate form fields with dataset values
   });
+
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const onSubmit = async (data: EditableDatasetFields) => {
+    const formattedData = { ...data, organization: data.org, id: data.id };
+    // Prepare FormData for the file, if present
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(formattedData));
+    if (file) {
+      formData.append('file', file); // Add the file only if it exists
+    }
+    // Pass FormData directly to editDataset
+    await editDataset(formData);
+    swal('Success', 'Your item has been updated', 'success', {
+      timer: 2000,
+    });
+  };
 
   return (
     <Card>
@@ -95,14 +113,34 @@ const EditDatasetForm = ({ dataset }: { dataset: EditableDatasetFields }) => {
             <div className="invalid-feedback">{errors.org?.message}</div>
           </Form.Group>
 
+          <Form.Group>
+            <Form.Label>File (optional)</Form.Label>
+            <input
+              type="file"
+              accept=".csv"
+              onChange={handleFileChange}
+              className="form-control"
+            />
+            {!file && dataset.fileName && (
+              <small className="text-muted">
+                Current file:
+                {' '}
+                {dataset.fileName}
+              </small>
+            )}
+            {!file && !dataset.fileName && (
+              <small className="text-muted">(No file selected)</small>
+            )}
+          </Form.Group>
+
           <Row className="pt-3">
             <Col>
-              <Button type="submit" variant="primary">
+              <Button type="submit" variant="primary" className="custom-btn">
                 Submit
               </Button>
             </Col>
             <Col>
-              <Button type="button" variant="warning" onClick={() => reset()} className="float-right">
+              <Button type="button" variant="warning" onClick={() => reset()} className="float-right" style={{ border: 'none' }}>
                 Reset
               </Button>
             </Col>
