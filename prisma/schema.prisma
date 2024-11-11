@@ -69,7 +69,7 @@ model PersonaRecommendation {
   id        Int      @id @default(autoincrement())
   persona   String
   datasetId Int
-  dataset   Dataset  @relation("DatasetRecommendations", fields: [datasetId], references: [id])
+  dataset   Dataset  @relation("DatasetRecommendations", fields: [datasetId], references: [id], onDelete: Cascade)
   updatedAt DateTime @updatedAt
 
   @@unique([persona, datasetId]) // Composite unique constraint
