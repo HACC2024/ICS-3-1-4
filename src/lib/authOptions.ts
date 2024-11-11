@@ -1,4 +1,4 @@
-import { compare } from 'bcrypt';
+import { compareSync } from 'bcrypt';
 import { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from '@/lib/prisma';
@@ -19,29 +19,42 @@ const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
+        console.log('Authorizing user with email:', credentials?.email);
+
         if (!credentials?.email || !credentials.password) {
+          console.log('No credentials provided');
           return null;
         }
+
+        // Retrieve user by email
         const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
+          where: { email: credentials.email },
         });
+
         if (!user) {
+          console.log('User not found');
           return null;
         }
 
-        const isPasswordValid = await compare(credentials.password, user.password);
+        // Log the hashed password from the database for verification
+        console.log('Stored hashed password:', user.password);
+        console.log('Entered password (plain text):', credentials.password);
+
+        // Manually compare the password using compareSync for debugging
+        const isPasswordValid = compareSync(credentials.password, user.password);
+        console.log('Password comparison result:', isPasswordValid);
+
         if (!isPasswordValid) {
+          console.log('Password mismatch');
           return null;
         }
+        console.log('User authenticated successfully');
 
-        // Return user data including persona
         return {
           id: `${user.id}`,
           email: user.email,
           randomKey: user.role,
-          persona: user.persona, // Include persona in the returned user object
+          persona: user.persona,
         };
       },
     }),

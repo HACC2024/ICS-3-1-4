@@ -1,3 +1,4 @@
+// Fetches names of datasets from the database
 import { Pool } from 'pg';
 
 const pool = new Pool({

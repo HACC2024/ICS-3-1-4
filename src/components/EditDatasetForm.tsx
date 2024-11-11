@@ -135,12 +135,12 @@ const EditDatasetForm = ({ dataset }: { dataset: EditableDatasetFields }) => {
 
           <Row className="pt-3">
             <Col>
-              <Button type="submit" variant="primary">
+              <Button type="submit" variant="primary" className="custom-btn">
                 Submit
               </Button>
             </Col>
             <Col>
-              <Button type="button" variant="warning" onClick={() => reset()} className="float-right">
+              <Button type="button" variant="warning" onClick={() => reset()} className="float-right" style={{ border: 'none' }}>
                 Reset
               </Button>
             </Col>

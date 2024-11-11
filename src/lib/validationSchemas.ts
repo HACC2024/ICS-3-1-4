@@ -18,21 +18,6 @@ export const PersonaQuizSchema = Yup.object({
   interaction: Yup.string().required('Interaction preference is required'),
 });
 
-export const AddStuffSchema = Yup.object({
-  name: Yup.string().required(),
-  quantity: Yup.number().positive().required(),
-  condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
-  owner: Yup.string().required(),
-});
-
-export const EditStuffSchema = Yup.object({
-  id: Yup.number().required(),
-  name: Yup.string().required(),
-  quantity: Yup.number().positive().required(),
-  condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
-  owner: Yup.string().required(),
-});
-
 export const EditDatasetSchema = Yup.object().shape({
   id: Yup.number().required(),
   name: Yup.string().required('Name is required'),
