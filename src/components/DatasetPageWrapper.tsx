@@ -23,7 +23,7 @@ interface Dataset {
 
 interface DatasetPageWrapperProps {
   dataset: Dataset;
-  userId: number;
+  userId: number | null;
 }
 
 export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapperProps) {
@@ -40,10 +40,12 @@ export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapp
   // Fetch favorite status on mount
   useEffect(() => {
     async function fetchFavoriteStatus() {
+      if (userId === null) return; // Skip if user is not logged in
+
       try {
         const user = await prisma.user.findUnique({
           where: { id: userId },
-          include: { favorites: true },
+          include: { favorites: true }, // Ensure 'favorites' relation is defined in Prisma schema
         });
 
         if (user?.favorites.some((favorite) => favorite.id === dataset.id)) {
@@ -59,6 +61,11 @@ export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapp
 
   // Function to handle favorite toggle
   async function handleFavoriteToggle() {
+    if (userId === null) {
+      console.error('User is not logged in. Cannot toggle favorite.');
+      return;
+    }
+
     console.log('Toggling favorite status for userId:', userId, 'datasetId:', dataset.id);
     try {
       if (isFavorite) {
@@ -210,28 +217,30 @@ export default function DatasetPageWrapper({ dataset, userId }: DatasetPageWrapp
       )}
 
       {/* Favorite Button */}
-      <div className="favorite-section d-flex justify-content-center align-items-center mt-4">
-        <span className="me-2">Add to favorites</span>
-        <button
-          type="button"
-          className="favorite-button"
-          onClick={handleFavoriteToggle}
-          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill={isFavorite ? 'red' : 'none'}
-            stroke={isFavorite ? 'red' : 'currentColor'}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+      {userId !== null && (
+        <div className="favorite-section d-flex justify-content-center align-items-center mt-4">
+          <span className="me-2">{isFavorite ? 'Remove from favorites' : 'Add to favorites'}</span>
+          <button
+            type="button"
+            className="favorite-button"
+            onClick={handleFavoriteToggle}
+            aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           >
-            <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z" />
-          </svg>
-        </button>
-      </div>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill={isFavorite ? 'red' : 'none'} // Keep heart filled if isFavorite is true
+              stroke={isFavorite ? 'red' : 'currentColor'}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z" />
+            </svg>
+          </button>
+        </div>
+      )}
     </main>
   );
 }

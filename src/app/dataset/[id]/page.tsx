@@ -1,6 +1,8 @@
 // This file should remain a server component (do not add 'use client')
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/authOptions';
 import DatasetPageWrapper from '@/components/DatasetPageWrapper';
 
 export default async function DatasetPage({ params }: { params: { id: string | string[] } }) {
@@ -22,8 +24,8 @@ export default async function DatasetPage({ params }: { params: { id: string | s
       return notFound();
     }
 
-    // Mock user ID for testing; replace with actual user ID retrieval logic
-    const userId = 1; // Replace with logic to retrieve the actual logged-in user's ID
+    const session = await getServerSession(authOptions);
+    const userId = session?.user?.id ? Number(session.user.id) : null;
     console.log('Passing userId to DatasetPageWrapper:', userId); // Confirm userId is available
 
     // Add type check for csvData property to ensure it is an array of objects
